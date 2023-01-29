@@ -12,17 +12,15 @@ import '6_sonde_state.dart';
 
 class SondeProcedure {
   SondeState state;
-  List<RegimenSondeFast> historyOld;
-  RegimenState regimenState;
+  List<Regimen> regimens;
   SondeProcedure({
     required this.state,
-    required this.historyOld,
-    required this.regimenState,
+    required this.regimens,
   });
   //toString 
   @override
   String toString() {
-    return 'SondeProcedure: {state: $state,\n historyOld: $historyOld,\n regimenState: $regimenState}';
+    return 'SondeProcedure: {state: $state,\n regimens: $regimens}';
   }
 }
 class SondeProcedureOnlineCubit extends Cubit<SondeProcedure> {
@@ -34,8 +32,7 @@ class SondeProcedureOnlineCubit extends Cubit<SondeProcedure> {
     state: SondeState(
       status: SondeStatus.firstAsk,
     ),
-    historyOld: [],
-    regimenState: initialRegimenState(),
+    regimens: [],
   )){
   
   }

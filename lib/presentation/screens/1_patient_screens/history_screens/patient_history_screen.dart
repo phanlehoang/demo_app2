@@ -85,38 +85,50 @@ class SondeOldFast extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          StreamBuilder(
-            stream: SondeCollectionsProvider.fastInsulinHistoryRef(
-                    context.read<CurrentProfileCubit>().state)
-                .snapshots(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text('Something went wrong');
-              }
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text("Loading");
-              } else {
-                if (snapshot.data == null) return Text('no data');
-
-                var docs = snapshot.data!.docs;
-                return Column(children: [
-                  for (var doc in docs)
-                    RegimenItem(
-                      regimen: RegimenSondeFast.fromMap(
-                          doc.data() as Map<String, dynamic>),
-                    ),
-                ]);
-              }
-            },
-          )
+          Text('gg'),
+         // Cutting(),
         ],
       ),
     );
   }
 }
 
+class Cutting extends StatelessWidget {
+  const Cutting({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: SondeCollectionsProvider.fastInsulinHistoryRef(
+              context.read<CurrentProfileCubit>().state)
+          .snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        } else {
+          if (snapshot.data == null) return Text('no data');
+
+          var docs = snapshot.data!.docs;
+          return Column(children: [
+            for (var doc in docs)
+              RegimenItem(
+                regimen: Regimen.fromMap(
+                    doc.data() as Map<String, dynamic>),
+              ),
+          ]);
+        }
+      },
+    );
+  }
+}
+
 class RegimenItem extends StatelessWidget {
-  final RegimenSondeFast regimen;
+  final Regimen regimen;
   const RegimenItem({
     super.key,
     required this.regimen,
@@ -138,7 +150,6 @@ class RegimenItem extends StatelessWidget {
             return Text('$firstDate - $lastDate: $name');
           },
         ),
-        Text('Lượng CHO: ${regimen.cho} g'),
         for (var item in regimen.medicalActions)
           SimpleContainer(
             child: ListTile(

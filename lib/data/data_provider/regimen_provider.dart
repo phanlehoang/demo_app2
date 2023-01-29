@@ -33,14 +33,7 @@ class SondeNoInsulinRegimenProvider {
   static Future<String?> addRegimen(Profile profile, Regimen regimen) async {
     var ref = regimenAddress(profile);
     try {
-      addMedicalTakeInsulins(
-        ref: ref,
-        medicalTakeInsulins: regimen.medicalTakeInsulins,
-      );
-      addMedicalCheckGlucoses(
-        ref: ref,
-        medicalCheckGlucoses: regimen.medicalCheckGlucoses,
-      );
+      
       addMedicalActions(
         ref: ref,
         medicalActions: regimen.medicalActions,
@@ -51,29 +44,28 @@ class SondeNoInsulinRegimenProvider {
     return null;
   }
 
-  static Future<Regimen?> readRegimenFromProfile(Profile profile) async {
-    return readRegimen(
-      ref: regimenAddress(profile),
-    );
-  }
+  // static Future<Regimen?> readRegimenFromProfile(Profile profile) async {
+  //   return readRegimen(
+  //     ref: regimenAddress(profile),
+  //   );
+  // }
 
-  static Future<Regimen?> readRegimen({
-    required DocumentReference ref,
-  }) async {
-    try {
-      var medicalTakeInsulins = await readMedicalTakeInsulins(ref: ref);
-      var medicalCheckGlucoses = await readMedicalCheckGlucoses(ref: ref);
-      var medicalActions = await readMedicalActions(ref: ref);
-      //delay 1s
-      return Regimen(
-        medicalTakeInsulins: medicalTakeInsulins,
-        medicalCheckGlucoses: medicalCheckGlucoses,
-        medicalActions: medicalActions,
-      );
-    } catch (e) {
-      return null;
-    }
-  }
+  // static Future<Regimen?> readRegimen({
+  //   required DocumentReference ref,
+  // }) async {
+  //   try {
+  //     var medicalTakeInsulins = await readMedicalTakeInsulins(ref: ref);
+  //     var medicalCheckGlucoses = await readMedicalCheckGlucoses(ref: ref);
+  //     var medicalActions = await readMedicalActions(ref: ref);
+  //     //delay 1s
+  //     return Regimen(
+  //       name: ref,
+  //       medicalActions: medicalActions,
+  //     );
+  //   } catch (e) {
+  //     return null;
+  //   }
+  // }
 
   //read medicalCheckGlucoses
   static Future<List<MedicalCheckGlucose>> readMedicalCheckGlucoses({

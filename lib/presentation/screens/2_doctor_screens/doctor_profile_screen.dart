@@ -17,6 +17,7 @@ class DoctorProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     dynamic trial;
+    Regimen myReg = initialRegimen();
     return Scaffold(
       appBar: AppBar(
         title: Text("Hồ sơ bác sĩ"),
@@ -29,10 +30,16 @@ class DoctorProfileScreen extends StatelessWidget {
           children: [
             TextButton(
                 onPressed: () async {
+
                   var trial = await FirebaseFirestore.instance
                       .collection('list_adds')
                       .doc('add')
-                      .delete();
+                      .set(testReg().toMap());
+                  var trial2 = await FirebaseFirestore.instance
+                      .collection('list_adds')
+                      .doc('add')
+                      .get().then((value) => value.data());
+                  myReg = Regimen.fromMap(trial2);
                 },
                 child: Text('${trial}')),
             BlocProvider<CandiesOnlineCubit>
@@ -86,8 +93,7 @@ Regimen testReg() {
   );
   Regimen r = Regimen(
     medicalActions: [m, m2],
-    medicalTakeInsulins: [m],
-    medicalCheckGlucoses: [m2],
+    name: 'Regimen 1',
   );
   return r;
 }

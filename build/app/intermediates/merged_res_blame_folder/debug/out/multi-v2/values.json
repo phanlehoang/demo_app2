@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\demo_app2\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\hoang_2\\demo_app2\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HoangPhanHoang\\.gradle\\caches\\transforms-3\\19fea4fb28dedd992824e13cc158e7a1\\transformed\\jetified-play-services-base-18.0.1\\res\\values\\values.xml",
@@ -37,25 +37,6 @@
                         "startOffsets": "6434,7612",
                         "endColumns": "67,166",
                         "endOffsets": "6497,7774"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\demo_app2\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,832",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "483,998"
-                    },
-                    "to": {
-                        "startLines": "137,142",
-                        "startColumns": "4,4",
-                        "startOffsets": "10011,10319",
-                        "endLines": "141,144",
-                        "endColumns": "12,12",
-                        "endOffsets": "10314,10483"
                     }
                 },
                 {
@@ -97,7 +78,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\demo_app2\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "source": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\hoang_2\\demo_app2\\build\\app\\generated\\res\\google-services\\debug\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -128,6 +109,25 @@
                         "startOffsets": "661,719,785,848,1713,1784,8905,9117,9184,9263",
                         "endColumns": "57,65,62,61,70,71,67,66,78,68",
                         "endOffsets": "714,780,843,905,1779,1851,8968,9179,9258,9327"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\hoang_2\\demo_app2\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,832",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "483,998"
+                    },
+                    "to": {
+                        "startLines": "137,142",
+                        "startColumns": "4,4",
+                        "startOffsets": "10011,10319",
+                        "endLines": "141,144",
+                        "endColumns": "12,12",
+                        "endOffsets": "10314,10483"
                     }
                 }
             ]

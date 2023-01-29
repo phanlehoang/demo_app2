@@ -57,18 +57,14 @@ class SondeCubit extends Cubit<SondeState> {
     var ref = SondeCollectionsProvider.fastInsulinStateRef(profile);
     var regimen =
         await SondeCollectionsProvider.getRegimenFastInsulinState(profile);
-    var regimenSondeFast = RegimenSondeFast.fromRegimenAndCho(
-      regimen,
-      state.cho,
-      EnumToName.sondeStatusToName(state.status),
-    );
+   
     if (regimen.medicalActions.length == 0) {
       return 'No medical actions';
     }
     var addHistory =
         await SondeCollectionsProvider.fastInsulinHistoryRef(profile)
-            .doc(regimenSondeFast.lastTime().toString())
-            .set(regimenSondeFast.toMap());
+            .doc(regimen.lastTime().toString())
+            .set(regimen.toMap());
     var clearData = await ref.set(
       initialRegimenState().toMap(),
     );
