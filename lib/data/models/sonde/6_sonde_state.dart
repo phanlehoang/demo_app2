@@ -5,11 +5,13 @@ class SondeState {
   num cho;
   num bonusInsulin;
   num weight;
+  InsulinType slowInsulinType;
   SondeState({
     required this.status,
     this.cho = 0,
     this.bonusInsulin = 0,
-    this.weight = 0,
+    this.weight = 0, 
+    this. slowInsulinType = InsulinType.Unknown,
   });
   //clone
   SondeState clone() {
@@ -18,13 +20,18 @@ class SondeState {
       cho: cho,
       bonusInsulin: bonusInsulin,
       weight: weight,
+      slowInsulinType: slowInsulinType,
     );
   }
 
   //to String
   @override
   String toString() {
-    return 'SondeState(status: $status, cho: $cho, bonusInsulin: $bonusInsulin, weight: $weight)';
+    return '''SondeState(status: $status,
+     cho: $cho, bonusInsulin: $bonusInsulin,
+      weight: $weight,
+      slowInsulinType: $slowInsulinType,
+      )''';
   }
 
   //to Map
@@ -34,6 +41,7 @@ class SondeState {
       'cho': cho,
       'bonusInsulin': bonusInsulin,
       'weight': weight,
+      'slowInsulinType': EnumToString.enumToString(slowInsulinType),
     };
   }
 
@@ -45,6 +53,7 @@ class SondeState {
         cho: map['cho'],
         bonusInsulin: map['bonusInsulin'],
         weight: map['weight'],
+        slowInsulinType: StringToEnum.stringToInsulinType(map['slowInsulinType']),
       );
     } catch (e) {
       var a = initSondeState();

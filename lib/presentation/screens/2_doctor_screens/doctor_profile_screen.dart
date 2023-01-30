@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
+import 'package:demo_app2/data/models/medical/4_regimen.dart';
 import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
 import 'package:demo_app2/presentation/screens/2_doctor_screens/candies.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../data/data_provider/regimen_provider.dart';
+import '../../../data/models/medical/2_medical_check_glucose.dart';
+import '../../../data/models/medical/3_medical_take_insulin.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/doctor_navigator_bar.dart';
 
@@ -93,7 +96,7 @@ Regimen testReg() {
   );
   Regimen r = Regimen(
     medicalActions: [m, m2],
-    name: 'Regimen 1',
+    name: 'Regimen 1', beginTime: DateTime.now(),
   );
   return r;
 }

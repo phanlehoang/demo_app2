@@ -64,7 +64,7 @@ void bottomNavigator(int index, BuildContext context) {
           Navigator.of(context).pushReplacementNamed('/patient');
           break;
         case 1:
-          Navigator.of(context).pushReplacementNamed('/patient/history');
+          Navigator.of(context).pushReplacementNamed('/patient/procedures');
           break;
         case 2:
           Navigator.of(context).pushReplacementNamed('/patient/profile');

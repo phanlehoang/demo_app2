@@ -27,7 +27,7 @@ class PatientNavigatorBar extends StatelessWidget {
                 unselectedColor: Colors.white),
             SalomonBottomBarItem(
                 icon: Icon(Icons.notes_rounded),
-                title: Text("Lịch sử"),
+                title: Text("Các phác đồ"),
                 selectedColor: Colors.orange,
                 unselectedColor: Colors.white),
             SalomonBottomBarItem(
@@ -48,7 +48,7 @@ void patientNavigator(int index, BuildContext context) {
       Navigator.of(context).pushReplacementNamed('/patient');
       break;
     case 1:
-      Navigator.of(context).pushReplacementNamed('/patient/history');
+      Navigator.of(context).pushReplacementNamed('/patient/procedures');
       break;
     case 2:
       Navigator.of(context).pushReplacementNamed('/patient/profile');

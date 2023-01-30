@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
+import '../models/medical/2_medical_check_glucose.dart';
+import '../models/medical/3_medical_take_insulin.dart';
+import '../models/medical/4_regimen.dart';
 import '../models/profile.dart';
 import '../models/sonde/sonde_lib.dart';
-import '../models/sonde/3_medical_take_insulin.dart';
-import '../models/sonde/4_regimen.dart';
+
 
 //viết hàm chèn thêm số 0 vào để có đúng 3 chữ số
 String addZero(int number) {
@@ -84,12 +86,12 @@ class SondeNoInsulinRegimenProvider {
   }
 
   //read medicalActions
-  static Future<List<MedicalAction>> readMedicalActions({
+  static Future<List<dynamic>> readMedicalActions({
     required DocumentReference ref,
   }) async {
     try {
       var docs = await ref.collection('medicalActions').get();
-      var medicalActions = <MedicalAction>[];
+      var medicalActions = [];
       for (var doc in docs.docs) {
         switch (doc.data()['name']) {
           case 'MedicalTakeInsulin':

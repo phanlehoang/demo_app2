@@ -9,7 +9,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'logic/1_patient_blocs/current_profile_cubit.dart';
-import 'logic/1_patient_blocs/medical_blocs/current_medical_method_cubit.dart';
 import 'logic/status_cubit/internet/internet_cubit.dart';
 import 'logic/status_cubit/navigator_bar_cubit.dart';
 
@@ -56,9 +55,7 @@ class MyApp extends StatelessWidget {
           create: (currentProfileCubitContext) => CurrentProfileCubit(),
         ),
         //current method cubit
-        BlocProvider<CurrentMedicalMethodCubit>(
-          create: (currentMethodCubitContext) => CurrentMedicalMethodCubit(),
-        ),
+       
         //time check cubit
         BlocProvider<TimeCheckCubit>(
           create: (timeCheckCubitContext) => TimeCheckCubit(

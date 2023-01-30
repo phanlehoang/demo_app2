@@ -55,6 +55,8 @@ class StringToEnum {
         return InsulinType.Actrapid;
       case 'NPH':
         return InsulinType.NPH;
+      case 'Unknown':
+        return InsulinType.Unknown;
       default:
         return InsulinType.Actrapid;
     }

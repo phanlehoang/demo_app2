@@ -25,7 +25,7 @@ class CreateGroupScreen extends StatelessWidget {
             builder: (context) {
               final formBloc = context.watch<GroupCreateFormBloc>();
               return FormBlocListener<GroupCreateFormBloc, String, String>(
-                onSubmitting: (context, state) => LoadingDialog.show(context),
+                onSubmitting: (context, formState) => LoadingDialog.show(context),
                 onSubmissionFailed: (context, state) =>
                     LoadingDialog.hide(context),
                 onSuccess: (context, state) {
@@ -39,9 +39,12 @@ class CreateGroupScreen extends StatelessWidget {
                   Navigator.pop(context);
                   Navigator.of(context).pushReplacementNamed('/');
                 },
-                onFailure: (context, state) {
-                  print('failure');
-                  print(state.failureResponse);
+                onFailure: (context, _state) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Failure'),
+                    ),
+                  );
                 },
                 child: Column(
                   children: [

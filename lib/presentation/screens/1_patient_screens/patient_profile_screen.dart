@@ -53,7 +53,6 @@ class PatientProfileScreen extends StatelessWidget {
                       //thụt vào bên trái
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ChooseMedicalMethod(),
                         Text(
                           'Tên: ${profileState.name} ',
                           style: TextStyle(fontSize: 20),

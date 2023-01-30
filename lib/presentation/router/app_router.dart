@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/status_cubit/navigator_bar_cubit.dart';
 import '../screens/1_patient_screens/medical_screen.dart';
-import '../screens/1_patient_screens/history_screens/patient_history_screen.dart';
+import '../screens/1_patient_screens/procedures_screens/patient_procedures_screen.dart';
 import '../screens/1_patient_screens/patient_profile_screen.dart';
 import '../screens/2_doctor_screens/doctor_profile_screen.dart';
 import '../screens/2_doctor_screens/doctor_screen.dart';
@@ -31,10 +31,10 @@ class AppRouter {
             builder: (_) => PatientMedicalScreen(),
           );
         }
-      case ('/patient/history'):
+      case ('/patient/procedures'):
         {
           return MaterialPageRoute(
-            builder: (_) => PatientHistoryScreen(),
+            builder: (_) => PatientProceduresScreen(),
           );
         }
       case ('/patient/profile'):

@@ -45,6 +45,14 @@ class PatientRead {
     return null;
   }
 }
+class PatientRef{
+  static DocumentReference getPatientRef(Profile profile){
+    var db = FirebaseFirestore.instance;
+    var ref = db.collection('groups')
+    .doc(profile.room).collection('patients').doc(profile.id);
+    return ref;
+  }
+}
 
 class PatientUpdate {
   //updaate patient profile
