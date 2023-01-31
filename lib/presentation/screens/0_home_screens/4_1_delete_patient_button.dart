@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/profile.dart';
+import '../../../data/models/2_profile.dart';
 
 class DeletePatientButton extends StatelessWidget {
   const DeletePatientButton({

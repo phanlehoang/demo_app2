@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'logic/1_patient_blocs/current_profile_cubit.dart';
+import 'data/models/2.3_current_profile_cubit.dart';
 import 'logic/status_cubit/internet/internet_cubit.dart';
 import 'logic/status_cubit/navigator_bar_cubit.dart';
 

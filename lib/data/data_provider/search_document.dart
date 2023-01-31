@@ -1,7 +1,7 @@
 //search a document
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/group.dart';
+import '../models/1_group.dart';
 
 Future<bool> searchGroupId(String nameOfCollection, String id) async {
   var db = FirebaseFirestore.instance;

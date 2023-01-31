@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
 import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
+import 'package:demo_app2/logic/status_cubit/navigator_bar_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/procedures_screens/create_procedure.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
 
-import '../../../../logic/1_patient_blocs/current_profile_cubit.dart';
+import '../../../../data/models/2.3_current_profile_cubit.dart';
 import '../../../../logic/global/current_group/current_group_id_cubit.dart';
 import '../../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../../widgets/bars/patient_navigator_bar.dart';
@@ -111,18 +112,54 @@ class ProcedureItem extends StatelessWidget {
       );
     return BlocBuilder(
       bloc: sondeProcedureOnlineCubit,
-      builder: (context, _procedureState) {
+      builder: (_context, _procedureState) {
         final procedureState = sondeProcedureOnlineCubit.state;
         if (procedureState.name == 'Đang tải') {
           return Text('Loading');
         }
         //nice date time 
         String time = NiceDateTime.dayMonth(procedureState.beginTime);
-        return NiceItem(
-          index: 1,
-           title: procedureState.name,
-            subtitle: EnumToString.enumToString(procedureState.state.status),
-            trailing: Text(time) );
+        return BlocBuilder(
+          bloc: context.read<CurrentProfileCubit>(),
+          builder: (_context, state) {
+            final profile = _context.read<CurrentProfileCubit>().state;
+          Color color = Colors.white;
+          if (profile.currentProcedureId == procedureState.beginTime.toString()) {
+            color = Colors.green;
+          }
+          return Column(
+            children: [
+            //  Text(profile.currentProcedureId),
+
+              SimpleContainer(
+                addColor: color,
+                child: Column(
+                  children: [
+                    // Text(procedureState.toString()),
+        
+                    ListTile(
+                       title: Text(procedureState.name,
+                      ),
+                        subtitle: Text(EnumToString.enumToString(procedureState.state.status)),
+                        trailing: Text(time),
+                        onTap: () {
+                         //profile update to current procedure
+                          context.read<CurrentProfileCubit>().update(
+                            'currentProcedureId',
+                                procedureState.beginTime.toString(),
+                              );
+                         
+                        },
+                    ),
+                  ],
+                ),
+                  
+        ),
+            ],
+          ); 
+
+        }
+        );
       },
     );
   }

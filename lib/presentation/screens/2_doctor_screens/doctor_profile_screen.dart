@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
@@ -21,6 +23,9 @@ class DoctorProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     dynamic trial;
     Regimen myReg = initialRegimen();
+
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Hồ sơ bác sĩ"),
@@ -31,6 +36,7 @@ class DoctorProfileScreen extends StatelessWidget {
         child: Column(
           //button
           children: [
+
             TextButton(
                 onPressed: () async {
 

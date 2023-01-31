@@ -36,19 +36,22 @@ class NiceContainer extends StatelessWidget {
 //normal container
 class SimpleContainer extends StatelessWidget {
   final Widget child;
-  const SimpleContainer({
+  Color addColor;
+   SimpleContainer({
     Key? key,
     required this.child,
+    this.addColor = Colors.white,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+  
     return Container(
       padding: EdgeInsets.all(5),
       //color padding
 
       decoration: BoxDecoration(
-        color: Theme.of(context).canvasColor,
+        color: addColor!=Colors.white?addColor:Theme.of(context).canvasColor,
         borderRadius: BorderRadius.circular(5),
         //viền đen
         border: Border.all(

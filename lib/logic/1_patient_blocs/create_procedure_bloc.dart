@@ -9,7 +9,7 @@ import 'package:demo_app2/data/models/sonde/7_sonde_procedure.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../data/data_provider/patient_provider.dart';
-import '../../data/models/profile.dart';
+import '../../data/models/2_profile.dart';
 import '../../presentation/widgets/vietnamese/vietnamese_field_bloc_validators.dart';
 
 class CreateProcedureFormBloc extends FormBloc<String,String>{

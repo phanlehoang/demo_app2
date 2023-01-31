@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../models/profile.dart';
+import '../../models/2_profile.dart';
 import '../../models/sonde/sonde_lib.dart';
 
 class SondeStatusUpdate {

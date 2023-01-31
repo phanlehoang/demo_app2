@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/profile.dart';
+import '../models/2_profile.dart';
 
 class PatientCreate {
   //create a group in firebase

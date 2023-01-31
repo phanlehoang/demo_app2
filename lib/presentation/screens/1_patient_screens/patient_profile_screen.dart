@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo_app2/logic/1_patient_blocs/current_profile_cubit.dart';
+import 'package:demo_app2/data/models/2.3_current_profile_cubit.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/profile.dart';
+import '../../../data/models/2_profile.dart';
 import '../../../logic/global/current_group/current_group_id_cubit.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/patient_navigator_bar.dart';
@@ -22,31 +22,8 @@ class PatientProfileScreen extends StatelessWidget {
       ),
       // Tạo tên, tuổi, cân nặng, chiều cao của bệnh nhân, TextSize: 20, Thêm khoảng trắng ở giữa
       body: NiceInternetScreen(
-        child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('groups')
-                .doc(context.read<CurrentGroupIdCubit>().state)
-                .collection('patients')
-                .doc(context.read<CurrentProfileCubit>().state.id)
-                .snapshots(),
-            builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-              if (snapshot.hasError) {
-                return Text('Something went wrong');
-              }
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Text("Loading");
-              }
-              //
-              if (snapshot.data!.data() == null) {
-                return Text('No data');
-              }
-              // Lấy thông tin của bệnh nhân
-              final profile = snapshot.data!['profile'];
-              context
-                  .read<CurrentProfileCubit>()
-                  .getProfile(Profile.fromMap(profile));
-
-              return BlocBuilder<CurrentProfileCubit, Profile>(
+        child:
+         BlocBuilder<CurrentProfileCubit, Profile>(
                 builder: (context, profileState) {
                   return Container(
                     child: Column(
@@ -77,8 +54,8 @@ class PatientProfileScreen extends StatelessWidget {
                     ),
                   );
                 },
-              );
-            }),
+
+      ),
       ),
 
       bottomNavigationBar: BottomNavigatorBar(),

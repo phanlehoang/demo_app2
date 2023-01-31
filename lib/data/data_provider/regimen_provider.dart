@@ -4,7 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import '../models/medical/2_medical_check_glucose.dart';
 import '../models/medical/3_medical_take_insulin.dart';
 import '../models/medical/4_regimen.dart';
-import '../models/profile.dart';
+import '../models/2_profile.dart';
 import '../models/sonde/sonde_lib.dart';
 
 

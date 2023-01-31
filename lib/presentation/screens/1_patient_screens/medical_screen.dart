@@ -1,11 +1,14 @@
 import 'package:demo_app2/data/models/enum/enums.dart';
+import 'package:demo_app2/data/models/sonde/7_sonde_procedure.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-import '../../../logic/1_patient_blocs/current_profile_cubit.dart';
+import '../../../data/models/2.3_current_profile_cubit.dart';
+import '../../../data/models/2_profile.dart';
+import '../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/patient_navigator_bar.dart';
 import '../../widgets/status/loading_dialog.dart';
@@ -22,7 +25,25 @@ class PatientMedicalScreen extends StatelessWidget {
       body: NiceInternetScreen(
         child: Column(
           children: [
-            
+            BlocBuilder<CurrentProfileCubit, Profile>
+            (builder: (ct, st){
+                //sonde procedure bloc
+                String sondeProcedureId = st.currentProcedureId;
+                return BlocBuilder(
+                  bloc: SondeProcedureOnlineCubit(
+                    profile: context.read<CurrentProfileCubit>().state,
+                    beginTime: DateTime.parse(sondeProcedureId),
+                    ),
+                  builder: (context2, state2) {
+                    final sondeProcedure = state2 as SondeProcedure;
+                    return Text(sondeProcedure.toString());
+
+            }
+            );
+            }
+            )
+          
+
           ],
         ),
       ),

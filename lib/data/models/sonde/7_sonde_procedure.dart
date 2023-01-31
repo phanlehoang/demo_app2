@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
-import '../profile.dart';
+import '../2_profile.dart';
 import '6_sonde_state.dart';
 
 class SondeProcedure {
