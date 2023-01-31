@@ -24,6 +24,38 @@ class SondeProcedure {
   });
 
   //toString 
+  //get regimen status 
+  RegimenStatus get fastStatus{
+    //for down to up
+    for (Regimen x in regimens.reversed) {
+      if (x.fastStatus == RegimenStatus.done) {
+        return RegimenStatus.done;
+      }
+    }
+    if(regimens.length == 0){
+      return RegimenStatus.checkingGlucose;
+    }
+    return regimens.last.fastStatus;
+  }
+  //slowStatus 
+  RegimenStatus get slowStatus{
+    //for down to up
+    for (Regimen x in regimens.reversed) {
+      if (x.slowStatus == RegimenStatus.done) {
+        return RegimenStatus.done;
+      }
+    }
+    if(regimens.length == 0){
+      return RegimenStatus.givingInsulin;
+    }
+    return regimens.last.slowStatus;
+  }
+  bool get isFull50{
+    if(regimens.length == 0){
+      return false;
+    }
+    return regimens.last.isFull50;
+  }
   @override
   String toString() {
     return '''SondeProcedure: 

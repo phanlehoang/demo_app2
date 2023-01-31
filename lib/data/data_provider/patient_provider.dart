@@ -4,26 +4,15 @@ import '../models/2_profile.dart';
 
 class PatientCreate {
   //create a group in firebase
-  static Future<String?> createPatient(Map<String, dynamic> map) async {
+  static Future<void> createPatient(Map<String, dynamic> map) async {
     var db = FirebaseFirestore.instance;
-    var ref = db
+    var ref = await db
         .collection('groups')
         .doc(map['room'])
         .collection('patients')
-        .doc(map['id']);
-    try {
-      var ans = ref.set({'profile': map});
-      ref
-          .collection('procedureTypes')
-          .doc('Sonde')
-          .set({'sondeStatus': 'firstAsk'});
-      return null;
-    } catch (e) {
-      print(e);
+        .doc(map['id'])
+   .set({'profile': map});
     }
-
-    return 'Error creating patient';
-  }
 }
 
 class PatientRead {

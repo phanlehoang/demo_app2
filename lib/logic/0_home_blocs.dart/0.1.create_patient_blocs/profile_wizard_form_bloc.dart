@@ -83,8 +83,9 @@ class WizardFormBloc extends FormBloc<String, String> {
       'phone': phone.value,
       'gender': gender.value,
       'birthday': birthday.value,
-      'procedureType': method.value,
+      'procedureType': 'Unknown',
       'room': groupId,
+      'currentProcedureId': 'Unknown',
     };
   }
 
@@ -102,21 +103,19 @@ class WizardFormBloc extends FormBloc<String, String> {
   @override
   Future<void> onSubmitting() async {
     //step
-
-    if (state.currentStep < 4) {
+    if (state.currentStep < 3) {
       emitSuccess();
       return;
     }
     try {
       var ans = await PatientCreate.createPatient(toMap());
-      if (ans != null) {
-        emitFailure(failureResponse: ans);
-        return;
-      }
-      emitSuccess(canSubmitAgain: true);
+    
+    
+     
     } catch (e) {
       emitFailure(failureResponse: e.toString());
     }
+     emitSuccess(canSubmitAgain: true);
   }
 
   //close

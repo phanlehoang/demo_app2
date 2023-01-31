@@ -45,7 +45,7 @@ class ListPatients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NiceScreen(
+    return NiceInternetScreen(
       child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('groups')

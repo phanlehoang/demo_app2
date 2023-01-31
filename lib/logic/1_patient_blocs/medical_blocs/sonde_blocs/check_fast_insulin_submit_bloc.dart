@@ -6,12 +6,12 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import '../../../../data/models/enum/enums.dart';
 
 
-class CheckedSubmit extends FormBloc<String, String> {
+class CheckedFastInsulinSubmit extends FormBloc<String, String> {
   final num insulin;
   final num plus;
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
 
-  CheckedSubmit({
+  CheckedFastInsulinSubmit({
     required this.sondeProcedureOnlineCubit,
     required this.insulin,
     required this.plus,
@@ -33,7 +33,7 @@ class CheckedSubmit extends FormBloc<String, String> {
           .collection('patients')
           .doc(profile.id)
           .collection('procedures')
-          .doc(sondeProcedureOnlineCubit.beginTime.toString())
+          .doc(sondeProcedureOnlineCubit.procedureId)
           .update({'bonusInsulin': FieldValue.increment(plus)});
     } catch (e) {
       emitFailure(failureResponse: e.toString());

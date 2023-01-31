@@ -29,6 +29,7 @@ enum RegimenStatus {
   error,
   checkingGlucose,
   givingInsulin,
+  done,
 }
 
 enum InsulinType {

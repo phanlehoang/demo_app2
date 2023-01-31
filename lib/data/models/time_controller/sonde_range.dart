@@ -50,4 +50,8 @@ class SondeRange {
     return inSondeRangeToday(t) &&
         rangeContain(t) == rangeContain(DateTime.now());
   }
+  static bool isOutdated(DateTime t) {
+      return inSondeRangeToday(t) &&
+        rangeContain(t) != rangeContain(DateTime.now());
+  }
 }

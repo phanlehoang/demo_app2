@@ -13,7 +13,7 @@ class LoadingDialogScreen extends StatelessWidget {
         title: const Text('Loading Dialog'),
       ),
       body: Center(
-        child: NiceScreen(
+        child: NiceContainer(
           child: Column(
             children: [
               ElevatedButton(

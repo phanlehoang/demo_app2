@@ -46,20 +46,21 @@ class SimpleContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   
-    return Container(
-      padding: EdgeInsets.all(5),
-      //color padding
-
-      decoration: BoxDecoration(
-        color: addColor!=Colors.white?addColor:Theme.of(context).canvasColor,
-        borderRadius: BorderRadius.circular(5),
-        //viền đen
-        border: Border.all(
-          color: Theme.of(context).backgroundColor,
-          width: 1,
+    return Center(
+      child: Container(
+        padding: EdgeInsets.all(5),
+        width: MediaQuery.of(context).size.width *0.95,
+        decoration: BoxDecoration(
+          color: addColor!=Colors.white?addColor:Theme.of(context).canvasColor,
+          borderRadius: BorderRadius.circular(5),
+          //viền đen
+          border: Border.all(
+            color: Theme.of(context).backgroundColor,
+            width: 1,
+          ),
         ),
+        child: child,
       ),
-      child: child,
     );
   }
 }

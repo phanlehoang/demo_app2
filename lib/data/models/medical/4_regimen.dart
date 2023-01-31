@@ -69,15 +69,15 @@ class Regimen extends Equatable{
       beginTime: beginTime,
       );
   }
-  
-  List<MedicalCheckGlucose> medicalCheckGlucoses(){
+    //6. get data  
+   List<MedicalCheckGlucose> get medicalCheckGlucoses {
     List<MedicalCheckGlucose> list = [];
     for (var x in medicalActions) {
       if (x is MedicalCheckGlucose) list.add(x);
     }
     return list;
   }
-  List<MedicalTakeInsulin> medicalTakeInsulins(){
+  List<MedicalTakeInsulin> get medicalTakeInsulins{
     List<MedicalTakeInsulin> list = [];
     for (var x in medicalActions) {
       if (x is MedicalTakeInsulin) list.add(x);
@@ -85,55 +85,69 @@ class Regimen extends Equatable{
     return list;
   }
   //medical take actrapid insulin
-  List<MedicalTakeInsulin> medicalTakeActrapidInsulins(){
+  List<MedicalTakeInsulin> get medicalTakeActrapidInsulins{
     List<MedicalTakeInsulin> list = [];
     for (var x in medicalActions) {
       if (x is MedicalTakeInsulin && x.insulinType == InsulinType.Actrapid) list.add(x);
     }
     return list;
   }
-  num lastGlu() {
-    if (medicalCheckGlucoses().length == 0) return 0;
-    return medicalCheckGlucoses().last.glucoseUI;
+  //medical take not actrapid insulin
+  List<MedicalTakeInsulin> get medicalTakeNotActrapidInsulins{
+    List<MedicalTakeInsulin> list = [];
+    for (var x in medicalActions) {
+      if (x is MedicalTakeInsulin && x.insulinType != InsulinType.Actrapid) list.add(x);
+    }
+    return list;
   }
-
-// Kiểm tra xem medicalaction cuối ở rangetime trước
-  bool isFinishCurrentTask() {
-    if (medicalTakeActrapidInsulins().length == 0) return false;
-    DateTime t = medicalTakeActrapidInsulins().last.time;
-    return SondeRange.isHot(t);
+  //get last 
+  num get lastGluAmount {
+    if (medicalCheckGlucoses.length == 0) return 0;
+    return medicalCheckGlucoses.last.glucoseUI;
   }
-
-  bool isInCurrentTask() {
-    if (medicalTakeActrapidInsulins().length == 0) return false;
-    DateTime t = medicalTakeActrapidInsulins().last.time;
-    return SondeRange.inSondeRange(t);
+  DateTime get lastGluTime{
+    if (medicalCheckGlucoses.length == 0) return DateTime(1999);
+    return medicalCheckGlucoses.last.time;
   }
-
-  bool isFull50() {
+  //get last actrapid insulin
+  DateTime get lastActrapidInsulinTime {
+    if (medicalTakeActrapidInsulins.length == 0) return DateTime(1999); 
+    return medicalTakeActrapidInsulins.last.time;
+  }
+  //get last not actrapid insulin
+  DateTime get lastNotActrapidInsulinTime {
+    if (medicalTakeNotActrapidInsulins.length == 0) return DateTime(1999); 
+    return medicalTakeNotActrapidInsulins.last.time;
+  }
+  RegimenStatus get slowStatus{
+    if(!SondeRange.isHot(lastNotActrapidInsulinTime)) 
+      return RegimenStatus.givingInsulin;
+    return RegimenStatus.done;
+  }
+  RegimenStatus get fastStatus{
+    if(!SondeRange.isHot(lastGluTime)) return RegimenStatus.checkingGlucose;
+    if(!SondeRange.isHot(lastActrapidInsulinTime)) 
+      return RegimenStatus.givingInsulin;
+    return RegimenStatus.done;
+  }
+  bool get isFull50 {
     int counter = 0;
-    for (var x in medicalCheckGlucoses()) {
+    for (var x in medicalCheckGlucoses) {
       if (x.glucoseUI > 8.3) counter++;
     }
     return counter >= 1;
   }
 
-  DateTime lastTime() {
+  DateTime get lastTime{
     if (medicalActions.length == 0) return beginTime;
     return medicalActions.last.time;
   }
 
-  DateTime firstTime() {
+  DateTime get firstTime{
     return beginTime;
   }
 
-  bool checkGoToYesInsAgain() {
-    return isFull50() && !isInCurrentTask();
-  }
-
-  bool isHot() {
-    return isFull50() && isFinishCurrentTask();
-  }
+ 
 }
 
 Regimen initialRegimen() {

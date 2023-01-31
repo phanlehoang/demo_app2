@@ -63,7 +63,7 @@ class GlucoseSolve {
     required Regimen regimen,
     required SondeState sondeState,
   }) {
-    final num glu = regimen.lastGlu();
+    final num glu = regimen.lastGluAmount;
     final num cho = sondeState.cho;
     final num bonus = sondeState.bonusInsulin;
     final num plus = plusInsulinAmount(glu);

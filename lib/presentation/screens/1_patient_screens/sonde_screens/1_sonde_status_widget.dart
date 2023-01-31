@@ -6,6 +6,8 @@ import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/2_0_firstAsk_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_fast_insulin/fast_insulin_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_slow_insulin/4_sonde_slow_insulin.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,8 +37,34 @@ class SondeStatusWidget extends StatelessWidget {
               switch (sondeProcedure.state.status) {
                 case SondeStatus.firstAsk:
                   return FirstAskWidget(sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
-                  
-                
+                case SondeStatus.noInsulin:
+                  return FastInsulinWidget(
+                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                   );
+                case SondeStatus.yesInsulin:
+                  return Column(
+                    children: [
+                      SlowInsulinWidget(
+                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                      ),
+                      FastInsulinWidget(
+                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                       ),
+                    ],
+                  );
+                case SondeStatus.highInsulin:
+                  return Column(
+                    children: [
+                      SlowInsulinWidget(
+                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                      ),
+                      FastInsulinWidget(
+                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                       ),
+                    ],
+                  );
+                case SondeStatus.finish:
+                  return Text('Ban da hoan thanh');
                 default:
                   return Container();
               }
@@ -49,3 +77,4 @@ class SondeStatusWidget extends StatelessWidget {
     );
   }
 }
+

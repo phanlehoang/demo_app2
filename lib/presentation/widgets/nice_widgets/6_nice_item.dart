@@ -27,7 +27,7 @@ class NiceItem extends StatelessWidget {
       //width
 
       child: Container(
-        width: 300,
+        width: MediaQuery.of(context).size.width * 0.95,
         child: SingleChildScrollView(
           child: Column(
             //width

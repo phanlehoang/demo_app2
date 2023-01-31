@@ -17,10 +17,11 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
 
   SondeProcedureOnlineCubit({ 
       required Profile profile,
-      required DateTime beginTime,
+      required String procedureId,
     })  :  super(
           profile: profile,
-          beginTime: beginTime,){
+          procedureId: procedureId,
+          ){
     regimensSubscription = sondeRef().collection('regimens').snapshots().listen((event) {
       List<Regimen> regimens = [];
       List<dynamic> list = event.docs.map((e) => e.data()).toList();
@@ -45,11 +46,13 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
         ));
         return;
       }
-      SondeState sondeState = SondeState.fromMap(event.data() as Map<String, dynamic>);
+      SondeState sondeState = SondeState.
+      fromMap(event.data() as Map<String, dynamic>);
       emit(SondeProcedure(
         beginTime: state.beginTime,
         state: sondeState,
         regimens: state.regimens,
+
       ));
     });
      

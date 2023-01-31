@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/time_controller/sonde_range.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
+import '5_sonde_history_screen.dart';
 
 class InSondeRange extends Cubit<int?> {
   InSondeRange(int? state) : super(state);
@@ -28,7 +29,23 @@ class SondeScreen extends StatelessWidget {
         child: Column(
           children: [
             Text('Phac do Sonde'),
-            DoctorImage(),
+            Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                DoctorImage(),
+                //button to history
+                NiceButton(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) 
+                        => SondeHistoryScreen(
+                          sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,))
+                    );
+                  },
+                  text: 'Lich su',
+                ),
+              ],
+            ),
             BlocBuilder<TimeCheckCubit, int>(
               builder: (context, state) {
                 DateTime t = DateTime.now();

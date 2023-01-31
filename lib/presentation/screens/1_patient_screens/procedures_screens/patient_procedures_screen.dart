@@ -79,15 +79,17 @@ class ListProcedures extends StatelessWidget {
           }
           else{
     final procedureRefs = snapshot.data!.docs;
-    final procedures = procedureRefs.map((e) =>e.data()).toList();
     //remove procedures name != 'sonde'
     //procedures.removeWhere((element) => element['name'] != 'SondeProcedure');
       return Column(
         children: [
           Text('Procedures'),
-          for (var procedure in procedures)
-          if(procedure['name'] == 'SondeProcedure')
-             SondeProcedureItem(procedure: procedure),
+          for (var procedureRef in procedureRefs)
+          if(procedureRef.data()['name'] == 'SondeProcedure')
+             SondeProcedureItem(
+              procedure: procedureRef.data(),
+              procedureId: procedureRef.id,
+              ),
             ],
           
       );
@@ -101,15 +103,17 @@ class SondeProcedureItem extends StatelessWidget {
   const SondeProcedureItem({
     Key? key,
     required this.procedure,
+    required this.procedureId,
   }) : super(key: key);
 
   final Map<String, dynamic> procedure;
+  final String procedureId;
 
   @override
   Widget build(BuildContext context) {
     final SondeProcedureOnlineCubit sondeProcedureOnlineCubit = SondeProcedureOnlineCubit(
         profile: context.read<CurrentProfileCubit>().state,
-        beginTime: procedure['beginTime'].toDate(),
+        procedureId: procedureId, 
       );
     return BlocBuilder(
       bloc: sondeProcedureOnlineCubit,

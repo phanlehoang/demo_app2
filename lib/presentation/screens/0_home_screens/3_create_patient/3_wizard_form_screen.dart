@@ -38,7 +38,7 @@ class WizardFormScreen extends StatelessWidget {
                 onSubmissionFailed: (context, state) {},
                 //   LoadingDialog.hide(context),
                 onSuccess: (context, state) {
-                  if (state.stepCompleted == 4) {
+                  if (state.stepCompleted == 3) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Tạo hồ sơ thành công')));
                     Navigator.of(context).pop();
@@ -70,7 +70,7 @@ class WizardFormScreen extends StatelessWidget {
                             weightHeightStep(thisFormBloc),
                             contactAddressStep(thisFormBloc),
                             genderAndBirthday(thisFormBloc),
-                            procedureType(thisFormBloc)
+                           // procedureType(thisFormBloc)
                           ],
                         ),
                       ),

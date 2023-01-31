@@ -2,7 +2,9 @@
 import 'package:demo_app2/presentation/widgets/status/internet_check_widgets.dart';
 import 'package:flutter/material.dart';
 
-//nice screen stateless widget
+import '1_nice_container.dart';
+
+//nice screen 
 class NiceScreen extends StatelessWidget {
   final Widget child;
   const NiceScreen({
@@ -12,12 +14,8 @@ class NiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double a = 2;
-
-    return Container(
-      padding: EdgeInsetsDirectional.fromSTEB(a, a, a, a),
+    return InternetCheck(
       child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
         reverse: true,
         child: child,
       ),

@@ -8,7 +8,7 @@ class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NiceScreen(
+      body: NiceContainer(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

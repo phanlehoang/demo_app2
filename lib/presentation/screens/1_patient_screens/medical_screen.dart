@@ -39,10 +39,13 @@ class PatientMedicalScreen extends StatelessWidget {
                       sondeProcedureOnlineCubit: 
                       SondeProcedureOnlineCubit(
                        profile: context.read<CurrentProfileCubit>().state,
-                       beginTime: DateTime.parse(sondeProcedureId),
+                        procedureId: sondeProcedureId,
                         ),
                       );
                   case ProcedureType.TPN:
+                    return Text('TPN');
+                  case ProcedureType.Unknown:
+                    return Text('Unknown');
                     
                   default:
                     return Container();
