@@ -14,7 +14,7 @@ class Profile {
   String address = '';
   String phone = '';
   Gender gender;
-  MedicalMethod medicalMethod;
+  ProcedureType procedureType;
   String room;
   String currentProcedureId;
 
@@ -28,7 +28,7 @@ class Profile {
     required this.address,
     required this.phone,
     required this.gender,
-    required this.medicalMethod,
+     this.procedureType = ProcedureType.Unknown,
     required this.room,
   });
   //toMap
@@ -45,7 +45,7 @@ class Profile {
       'address': address,
       'phone': phone,
       'gender': EnumToString.genderToString(gender),
-      'medicalMethod': EnumToString.enumToString(medicalMethod),
+      'procedureType': EnumToString.enumToString(procedureType),
       'room': room,
     };
   }
@@ -64,7 +64,7 @@ class Profile {
         address: map['address'],
         phone: map['phone'],
         gender: StringToEnum.stringToGender(map['gender']),
-        medicalMethod: StringToEnum.stringToMedicalMethod(map['medicalMethod']),
+        procedureType: StringToEnum.stringToProcedureType(map['procedureType']),
         room: map['room']);
   }
   Profile clone() {
@@ -77,7 +77,7 @@ class Profile {
       address: address,
       phone: phone,
       gender: gender,
-      medicalMethod: medicalMethod,
+      procedureType: procedureType,
       room: room,
       currentProcedureId: currentProcedureId,
     );
@@ -89,7 +89,7 @@ class Profile {
 
 
   DocumentReference regimenStateStream() {
-    return ref().collection('medicalMethods').doc('Sonde')
+    return ref().collection('procedureTypes').doc('Sonde')
     .collection('regimen').doc('state');
   }
   //toString
@@ -103,6 +103,7 @@ class Profile {
     birthday: $birthday,
     address: $address,
     currentProcedureId: $currentProcedureId,
+    procedureType: $procedureType,
     ''';
   }
 }
@@ -114,7 +115,7 @@ Profile unknownProfile() {
     address: 'VN',
     phone: '123',
     gender: Gender.Female,
-    medicalMethod: MedicalMethod.Sonde,
+    procedureType: ProcedureType.Unknown,
     room: 'Unknown',
   );
 }

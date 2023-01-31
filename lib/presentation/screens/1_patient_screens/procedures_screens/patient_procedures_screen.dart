@@ -81,12 +81,13 @@ class ListProcedures extends StatelessWidget {
     final procedureRefs = snapshot.data!.docs;
     final procedures = procedureRefs.map((e) =>e.data()).toList();
     //remove procedures name != 'sonde'
-    procedures.removeWhere((element) => element['name'] != 'SondeProcedure');
+    //procedures.removeWhere((element) => element['name'] != 'SondeProcedure');
       return Column(
         children: [
           Text('Procedures'),
           for (var procedure in procedures)
-            ProcedureItem(procedure: procedure),
+          if(procedure['name'] == 'SondeProcedure')
+             SondeProcedureItem(procedure: procedure),
             ],
           
       );
@@ -96,8 +97,8 @@ class ListProcedures extends StatelessWidget {
   }
 }
 
-class ProcedureItem extends StatelessWidget {
-  const ProcedureItem({
+class SondeProcedureItem extends StatelessWidget {
+  const SondeProcedureItem({
     Key? key,
     required this.procedure,
   }) : super(key: key);
@@ -145,8 +146,11 @@ class ProcedureItem extends StatelessWidget {
                         onTap: () {
                          //profile update to current procedure
                           context.read<CurrentProfileCubit>().update(
-                            'currentProcedureId',
+                            {'currentProcedureId':
                                 procedureState.beginTime.toString(),
+                                'procedureType': procedureState.name 
+                                == 'SondeProcedure' ? 'Sonde' : 'TPN',
+                            },
                               );
                          
                         },

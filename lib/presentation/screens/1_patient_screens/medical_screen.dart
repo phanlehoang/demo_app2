@@ -1,3 +1,4 @@
+import 'package:demo_app2/data/data_provider/patient_provider.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/sonde/7_sonde_procedure.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
@@ -12,6 +13,9 @@ import '../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/patient_navigator_bar.dart';
 import '../../widgets/status/loading_dialog.dart';
+import 'sonde_screens/0_sonde_screen.dart';
+
+
 
 class PatientMedicalScreen extends StatelessWidget {
   const PatientMedicalScreen({super.key});
@@ -29,19 +33,24 @@ class PatientMedicalScreen extends StatelessWidget {
             (builder: (ct, st){
                 //sonde procedure bloc
                 String sondeProcedureId = st.currentProcedureId;
-                return BlocBuilder(
-                  bloc: SondeProcedureOnlineCubit(
-                    profile: context.read<CurrentProfileCubit>().state,
-                    beginTime: DateTime.parse(sondeProcedureId),
-                    ),
-                  builder: (context2, state2) {
-                    final sondeProcedure = state2 as SondeProcedure;
-                    return Text(sondeProcedure.toString());
+               switch(st.procedureType){
+                  case ProcedureType.Sonde:
+                    return SondeScreen(
+                      sondeProcedureOnlineCubit: 
+                      SondeProcedureOnlineCubit(
+                       profile: context.read<CurrentProfileCubit>().state,
+                       beginTime: DateTime.parse(sondeProcedureId),
+                        ),
+                      );
+                  case ProcedureType.TPN:
+                    
+                  default:
+                    return Container();
+               }
+            }
+            ),
 
-            }
-            );
-            }
-            )
+          
           
 
           ],

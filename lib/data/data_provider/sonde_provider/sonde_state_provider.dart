@@ -15,7 +15,7 @@ class SondeStatusUpdate {
         .doc(profile.room)
         .collection('patients')
         .doc(profile.id)
-        .collection('medicalMethods')
+        .collection('procedureTypes')
         .doc('Sonde');
     await sonde.update({
       'status': EnumToString.enumToString(sondeStatus),
@@ -37,7 +37,7 @@ class SondeStateCreate {
         .doc(profile.room)
         .collection('patients')
         .doc(profile.id)
-        .collection('medicalMethods')
+        .collection('procedureTypes')
         .doc('Sonde');
     await sonde.set({
       'status': EnumToString.enumToString(sondeState.status),
@@ -58,6 +58,6 @@ DocumentReference<Map<String, dynamic>> sondeReference(Profile profile) {
       .doc(profile.room)
       .collection('patients')
       .doc(profile.id)
-      .collection('medicalMethods')
+      .collection('procedureTypes')
       .doc('Sonde');
 }

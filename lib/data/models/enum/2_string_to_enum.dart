@@ -11,13 +11,15 @@ class StringToEnum {
     }
   }
 
-  //medicalMethod
-  static MedicalMethod stringToMedicalMethod(String m) {
+  //procedureType
+  static ProcedureType stringToProcedureType(String m) {
     switch (m) {
       case 'TPN':
-        return MedicalMethod.TPN;
+        return ProcedureType.TPN;
+      case 'Sonde':
+        return ProcedureType.Sonde;
       default:
-        return MedicalMethod.Sonde;
+        return ProcedureType.Unknown;
     }
   }
 

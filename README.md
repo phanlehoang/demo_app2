@@ -18,12 +18,12 @@ https://docs.google.com/document/d/1Za86BEva8bzPrN_Qs1ly0Gfu1sUHBG_9dK9zM2rYLss/
            - TPN
        3. patient_logic:
           - profile
-          - medicalMethod  
+          - procedureType  
     3. Layer 3: (data)
        1. models
           1. group
           2. patient
-          3. medicalMethod
+          3. procedureType
           4. profile 
        2. datahouse 
           - La noi cung cap dia chi data

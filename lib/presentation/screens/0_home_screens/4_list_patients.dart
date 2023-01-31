@@ -96,7 +96,7 @@ class ListPatients extends StatelessWidget {
                           //   height: 15,
                           // ),
                           Text(
-                            patients[i]['profile']['medicalMethod'],
+                            patients[i]['profile']['procedureType'],
                             style: TextStyle(fontSize: 15),
                           
                           ),

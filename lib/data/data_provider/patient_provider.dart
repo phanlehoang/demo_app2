@@ -14,7 +14,7 @@ class PatientCreate {
     try {
       var ans = ref.set({'profile': map});
       ref
-          .collection('medicalMethods')
+          .collection('procedureTypes')
           .doc('Sonde')
           .set({'sondeStatus': 'firstAsk'});
       return null;

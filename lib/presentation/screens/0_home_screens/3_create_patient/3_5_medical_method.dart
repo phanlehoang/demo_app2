@@ -1,11 +1,11 @@
-//medicalMethod is a function return FormBlocStep
+//procedureType is a function return FormBlocStep
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../logic/0_home_blocs.dart/0.1.create_patient_blocs/profile_wizard_form_bloc.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
 
-FormBlocStep medicalMethod(WizardFormBloc thisFormBloc) {
+FormBlocStep procedureType(WizardFormBloc thisFormBloc) {
   return FormBlocStep(
       title: Text('Phương pháp điều trị'),
       content: NiceScreen(

@@ -35,9 +35,16 @@ class ProfileCubit extends Cubit<Profile> {
     emit(Profile.fromMap(snapshot.data() as Map<String, dynamic>));
   }
   //update profile 
-  Future<void> update( String attribute, dynamic value) async {
-    var update = await patientRef().update({'profile.$attribute': value});
-  var reload2 =  await reload();
+ 
+  Future<void> update(Map<String, dynamic> map) async {
+    //update just some attributes in map 
+    Map<String,dynamic> updateMap = {
+      //cac key trong map
+      for (var key in map.keys)
+         'profile.$key': map[key]
+    };
+    var update = await patientRef().update(updateMap);
+    var reload2 = await reload();
   }
 
 }

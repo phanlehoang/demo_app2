@@ -26,7 +26,7 @@ class SondeNoInsulinRegimenProvider {
         .doc(profile.room)
         .collection('patients')
         .doc(profile.id)
-        .collection('medicalMethods')
+        .collection('procedureTypes')
         .doc('Sonde')
         .collection('NoInsulinState')
         .doc('regimen');

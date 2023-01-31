@@ -83,7 +83,7 @@ class WizardFormBloc extends FormBloc<String, String> {
       'phone': phone.value,
       'gender': gender.value,
       'birthday': birthday.value,
-      'medicalMethod': method.value,
+      'procedureType': method.value,
       'room': groupId,
     };
   }

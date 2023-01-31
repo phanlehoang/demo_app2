@@ -70,7 +70,7 @@ class WizardFormScreen extends StatelessWidget {
                             weightHeightStep(thisFormBloc),
                             contactAddressStep(thisFormBloc),
                             genderAndBirthday(thisFormBloc),
-                            medicalMethod(thisFormBloc)
+                            procedureType(thisFormBloc)
                           ],
                         ),
                       ),

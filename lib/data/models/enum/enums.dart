@@ -9,11 +9,11 @@ enum Gender {
   Female,
 }
 
-enum MedicalMethod {
+enum ProcedureType{
   TPN,
   Sonde,
+  Unknown,
 }
-
 enum SondeStatus {
   firstAsk,
   noInsulin,
