@@ -78,7 +78,7 @@ class ListProcedures extends StatelessWidget {
     return Text('No data');
           }
           else{
-    final procedureRefs = snapshot.data!.docs;
+    final procedureRefs = snapshot.data!.docs.reversed;
     //remove procedures name != 'sonde'
     //procedures.removeWhere((element) => element['name'] != 'SondeProcedure');
       return Column(

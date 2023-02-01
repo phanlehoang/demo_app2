@@ -110,14 +110,14 @@ class FirstAskBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     print('onSubmitting');
-    SondeStatus sondeStatus = yesOrNoInsulin.value == 'Yes'
-        ? SondeStatus.yesInsulin
-        : SondeStatus.noInsulin;
+    ProcedureStatus sondeStatus = yesOrNoInsulin.value == 'Yes'
+        ? ProcedureStatus.yesInsulin
+        : ProcedureStatus.noInsulin;
     //update sonde status
     try 
     {
       await sondeProcedureOnlineCubit.updateSondeStateStatus(
-        SondeState(status: sondeStatus,
+        ProcedureState(status: sondeStatus,
         cho: num.parse(getCHO.value),
         weight: sondeProcedureOnlineCubit.profile.weight,
         )

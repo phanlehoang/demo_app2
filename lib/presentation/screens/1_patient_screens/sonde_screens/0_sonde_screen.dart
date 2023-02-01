@@ -6,7 +6,7 @@ import 'package:demo_app2/presentation/widgets/images/doctor_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../data/models/time_controller/sonde_range.dart';
+import '../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
 import '5_sonde_history_screen.dart';
 
@@ -23,7 +23,7 @@ class SondeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<InSondeRange>(
       create: (context) => InSondeRange(
-        SondeRange.rangeContain(DateTime.now()),
+        SondeRange(). rangeContainToday(DateTime.now()),
       ),
       child: NiceScreen(
         child: Column(
@@ -49,14 +49,14 @@ class SondeScreen extends StatelessWidget {
             BlocBuilder<TimeCheckCubit, int>(
               builder: (context, state) {
                 DateTime t = DateTime.now();
-                context.read<InSondeRange>().emit(SondeRange.rangeContain(t));
+                context.read<InSondeRange>().emit(SondeRange().rangeContain(t));
                 return Text(t.toString());
               },
             ),
             BlocBuilder<InSondeRange, int?>(
               builder: (context, state) {
                 if (state == null) {
-                  return Text(SondeRange.waitingMessage(DateTime.now()));
+                  return Text(SondeRange().waitingMessage(DateTime.now()));
                 } else {
                   return SondeStatusWidget(
                     sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,

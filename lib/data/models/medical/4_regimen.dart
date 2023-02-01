@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:equatable/equatable.dart';
 
-import '../time_controller/sonde_range.dart';
+import '../time_controller/1_medical_range.dart';
+import '../time_controller/2_sonde_range.dart';
 import '2.5_list_medical_from_list_map.dart';
 import '2_medical_check_glucose.dart';
 import '3_medical_take_insulin.dart';
@@ -23,6 +24,8 @@ class Regimen extends Equatable{
   //props
   @override
   List<Object?> get props => [name, medicalActions];
+  
+ 
   //2. methods add
   void addMedicalAction(dynamic medicalAction) {
     medicalActions.add(medicalAction.clone());
@@ -100,6 +103,10 @@ class Regimen extends Equatable{
     }
     return list;
   }
+   get lastNotActrapidInsulinTime {
+    if (medicalTakeNotActrapidInsulins.length == 0) return DateTime(1999); 
+    return medicalTakeNotActrapidInsulins.last.time;
+  }
   //get last 
   num get lastGluAmount {
     if (medicalCheckGlucoses.length == 0) return 0;
@@ -114,19 +121,16 @@ class Regimen extends Equatable{
     if (medicalTakeActrapidInsulins.length == 0) return DateTime(1999); 
     return medicalTakeActrapidInsulins.last.time;
   }
-  //get last not actrapid insulin
-  DateTime get lastNotActrapidInsulinTime {
-    if (medicalTakeNotActrapidInsulins.length == 0) return DateTime(1999); 
-    return medicalTakeNotActrapidInsulins.last.time;
-  }
-  RegimenStatus get slowStatus{
-    if(!SondeRange.isHot(lastNotActrapidInsulinTime)) 
+  
+  RegimenStatus regimenSlowStatus(MedicalRange medicalRange){
+    if(!medicalRange.isHot(lastNotActrapidInsulinTime)) 
       return RegimenStatus.givingInsulin;
     return RegimenStatus.done;
   }
-  RegimenStatus get fastStatus{
-    if(!SondeRange.isHot(lastGluTime)) return RegimenStatus.checkingGlucose;
-    if(!SondeRange.isHot(lastActrapidInsulinTime)) 
+  
+  RegimenStatus regimenActrapidStatus(MedicalRange medicalRange ) {
+    if(!medicalRange.isHot(lastGluTime)) return RegimenStatus.checkingGlucose;
+    if(!medicalRange.isHot(lastActrapidInsulinTime)) 
       return RegimenStatus.givingInsulin;
     return RegimenStatus.done;
   }
@@ -163,67 +167,3 @@ Regimen errorRegimen(){
     medicalActions: [], name: 'Error',
   );
 }
-// class RegimenSondeFast extends Regimen {
-//   num cho;
-//   String name;
-//   RegimenSondeFast({
-//     required List<dynamic> medicalActions,
-//     required List<MedicalCheckGlucose> medicalCheckGlucoses,
-//     required List<MedicalTakeInsulin> medicalTakeInsulins,
-//     required this.cho,
-//     required this.name,
-//   }) : super(
-//           medicalActions: medicalActions,
-//           medicalCheckGlucoses: medicalCheckGlucoses,
-//           medicalTakeInsulins: medicalTakeInsulins,
-//         );
-//   //override  toString
-//   @override
-//   String toString() {
-//     dynamic medicalActions_str = medicalActions.toString();
-//     return 'Regimen ${medicalActions_str}\n cho: $cho \n name: $name';
-//   }
-
-//   //toMap
-//   Map<String, dynamic> toMap() {
-//     return {
-//       'name': name,
-//       'cho': cho,
-//       'medicalActions': [for (dynamic x in medicalActions) x.toMap()],
-//       'medicalCheckGlucoses': [
-//         for (MedicalCheckGlucose x in medicalCheckGlucoses) x.toMap()
-//       ],
-//       'medicalTakeInsulins': [
-//         for (MedicalTakeInsulin x in medicalTakeInsulins) x.toMap()
-//       ],
-//     };
-//   }
-
-//   //fromMap
-//   factory RegimenSondeFast.fromMap(Map<String, dynamic> map) {
-//     return RegimenSondeFast(
-//       name: map['name'],
-//       cho: map['cho'],
-//       medicalActions:
-//           ListMedicalFromListMap.medicalActions(map['medicalActions']),
-//       medicalCheckGlucoses: ListMedicalFromListMap.medicalCheckGlucoses(
-//           map['medicalCheckGlucoses']),
-//       medicalTakeInsulins: ListMedicalFromListMap.medicalTakeInsulins(
-//           map['medicalTakeInsulins']),
-//     );
-//   }
-//   //from Regimen and cho
-//   factory RegimenSondeFast.fromRegimenAndCho(
-//     Regimen regimen,
-//     num cho,
-//     String name,
-//   ) {
-//     return RegimenSondeFast(
-//       cho: cho,
-//       medicalActions: regimen.medicalActions,
-//       medicalCheckGlucoses: regimen.medicalCheckGlucoses,
-//       medicalTakeInsulins: regimen.medicalTakeInsulins,
-//       name: name,
-//     );
-//   }
-// }

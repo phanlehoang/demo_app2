@@ -3,12 +3,15 @@
 //import material 
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
 import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/procedures_screens/nice_date_time.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/nice_widgets/6_nice_item.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
+import '../history_widget/medical_action_item.dart';
+import '../history_widget/regimen_item.dart';
 
 class SondeHistoryScreen extends StatelessWidget {
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
@@ -25,10 +28,26 @@ class SondeHistoryScreen extends StatelessWidget {
       body: BlocBuilder(
         bloc: sondeProcedureOnlineCubit,
         builder: (context, state) {
+          final st = sondeProcedureOnlineCubit.state;
+          String first = NiceDateTime.dayMonthYear(st.beginTime);
+          String last = NiceDateTime.dayMonthYear(st.lastTime);
         return NiceInternetScreen(
           child: Column(children: [
             //tat ca regimen 
-            for (var regimen in sondeProcedureOnlineCubit.state.regimens)
+            NiceContainer(child: 
+            Column(
+              children: [
+                Text('Sonde Procedure'),
+                 
+            Text(' $first - $last'),
+            Text('Cân nặng bệnh nhân: ${st.state.weight} kg'),
+            Text('Lượng cho: ${st.state.cho} ml'),
+              ],
+            )
+            ),
+                         SizedBox(height: 20,),
+
+            for (var regimen in sondeProcedureOnlineCubit.state.regimens.reversed)
             RegimenItem(regimen: regimen),
           ],),
         );
@@ -39,38 +58,3 @@ class SondeHistoryScreen extends StatelessWidget {
   }
 }
 
-class RegimenItem extends StatelessWidget{
-  final Regimen regimen;
-  const RegimenItem({Key? key, required this.regimen,
-  }) 
-  : super(key: key);
-  //build 
-  @override
-  Widget build (BuildContext context){
-    return Column(children: [
-       Text('Regimen: ${regimen.name}'),
-       for (var medicalAction in regimen.medicalActions)
-        MedicalActionItem(medicalAction: medicalAction),
-    ],);
-  }
-
-}
-
-class MedicalActionItem extends StatelessWidget{
-  final  medicalAction;
-  const MedicalActionItem({Key? key, required this.medicalAction,
-  }) 
-  : super(key: key);
-  //build 
-  @override
-  Widget build (BuildContext context){
-    return SimpleContainer(
-      child: ListTile(
-        title: Text('Name: ${medicalAction.runtimeType}'),
-        subtitle: Text('Time: ${medicalAction.time}'),
-        trailing: Text(''),
-      ),
-    );
-  }
-
-}

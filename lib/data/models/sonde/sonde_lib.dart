@@ -1,2 +1,2 @@
 
-export '6_sonde_state.dart';
+export '../medical/6_procedure_state.dart';

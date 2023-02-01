@@ -8,13 +8,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
 import '../2_profile.dart';
-import '6_sonde_state.dart';
+import '../time_controller/2_sonde_range.dart';
+import '../medical/6_procedure_state.dart';
 
 class SondeProcedure {
   //1. attributes
   String name = 'SondeProcedure';
   DateTime beginTime;
-  SondeState state;
+  ProcedureState state;
   List<Regimen> regimens;
   SondeProcedure({
     required this.beginTime,
@@ -22,34 +23,53 @@ class SondeProcedure {
     required this.regimens,
     this.name = 'SondeProcedure',
   });
+  DateTime get lastTime {
+    if (regimens.length == 0) {
+      return beginTime;
+    }
+    return regimens.last.lastTime;
+  }
 
   //toString 
   //get regimen status 
   RegimenStatus get fastStatus{
     //for down to up
     for (Regimen x in regimens.reversed) {
-      if (x.fastStatus == RegimenStatus.done) {
+      if (x.regimenActrapidStatus(SondeRange()) == RegimenStatus.done) 
         return RegimenStatus.done;
-      }
     }
     if(regimens.length == 0){
       return RegimenStatus.checkingGlucose;
     }
-    return regimens.last.fastStatus;
+    return regimens.last.regimenActrapidStatus(SondeRange());
   }
   //slowStatus 
   RegimenStatus get slowStatus{
+    //tuy thuoc vao loai insulin tiem cham 
     //for down to up
+    dynamic medicalRange;
+    switch (state.slowInsulinType) {
+      case InsulinType.NPH:
+        medicalRange = NPHRange();
+        break;
+      case InsulinType.Glargine:
+        medicalRange = GlargineRange();
+        break;
+      default:
+       return RegimenStatus.checkingGlucose;
+    }
     for (Regimen x in regimens.reversed) {
-      if (x.slowStatus == RegimenStatus.done) {
+      if (x.regimenSlowStatus(medicalRange) == RegimenStatus.done) {
         return RegimenStatus.done;
       }
     }
     if(regimens.length == 0){
       return RegimenStatus.givingInsulin;
     }
-    return regimens.last.slowStatus;
-  }
+    return regimens.last.regimenSlowStatus(medicalRange);
+    }
+  
+
   bool get isFull50{
     if(regimens.length == 0){
       return false;
@@ -80,4 +100,5 @@ class SondeProcedure {
     return {...map1, ...state.toMap()};
 
   }
+
 }

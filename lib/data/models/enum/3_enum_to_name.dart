@@ -2,23 +2,20 @@ import 'enums.dart';
 
 class EnumToName {
   //SondeStatus to name
-  static String sondeStatusToName(SondeStatus status) {
+  static String sondeStatusToName(ProcedureStatus status) {
     switch (status) {
-      case SondeStatus.firstAsk:
+      case ProcedureStatus.firstAsk:
         return 'Hỏi';
-      case SondeStatus.noInsulin:
+      case ProcedureStatus.noInsulin:
         return 'Phác đồ không tiêm ';
-      case SondeStatus.transferToYes:
-        return 'Phác đồ không tiêm ';
-      case SondeStatus.yesInsulin:
+      
+      case ProcedureStatus.yesInsulin:
         return 'Phác đồ có tiêm';
-      case SondeStatus.transferToHigh:
-        return 'Phác đồ có tiêm';
-      case SondeStatus.highInsulin:
+    
+      case ProcedureStatus.highInsulin:
         return 'Phác đồ liều cao';
-      case SondeStatus.transferToFinish:
-        return 'Phác đồ liều cao';
-      case SondeStatus.finish:
+    
+      case ProcedureStatus.finish:
         return 'Kết thúc';
       default:
         return 'Đang chờ';

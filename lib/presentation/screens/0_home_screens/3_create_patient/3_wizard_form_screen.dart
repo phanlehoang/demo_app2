@@ -13,7 +13,6 @@ import '3_1_step1_name_id.dart';
 import '3_2_step2.dart';
 import '3_3_contact.dart';
 import '3_4_gender_birthday.dart';
-import '3_5_medical_method.dart';
 
 class WizardFormScreen extends StatelessWidget {
   const WizardFormScreen({super.key});

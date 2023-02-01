@@ -16,7 +16,7 @@ class NiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return InternetCheck(
       child: SingleChildScrollView(
-        reverse: true,
+        
         child: child,
       ),
     );

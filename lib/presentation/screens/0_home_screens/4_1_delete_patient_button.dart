@@ -70,12 +70,12 @@ Future<void> deletePatient(String groupId, Profile profile) async {
       .doc(groupId)
       .collection('patients')
       .doc(profile.id);
-  //b1: xóa collection FastInsulin, trong Sonde
-  await deleteCollection(
-      ref.collection('procedureTypes').doc('Sonde').collection('FastInsulin'));
-  await deleteCollection(
-      ref.collection('procedureTypes').doc('Sonde').collection('HistoryOld'));
-  await deleteCollection(ref.collection('procedureTypes'));
+  //b1: xoa cac regimens trong procedure 
+  var procedures = await ref.collection('procedures').get();
+  for (var procedure in procedures.docs) {
+    await deleteCollection(procedure.reference.collection('regimens'));
+  }
+  await deleteCollection(ref.collection('procedures'));
   await ref.delete();
   //xóa
 }

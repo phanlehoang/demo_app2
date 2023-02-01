@@ -14,14 +14,11 @@ enum ProcedureType{
   Sonde,
   Unknown,
 }
-enum SondeStatus {
+enum ProcedureStatus {
   firstAsk,
   noInsulin,
-  transferToYes,
   yesInsulin,
-  transferToHigh,
   highInsulin,
-  transferToFinish,
   finish, 
 }
 

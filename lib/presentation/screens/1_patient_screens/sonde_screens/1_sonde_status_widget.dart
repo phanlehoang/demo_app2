@@ -35,13 +35,13 @@ class SondeStatusWidget extends StatelessWidget {
             builder: (ct,st){
               final SondeProcedure sondeProcedure = st as SondeProcedure;
               switch (sondeProcedure.state.status) {
-                case SondeStatus.firstAsk:
+                case ProcedureStatus.firstAsk:
                   return FirstAskWidget(sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
-                case SondeStatus.noInsulin:
+                case ProcedureStatus.noInsulin:
                   return FastInsulinWidget(
                     sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
                    );
-                case SondeStatus.yesInsulin:
+                case ProcedureStatus.yesInsulin:
                   return Column(
                     children: [
                       SlowInsulinWidget(
@@ -52,7 +52,7 @@ class SondeStatusWidget extends StatelessWidget {
                        ),
                     ],
                   );
-                case SondeStatus.highInsulin:
+                case ProcedureStatus.highInsulin:
                   return Column(
                     children: [
                       SlowInsulinWidget(
@@ -63,7 +63,7 @@ class SondeStatusWidget extends StatelessWidget {
                        ),
                     ],
                   );
-                case SondeStatus.finish:
+                case ProcedureStatus.finish:
                   return Text('Ban da hoan thanh');
                 default:
                   return Container();

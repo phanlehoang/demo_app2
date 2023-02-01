@@ -45,10 +45,6 @@ class WizardFormBloc extends FormBloc<String, String> {
     //  toJson: (value) => value?.toUtc().toIso8601String(),
     validators: [VietnameseFieldBlocValidators.required],
   );
-  final method = SelectFieldBloc(
-    items: ['TPN', 'Sonde'],
-    validators: [VietnameseFieldBlocValidators.required],
-  );
   //add field blocs to group
   @override
   WizardFormBloc({
@@ -70,7 +66,7 @@ class WizardFormBloc extends FormBloc<String, String> {
       ],
     );
     addFieldBlocs(step: 3, fieldBlocs: [gender, birthday]);
-    addFieldBlocs(step: 4, fieldBlocs: [method]);
+    
   }
   //to Map
   Map<String, dynamic> toMap() {
@@ -109,13 +105,11 @@ class WizardFormBloc extends FormBloc<String, String> {
     }
     try {
       var ans = await PatientCreate.createPatient(toMap());
-    
-    
-     
+      emitSuccess(canSubmitAgain: true);
     } catch (e) {
       emitFailure(failureResponse: e.toString());
     }
-     emitSuccess(canSubmitAgain: true);
+     
   }
 
   //close

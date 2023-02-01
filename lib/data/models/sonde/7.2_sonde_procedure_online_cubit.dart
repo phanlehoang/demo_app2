@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
 import '../2_profile.dart';
-import '6_sonde_state.dart';
+import '../medical/6_procedure_state.dart';
 import '7.1_sonde_procedure_cubit.dart';
 import '7_sonde_procedure.dart';
 
@@ -39,14 +39,14 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
       if (event.data() == null) {
         emit(SondeProcedure(
           beginTime: state.beginTime,
-          state: SondeState(
-            status: SondeStatus.firstAsk,
+          state: ProcedureState(
+            status: ProcedureStatus.firstAsk,
           ),
           regimens: state.regimens,
         ));
         return;
       }
-      SondeState sondeState = SondeState.
+      ProcedureState sondeState = ProcedureState.
       fromMap(event.data() as Map<String, dynamic>);
       emit(SondeProcedure(
         beginTime: state.beginTime,
@@ -71,8 +71,8 @@ SondeProcedure SondeProcedureOnlineInitial() {
   return SondeProcedure(
     name: 'Đang tải',
     beginTime: DateTime.now(),
-    state: SondeState(
-      status: SondeStatus.firstAsk,
+    state: ProcedureState(
+      status: ProcedureStatus.firstAsk,
     ),
     regimens: [],
   );

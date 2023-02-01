@@ -40,13 +40,12 @@ class CheckGlucoseForm extends FormBloc<String, String> {
       glucoseUI: num.parse(glucose.value),
     );
 
-    try {
-  
+    try {  
        await sondeProcedureOnlineCubit.addMedicalAction(medicalCheckGlucose);
     } catch (e) {
       emitFailure(failureResponse: e.toString());
+      return;
     }
-    //noInsulinSondeCubit.emit(loadingNoInsulinSondeState());
     emitSuccess();
   }
 }

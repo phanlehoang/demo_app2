@@ -13,10 +13,10 @@ import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import '../../../../../data/models/2.3_current_profile_cubit.dart';
 import '../../../../../data/models/enum/enums.dart';
 
-import '../../../../../data/models/time_controller/sonde_range.dart';
+import '../../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../../widgets/nice_widgets/1_nice_container.dart';
 import '2_1_1_check_glucose_widget.dart';
-import '2_1_2_give_insulin_widget.dart';
+import '2_1_2_give_fast_insulin_widget.dart';
 
 class FastInsulinWidget extends StatelessWidget {
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
@@ -48,7 +48,8 @@ class FastInsulinWidget extends StatelessWidget {
                        case RegimenStatus.givingInsulin:
                         return GiveInsulinWidget(
                           sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                        ); 
+                        );
+                         
                         case RegimenStatus.done:
                         {
                           if(sondeProcedureOnlineCubit.state.isFull50){
@@ -57,7 +58,7 @@ class FastInsulinWidget extends StatelessWidget {
                           return Column(
                           children: [
                             Text('Done'),
-                            Text(SondeRange.waitingMessage(DateTime.now()) ),
+                            Text(SondeRange().waitingMessage(DateTime.now()) ),
                           ],
                         );
                         }

@@ -8,7 +8,7 @@ import '../../models/sonde/sonde_lib.dart';
 class SondeStatusUpdate {
   static Future<String?> updateSondeStatus({
     required Profile profile,
-    required SondeStatus sondeStatus,
+    required ProcedureStatus sondeStatus,
   }) async {
     var sonde = FirebaseFirestore.instance
         .collection('groups')
@@ -30,7 +30,7 @@ class SondeStatusUpdate {
 class SondeStateCreate {
   static Future<String?> createSondeState({
     required Profile profile,
-    required SondeState sondeState,
+    required ProcedureState sondeState,
   }) async {
     var sonde = FirebaseFirestore.instance
         .collection('groups')

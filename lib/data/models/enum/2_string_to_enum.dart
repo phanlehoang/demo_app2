@@ -24,27 +24,23 @@ class StringToEnum {
   }
 
   //sondeStatus
-  static SondeStatus stringToSondeStatus(String s) {
+  static ProcedureStatus stringToSondeStatus(String s) {
     switch (s) {
       case 'firstAsk':
-        return SondeStatus.firstAsk;
+        return ProcedureStatus.firstAsk;
       case 'noInsulin':
-        return SondeStatus.noInsulin;
-      case 'transferToYes':
-        return SondeStatus.transferToYes;
+        return ProcedureStatus.noInsulin;
+     
       case 'yesInsulin':
-        return SondeStatus.yesInsulin;
-      case 'transferToHigh':
-        return SondeStatus.transferToHigh;
+        return ProcedureStatus.yesInsulin;
+    
       case 'highInsulin':
-        return SondeStatus.highInsulin;
-      case 'transferToFinish':
-        return SondeStatus.transferToFinish;
+        return ProcedureStatus.highInsulin;
       case 'finish':
-        return SondeStatus.finish;
+        return ProcedureStatus.finish;
 
       default:
-        return SondeStatus.firstAsk;
+        return ProcedureStatus.firstAsk;
     }
   }
 

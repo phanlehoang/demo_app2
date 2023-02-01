@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
-import '6_sonde_state.dart';
+import '../medical/6_procedure_state.dart';
 import '7_sonde_procedure.dart';
 
 class SondeProcedureCubit extends Cubit<SondeProcedure>{
@@ -17,8 +17,8 @@ class SondeProcedureCubit extends Cubit<SondeProcedure>{
     }) : super(
       SondeProcedure(
         beginTime: DateTime.tryParse(procedureId)!=null ? DateTime.parse(procedureId): DateTime.now(),
-    state: SondeState(
-      status: SondeStatus.firstAsk,
+    state: ProcedureState(
+      status: ProcedureStatus.firstAsk,
     ),
     regimens: [],
   ));
@@ -28,24 +28,24 @@ class SondeProcedureCubit extends Cubit<SondeProcedure>{
     doc(profile.id).collection('procedures').doc(procedureId);
   }
   //update SondeState 
-  Future<void> updateSondeStateStatus(SondeState sondeState) async {
+  Future<void> updateSondeStateStatus(ProcedureState sondeState) async {
     //add regimens
     switch (sondeState.status) {
-      case SondeStatus.noInsulin:
+      case ProcedureStatus.noInsulin:
         addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
           name: 'ko tiem',
         ));
         break;
-      case SondeStatus.yesInsulin:
+      case ProcedureStatus.yesInsulin:
         addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
           name: 'co tiem',
         ));
         break;
-      case SondeStatus.highInsulin:
+      case ProcedureStatus.highInsulin:
         addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
@@ -93,28 +93,29 @@ class SondeProcedureCubit extends Cubit<SondeProcedure>{
   }
   //chuyen den SondeStatus tiep theo
   Future<void> goToNextStatus() async {
-    SondeState sondeState = state.state;
-    SondeStatus nextStatus = SondeStatus.firstAsk;
+    ProcedureState sondeState = state.state;
+    ProcedureStatus nextStatus = ProcedureStatus.firstAsk;
     switch (sondeState.status) {
-      case SondeStatus.firstAsk:
-        nextStatus = SondeStatus.noInsulin;
+      case ProcedureStatus.firstAsk:
+        nextStatus = ProcedureStatus.noInsulin;
         break;
-      case SondeStatus.noInsulin:
-        nextStatus = SondeStatus.yesInsulin;
+      case ProcedureStatus.noInsulin:
+        nextStatus = ProcedureStatus.yesInsulin;
         break;
-      case SondeStatus.yesInsulin:
-        nextStatus= SondeStatus.highInsulin;
+      case ProcedureStatus.yesInsulin:
+        nextStatus= ProcedureStatus.highInsulin;
         break;
-      case SondeStatus.highInsulin:
-        nextStatus = SondeStatus.finish;
+      case ProcedureStatus.highInsulin:
+        nextStatus = ProcedureStatus.finish;
         break;
       default:
     }
-    await updateSondeStateStatus(SondeState(
+    await updateSondeStateStatus(ProcedureState(
       status: nextStatus,
       cho: state.state.cho,
       bonusInsulin: state.state.bonusInsulin,
       weight: state.state.weight,
+      slowInsulinType: state.state.slowInsulinType,
     ));
   }
 }

@@ -12,4 +12,11 @@ class NiceDateTime {
 
     return '$h:$m';
   }
+  static String dayMonthYear(DateTime t) {
+    num d = t.day;
+    num m = t.month;
+    num y = t.year;
+
+    return '$d/$m/$y';
+  }
 }

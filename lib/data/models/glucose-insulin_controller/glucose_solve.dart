@@ -50,7 +50,7 @@ class GlucoseSolve {
 
   static String insulinGuideString({
     required Regimen regimen,
-    required SondeState sondeState,
+    required ProcedureState sondeState,
   }) {
     num insulin = insulinGuide(
       regimen: regimen,
@@ -61,7 +61,7 @@ class GlucoseSolve {
 
   static num insulinGuide({
     required Regimen regimen,
-    required SondeState sondeState,
+    required ProcedureState sondeState,
   }) {
     final num glu = regimen.lastGluAmount;
     final num cho = sondeState.cho;

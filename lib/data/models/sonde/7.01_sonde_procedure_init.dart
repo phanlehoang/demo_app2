@@ -4,15 +4,15 @@ import 'package:demo_app2/data/models/sonde/7_sonde_procedure.dart';
 
 import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
-import '6_sonde_state.dart';
+import '../medical/6_procedure_state.dart';
 
 
 class SondeProcedureInit{
   static SondeProcedure noInsulin(){
     return SondeProcedure(
       beginTime: DateTime.now(),
-      state: SondeState(
-        status: SondeStatus.noInsulin,
+      state: ProcedureState(
+        status: ProcedureStatus.noInsulin,
       ),
       regimens: [Regimen(
         beginTime: DateTime.now(),
@@ -25,8 +25,8 @@ class SondeProcedureInit{
     return SondeProcedure(
             beginTime: DateTime.now(),
 
-      state: SondeState(
-        status: SondeStatus.firstAsk,
+      state: ProcedureState(
+        status: ProcedureStatus.firstAsk,
       ),
       regimens: [],
     );
@@ -34,8 +34,8 @@ class SondeProcedureInit{
   static SondeProcedure yesInsulin(){
     return SondeProcedure(
       beginTime: DateTime.now(),
-      state: SondeState(
-        status: SondeStatus.yesInsulin,
+      state: ProcedureState(
+        status: ProcedureStatus.yesInsulin,
       ),
       regimens: [Regimen(
         beginTime: DateTime.now(),

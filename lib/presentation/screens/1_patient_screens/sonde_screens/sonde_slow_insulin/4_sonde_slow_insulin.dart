@@ -1,4 +1,5 @@
 import 'package:demo_app2/logic/1_patient_blocs/medical_blocs/sonde_blocs/choose_slow_insulin_form_bloc.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_slow_insulin/4.2_give_Glargine.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/2_nice_button.dart';
 import 'package:demo_app2/presentation/widgets/status/loading_dialog.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,8 @@ class SlowInsulinWidget extends StatelessWidget {
                     sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
                   );
                 case InsulinType.Glargine:
-                  return Text('Tiem Glargine');
+                  return GiveGlargine(
+                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
                 default:
                   return Text('Chua biet');
               }
