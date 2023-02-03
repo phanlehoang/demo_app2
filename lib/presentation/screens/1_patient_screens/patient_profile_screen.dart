@@ -50,10 +50,7 @@ class PatientProfileScreen extends StatelessWidget {
                           height: 20,
                         ),
                         //currentProcedureId 
-                        Text(
-                          'Mã thủ tục: ${profileState.currentProcedureId}',
-                          style: TextStyle(fontSize: 20),
-                        ),
+                        
                         // Tạo nút để thêm thông tin bệnh nhân
                       ],
                     ),

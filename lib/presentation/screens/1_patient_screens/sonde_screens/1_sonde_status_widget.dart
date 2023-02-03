@@ -64,7 +64,7 @@ class SondeStatusWidget extends StatelessWidget {
                     ],
                   );
                 case ProcedureStatus.finish:
-                  return Text('Ban da hoan thanh');
+                  return Text('Chuyển sang phác đồ bơm điện');
                 default:
                   return Container();
               }

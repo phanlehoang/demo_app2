@@ -15,7 +15,7 @@ class NPHInsulinSolve extends SondeSlowInsulinSolve{
   num insulinAmount({required ProcedureState sondeState}){
     num init = sondeState.weight *0.1;
     if(sondeState.status == ProcedureStatus.highInsulin){
-      return init * 1.1 .round();
+      return (init * 1.1) .round();
     }
     return init.round();
   }
@@ -28,7 +28,7 @@ class GlargineInsulinSolve extends SondeSlowInsulinSolve{
   num insulinAmount({required ProcedureState sondeState}){
     num init = sondeState.weight *0.2;
     if(sondeState.status == ProcedureStatus.highInsulin){
-      return init * 1.1 .round();
+      return (init * 1.1) .round();
     }
     return init.round();
   }

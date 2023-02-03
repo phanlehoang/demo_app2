@@ -128,9 +128,10 @@ class SondeProcedureItem extends StatelessWidget {
           bloc: context.read<CurrentProfileCubit>(),
           builder: (_context, state) {
             final profile = _context.read<CurrentProfileCubit>().state;
-          Color color = Colors.white;
+          Color color = Theme.of(context).canvasColor;
           if (profile.currentProcedureId == procedureState.beginTime.toString()) {
-            color = Colors.green;
+            color = //choose color 
+            Colors.greenAccent;
           }
           return Column(
             children: [

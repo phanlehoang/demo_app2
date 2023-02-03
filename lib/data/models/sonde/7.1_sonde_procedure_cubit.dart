@@ -32,21 +32,21 @@ class SondeProcedureCubit extends Cubit<SondeProcedure>{
     //add regimens
     switch (sondeState.status) {
       case ProcedureStatus.noInsulin:
-        addRegimen(Regimen(
+        await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
           name: 'ko tiem',
         ));
         break;
       case ProcedureStatus.yesInsulin:
-        addRegimen(Regimen(
+        await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
           name: 'co tiem',
         ));
         break;
       case ProcedureStatus.highInsulin:
-        addRegimen(Regimen(
+        await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [], 
           name: 'co tiem cao',

@@ -52,7 +52,8 @@ class FastInsulinWidget extends StatelessWidget {
                          
                         case RegimenStatus.done:
                         {
-                          if(sondeProcedureOnlineCubit.state.isFull50){
+                          if(sondeProcedureOnlineCubit.state.isFull50 &&
+                           sondeProcedureOnlineCubit.state.slowStatus == RegimenStatus.done){
                             sondeProcedureOnlineCubit.goToNextStatus();
                           }
                           return Column(

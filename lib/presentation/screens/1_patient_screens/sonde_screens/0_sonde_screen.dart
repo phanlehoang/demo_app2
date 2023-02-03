@@ -5,10 +5,11 @@ import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/1
 import 'package:demo_app2/presentation/widgets/images/doctor_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nice_buttons/nice_buttons.dart';
 
 import '../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
-import '5_sonde_history_screen.dart';
+import '../history_widget/5_sonde_history_screen.dart';
 
 class InSondeRange extends Cubit<int?> {
   InSondeRange(int? state) : super(state);
@@ -34,15 +35,20 @@ class SondeScreen extends StatelessWidget {
               children: [
                 DoctorImage(),
                 //button to history
-                NiceButton(
-                  onTap: () {
+                NiceButtons(
+                  onTap: (f) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) 
                         => SondeHistoryScreen(
                           sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,))
                     );
                   },
-                  text: 'Lich su',
+                  stretch: false ,
+                  width: 50,
+                  endColor: Colors.yellow,
+                  startColor: Colors.yellow.shade200,
+                  // tạo icon history
+                   child: Icon(Icons.history),
                 ),
               ],
             ),

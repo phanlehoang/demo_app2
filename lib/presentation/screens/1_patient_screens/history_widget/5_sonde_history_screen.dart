@@ -10,8 +10,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/nice_widgets/6_nice_item.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
-import '../history_widget/medical_action_item.dart';
-import '../history_widget/regimen_item.dart';
+import 'medical_action_item.dart';
+import 'regimen_item.dart';
 
 class SondeHistoryScreen extends StatelessWidget {
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
@@ -42,6 +42,7 @@ class SondeHistoryScreen extends StatelessWidget {
             Text(' $first - $last'),
             Text('Cân nặng bệnh nhân: ${st.state.weight} kg'),
             Text('Lượng cho: ${st.state.cho} ml'),
+            //Text('debug sondes: ${st.toString()}'),
               ],
             )
             ),
