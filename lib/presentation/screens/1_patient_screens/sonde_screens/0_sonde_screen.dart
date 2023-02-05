@@ -24,7 +24,7 @@ class SondeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<InSondeRange>(
       create: (context) => InSondeRange(
-        SondeRange(). rangeContainToday(DateTime.now()),
+        ActrapidRange(). rangeContainToday(DateTime.now()),
       ),
       child: NiceScreen(
         child: Column(
@@ -55,14 +55,14 @@ class SondeScreen extends StatelessWidget {
             BlocBuilder<TimeCheckCubit, int>(
               builder: (context, state) {
                 DateTime t = DateTime.now();
-                context.read<InSondeRange>().emit(SondeRange().rangeContain(t));
+                context.read<InSondeRange>().emit(ActrapidRange().rangeContain(t));
                 return Text(t.toString());
               },
             ),
             BlocBuilder<InSondeRange, int?>(
               builder: (context, state) {
                 if (state == null) {
-                  return Text(SondeRange().waitingMessage(DateTime.now()));
+                  return Text(ActrapidRange().waitingMessage(DateTime.now()));
                 } else {
                   return SondeStatusWidget(
                     sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_app2/data/models/doctor/current_doctor.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
 import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
@@ -29,62 +30,26 @@ class DoctorProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Hồ sơ bác sĩ"),
-
         //  flexibleSpace: DoctorNavigatorBar(),
       ),
       body: SingleChildScrollView(
         child: Column(
           //button
           children: [
-
-            TextButton(
-                onPressed: () async {
-
-                  var trial = await FirebaseFirestore.instance
-                      .collection('list_adds')
-                      .doc('add')
-                      .set(testReg().toMap());
-                  var trial2 = await FirebaseFirestore.instance
-                      .collection('list_adds')
-                      .doc('add')
-                      .get().then((value) => value.data());
-                  myReg = Regimen.fromMap(trial2);
-                },
-                child: Text('${trial}')),
-            BlocProvider<CandiesOnlineCubit>
-            (create: (context) => CandiesOnlineCubit(),
-            child: Column(
-              children: [
-                Text('debug 1'),
-                CandiesOnlineScreen(),
-              ],
-            ),),
-          
+             BlocBuilder(
+              bloc: context.read<CurrentDoctor>(),
+              builder: (context, st) {
+                final state = context.read<CurrentDoctor>().state;
+               return Text(state.email.toString());
+              },
+             )
           ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigatorBar(),
-    );
-  }
-}
-
-class CandiesOnlineScreen extends StatelessWidget {
-  const CandiesOnlineScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CandiesOnlineCubit, List<Candy>>(
-      builder: (context, state) {
-        return Column(
-          children: [
-            Text(state.toString()),
-            Text(state.length.toString()),
-          ],
-        );
+        )
       //  if(state.length == 0) return Text('Chua co du lieu');
 
        
-      },
+      ),
+      bottomNavigationBar: BottomNavigatorBar(),
     );
   }
 }

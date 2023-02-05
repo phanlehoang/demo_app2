@@ -59,7 +59,7 @@ class FastInsulinWidget extends StatelessWidget {
                           return Column(
                           children: [
                             Text('Done'),
-                            Text(SondeRange().waitingMessage(DateTime.now()) ),
+                            Text(ActrapidRange().waitingMessage(DateTime.now()) ),
                           ],
                         );
                         }

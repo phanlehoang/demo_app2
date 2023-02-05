@@ -4,8 +4,8 @@ import '1_medical_range.dart';
 
 
 
-class SondeRange extends MedicalRange{
-  SondeRange():super(ranges: [
+class ActrapidRange extends MedicalRange{
+  ActrapidRange():super(ranges: [
     //4 khung gio 
     Range(HourMinute(5, 30), HourMinute(6, 30)),
     Range(HourMinute(11, 30), HourMinute(12, 30)),

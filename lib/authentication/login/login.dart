@@ -1,254 +1,317 @@
+import 'package:demo_app2/authentication/login/diagonal_streak_decoration_screen.dart';
+import 'package:demo_app2/authentication/login/welcome_back_widget.dart';
 import 'package:demo_app2/authentication/verify/forget_password.dart';
+import 'package:demo_app2/data/models/doctor/current_doctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+//import flutter bloc
+import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:glucose_control/verify/phone_home.dart';
+import '../../data/models/doctor/doctor.dart';
 import '../manage_patient/manager.dart';
+import 'doctor_image_login.dart';
+import 'enter_email.dart';
 import 'home_screen_main_login.dart';
+import 'loading_screen.dart';
 import 'signup.dart';
 
 import 'dart:io';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
 
+class PasswordState {
+  bool passwordVisible = true;
+  bool flagLogin = false;
+  String userCurrent = '';
+  String passwordCurrent = '';
+  PasswordState ( 
+    {this. passwordVisible = true,
+    this. flagLogin = false,
+    this. userCurrent = '',
+    this. passwordCurrent = ''}
+  );
+  //clone 
+  PasswordState clone(){
+    return PasswordState(
+      passwordVisible: passwordVisible,
+      flagLogin: flagLogin,
+      userCurrent: userCurrent,
+      passwordCurrent: passwordCurrent,
+    );
+  }
+  //toString
   @override
-  _LoginState createState() => _LoginState();
+  String toString() {
+    return ''' 
+    PasswordState{passwordVisible: $passwordVisible, 
+    flagLogin: $flagLogin, userCurrent: $userCurrent, 
+     passwordCurrent: $passwordCurrent}
+    ''';
+  }
+
 }
 
-class _LoginState extends State<Login> {
+class PasswordCubit extends Cubit<PasswordState> {
+  PasswordCubit() : super(PasswordState());
+}
+
+class Login extends StatelessWidget {
+  
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
-  bool _passwordVisible = true;
-  bool flag_login = false;
-  String user_current = '';
-  String password_current = '';
+  final PasswordCubit passwordCubit = PasswordCubit();
 
   @override
   Widget build(BuildContext context) {
-    if (user_current != '') _email.text = user_current;
+    if (passwordCubit.state.userCurrent != '') _email.text = passwordCubit.state.userCurrent;
     // _password.text = password_current;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                Colors.blueAccent,
-                Colors.white,
-                // Color.fromARGB(255, 23, 198, 99),
-                // Color.fromARGB(255, 57, 195, 213)
-              ])),
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(left: 10, right: 10, top: 50),
-            child: Stack(
-              children: [
-                Visibility(
-                  visible: flag_login,
-                  child: FittedBox(
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 280, horizontal: 170),
-                      child: const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              Color.fromARGB(255, 255, 255, 255))),
-                    ),
-                  ),
-                ),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    return 
+        BlocBuilder(
+          bloc: passwordCubit,
+          
+          builder: (BuildContext context, state) {  
+            final passwordState = state as PasswordState;
+          return DiagonalStreakDecorationScreen(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 50),
+                  child: Column (
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 50, 10, 20),
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          padding: const EdgeInsets.all(5),
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromARGB(255, 219, 228, 226),
-                          ),
-                          child: FittedBox(
-                              child:
-                                  Image.asset('assets/images/icon_doctor.png')),
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20),
-                        child: Text(
-                          "Hân Hạnh \n Chào mừng quay trở lại!",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            fontSize: 30,
-                          ),
-                        ),
-                      ),
+                      Text(passwordState.toString()),
+                      Text('text: ${_email.text}'),
+                      LoadingScreen(flag_login: state.flagLogin),
+                      LoginContent(email: _email, password: _password, passwordState: passwordState, passwordCubit: passwordCubit),
 
-                      // enter email
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                        child: TextField(
-                          controller: _email,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.email_outlined),
-                            hintText: 'Nhập email của bạn',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(22.0)),
-                            labelText: "Tên Đăng Nhập",
-                            labelStyle: const TextStyle(
-                              color: Color.fromARGB(255, 29, 29, 29),
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                      // enter password
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                        child: TextField(
-                          keyboardType: TextInputType.text,
-                          controller: _password,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                          obscureText: _passwordVisible,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.lock_outline),
-                            hintText: 'Nhập mật khẩu',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(22.0)),
-                            labelText: "Mật Khẩu",
-                            labelStyle: const TextStyle(
-                              color: Color.fromARGB(255, 30, 30, 30),
-                              fontSize: 15,
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                // Based on passwordVisible state choose the icon
-                                _passwordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                                color: Theme.of(context).primaryColorDark,
-                              ),
-                              onPressed: () {
-                                // Update the state i.e. toogle the state of passwordVisible variable
-                                setState(() {
-                                  _passwordVisible = !_passwordVisible;
-                                  password_current = _password.text;
-                                });
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                      // button login
-                      SizedBox(
-                        width: double.infinity,
-                        height: 56,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromARGB(255, 1, 112, 203),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _checkLoginFirebase();
-                            });
-                          },
-                          child: const Text(
-                            "Đăng nhập",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 100,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            InkWell(
-                              child: Row(
-                                children: const <Widget>[
-                                  Icon(Icons.app_registration_outlined),
-                                  Text(
-                                    "Đăng ký ",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Color.fromARGB(255, 28, 27, 27),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (BuildContext context) =>
-                                            SignUp()),
-                                    ModalRoute.withName('/login'));
-                              },
-                            ),
-                            InkWell(
-                              child: Row(
-                                children: const <Widget>[
-                                  Icon(Icons.lock),
-                                  Text(
-                                    "Quên mật khẩu",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Color.fromARGB(255, 3, 42, 75),
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ForgetPassScreen()),
-                                );
-                                // );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
+                    BlocBuilder<CurrentDoctor, Doctor>( 
+                    
+                      builder: (BuildContext context, state) {
+                       return Text(state.email.toString());
+                      }
+                    )
+                    ],
+                ),
+              ),
+            );
+              
+        
+    
+  
+}
+);
+  }
+}
+
+class LoginContent extends StatelessWidget {
+  const LoginContent({
+    Key? key,
+    required TextEditingController email,
+    required TextEditingController password,
+    required this.passwordState,
+    required this.passwordCubit,
+  }) : _email = email, _password = password, super(key: key);
+
+  final TextEditingController _email;
+  final TextEditingController _password;
+  final PasswordState passwordState;
+  final PasswordCubit passwordCubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          DoctorImageLogin(),
+          WelcomeBackWidget(),
+        
+          // enter email
+          EnterEmail(email: _email),
+          // enter password
+          EnterPassword(password: _password, passwordState: passwordState, passwordCubit: passwordCubit),
+          // button login
+          LoginButton(passwordCubit: passwordCubit, email: _email, password: _password),
+          SignUpButton(),
+        ]);
+  }
+} 
+
+class SignUpButton extends StatelessWidget {
+  const SignUpButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          InkWell(
+            child: Row(
+              children: const <Widget>[
+                Icon(Icons.app_registration_outlined),
+                Text(
+                  "Đăng ký ",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 28, 27, 27),
+                      fontWeight: FontWeight.bold),
+                ),
               ],
             ),
+            onTap: () {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          SignUp()),
+                  ModalRoute.withName('/login'));
+            },
+          ),
+          InkWell(
+            child: Row(
+              children: const <Widget>[
+                Icon(Icons.lock),
+                Text(
+                  "Quên mật khẩu",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 3, 42, 75),
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const ForgetPassScreen()),
+              );
+              // );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LoginButton extends StatelessWidget {
+  const LoginButton({
+    Key? key,
+    required this.passwordCubit,
+    required TextEditingController email,
+    required TextEditingController password,
+  }) : _email = email, _password = password, super(key: key);
+
+  final PasswordCubit passwordCubit;
+  final TextEditingController _email;
+  final TextEditingController _password;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 56,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor:
+              const Color.fromARGB(255, 1, 112, 203),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        onPressed: () {
+          _checkLoginFirebase(
+            passwordCubit: passwordCubit,
+             email: _email,
+              password: _password,
+               context: context);
+        },
+        child: const Text(
+          "Đăng nhập",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
           ),
         ),
       ),
     );
   }
+}
+
+class EnterPassword extends StatelessWidget {
+  const EnterPassword({
+    Key? key,
+    required TextEditingController password,
+    required this.passwordState,
+    required this.passwordCubit,
+  }) : _password = password, super(key: key);
+
+  final TextEditingController _password;
+  final PasswordState passwordState;
+  final PasswordCubit passwordCubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+      child: TextField(
+        keyboardType: TextInputType.text,
+        controller: _password,
+        style: const TextStyle(
+          fontSize: 18,
+          color: Colors.black,
+        ),
+        obscureText: passwordState.passwordVisible,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.lock_outline),
+          hintText: 'Nhập mật khẩu',
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(22.0)),
+          labelText: "Mật Khẩu",
+          labelStyle: const TextStyle(
+            color: Color.fromARGB(255, 30, 30, 30),
+            fontSize: 15,
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              // Based on passwordVisible state choose the icon
+             passwordState. passwordVisible
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: Theme.of(context).primaryColorDark,
+            ),
+            onPressed: () {
+              // Update the state i.e. toogle the state of passwordVisible variable
+             
+              final newPasswordState = PasswordState(
+                passwordVisible : !passwordState.passwordVisible,
+                flagLogin:passwordState. flagLogin,
+                userCurrent : passwordState.userCurrent,
+                passwordCurrent : _password.text,
+              );
+              passwordCubit. emit(newPasswordState);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 // Thông báo sai khi nhập dữ liệu
-  void _showToast(String content, int time) {
+  
+
+// Kiểm tra login firebase
+  
+
+void showToast(String content, int time) {
     Fluttertoast.showToast(
         msg: content,
         toastLength: Toast.LENGTH_SHORT,
@@ -257,17 +320,25 @@ class _LoginState extends State<Login> {
         backgroundColor: const Color.fromARGB(255, 82, 146, 242),
         textColor: Colors.white,
         fontSize: 16.0);
-  }
+}
 
-// Kiểm tra login firebase
-  void _checkLoginFirebase() async {
-    password_current = _password.text;
-    user_current = _email.text;
-    flag_login = !flag_login;
+void _checkLoginFirebase(
+  {required PasswordCubit passwordCubit,
+  required TextEditingController email,
+  required TextEditingController password,
+  required BuildContext context,
+
+  }
+) async {
+   final state = passwordCubit.state;
+   final newState = state.clone();
+    newState.passwordCurrent = password.text;
+    newState.userCurrent = email.text;
+    newState.flagLogin = !state.flagLogin;
     sleep(const Duration(seconds: 1));
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
-            email: _email.text, password: _password.text)
+            email: email.text, password: password.text)
         .then(
       (user) async {
         // print("uid = ${user.user!.uid.toString()}");
@@ -276,22 +347,19 @@ class _LoginState extends State<Login> {
         await Manager(key: user.user!.uid.toString()).readNameUser();
         Manager(key: user.user!.uid.toString()).nameEmailUser =
             user.user!.email! ?? "none@gmail.com";
-        return Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => HomeScreenMainLogin(
-                      keyLogin: user.user!.uid.toString(),
-                    )),
-            ModalRoute.withName('/login'));
+            passwordCubit.emit(newState);
+        context.read<CurrentDoctor>().updateEmail(newState.userCurrent);
       },
     ).catchError((e) {
-      _password.text = '';
-      password_current = '';
+      password.text = '';
+      newState. passwordCurrent = '';
       print("ERRORS: $e");
-      if (flag_login) flag_login = !flag_login;
-      setState(() {
-        _showToast('Email or password is invalidated', 1);
-      });
+      // if (flagLogin)flagLogin = !flagLogin;
+      // setState(() {
+      //   _showToast('Email or password is invalidated', 1);
+      // });
+      passwordCubit.emit(newState);
+      showToast('Email or password is invalidated', 1);
     });
   }
-}
+

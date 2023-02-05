@@ -35,13 +35,13 @@ class SondeProcedure {
   RegimenStatus get fastStatus{
     //for down to up
     for (Regimen x in regimens.reversed) {
-      if (x.regimenActrapidStatus(SondeRange()) == RegimenStatus.done) 
+      if (x.regimenActrapidStatus(ActrapidRange()) == RegimenStatus.done) 
         return RegimenStatus.done;
     }
     if(regimens.length == 0){
       return RegimenStatus.checkingGlucose;
     }
-    return regimens.last.regimenActrapidStatus(SondeRange());
+    return regimens.last.regimenActrapidStatus(ActrapidRange());
   }
   //slowStatus 
   RegimenStatus get slowStatus{

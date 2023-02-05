@@ -9,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'data/models/2.3_current_profile_cubit.dart';
+import 'data/models/doctor/current_doctor.dart';
 import 'logic/status_cubit/internet/internet_cubit.dart';
 import 'logic/status_cubit/navigator_bar_cubit.dart';
 
@@ -61,6 +62,9 @@ class MyApp extends StatelessWidget {
           create: (timeCheckCubitContext) => TimeCheckCubit(
             ticker: secondStream(),
           ),
+        ),
+        BlocProvider<CurrentDoctor>(
+          create: (currentDoctorContext) => CurrentDoctor(),
         ),
       ],
       child: MaterialApp(
