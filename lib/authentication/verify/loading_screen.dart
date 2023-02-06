@@ -4,14 +4,14 @@ import 'package:demo_app2/authentication/verify/verify_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class LoadingScr extends StatefulWidget {
-  const LoadingScr({Key? key, required this.phone}) : super(key: key);
+class LoadingScreen extends StatefulWidget {
+  const LoadingScreen({Key? key, required this.phone}) : super(key: key);
   final String phone;
   @override
-  State<LoadingScr> createState() => _LoadingScrState();
+  State<LoadingScreen> createState() => _LoadingScreenState();
 }
 
-class _LoadingScrState extends State<LoadingScr> {
+class _LoadingScreenState extends State<LoadingScreen> {
   bool isLoading = false;
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _LoadingScrState extends State<LoadingScr> {
           const Duration(seconds: 1),
           () => Navigator.pushAndRemoveUntil(context,
                   MaterialPageRoute(builder: (context) {
-                return VerifyScr(
+                return VerifyScreen(
                   phone: widget.phone,
                 );
               }), (route) => false));

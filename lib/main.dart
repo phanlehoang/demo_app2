@@ -7,6 +7,8 @@ import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'data/models/2.3_current_profile_cubit.dart';
 import 'data/models/doctor/current_doctor.dart';
@@ -15,6 +17,8 @@ import 'logic/status_cubit/navigator_bar_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+      storageDirectory: await getApplicationDocumentsDirectory());
   await Firebase.initializeApp();
   runApp(MyApp(
     appRouter: AppRouter(),
@@ -56,7 +60,7 @@ class MyApp extends StatelessWidget {
           create: (currentProfileCubitContext) => CurrentProfileCubit(),
         ),
         //current method cubit
-       
+
         //time check cubit
         BlocProvider<TimeCheckCubit>(
           create: (timeCheckCubitContext) => TimeCheckCubit(

@@ -1,7 +1,6 @@
+import 'package:demo_app2/authentication/login_screen/1_login_screen.dart';
 import 'package:demo_app2/authentication/login/signup.dart';
 import 'package:flutter/material.dart';
-
-import 'login_screens/login.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -32,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Login()));
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: const Text(
                     'LOGIN',

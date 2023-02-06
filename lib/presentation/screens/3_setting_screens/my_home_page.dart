@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_app2/authentication/login_screen/1_login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../authentication/login/home_screen_main_login.dart';
-import '../../../authentication/login/login_screens/login.dart';
 import '../../../authentication/manage_patient/manager.dart';
 import '../../widgets/nice_widgets/sizeDevide.dart';
 
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, snapshot) {
           Widget children;
           children = keyLocalLogin == ""
-              ? Login()
+              ? LoginScreen()
               : HomeScreenMainLogin(
                   keyLogin: keyLocalLogin,
                   keyCode: keyCodeLocal,

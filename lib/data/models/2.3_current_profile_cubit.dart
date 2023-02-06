@@ -9,7 +9,7 @@ import '2_profile.dart';
 class CurrentProfileCubit extends ProfileCubit {
   CurrentProfileCubit() : super(unknownProfile());
   //choose profile
-  Future<void> choose(Profile profile)  async {
+  Future<void> choose(Profile profile) async {
     emit(profile);
   }
 }

@@ -4,17 +4,17 @@ import 'package:pinput/pinput.dart';
 
 import '../service/firebase_helper.dart';
 
-class VerifyScr extends StatefulWidget {
-  VerifyScr({Key? key, required this.phone}) : super(key: key);
+class VerifyScreen extends StatefulWidget {
+  VerifyScreen({Key? key, required this.phone}) : super(key: key);
 
   final String phone;
   final FireBaseHelper _auth = FireBaseHelper.setup();
 
   @override
-  State<VerifyScr> createState() => _VerifyScrState();
+  State<VerifyScreen> createState() => _VerifyScreenState();
 }
 
-class _VerifyScrState extends State<VerifyScr> {
+class _VerifyScreenState extends State<VerifyScreen> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   final TextEditingController _pinPutController = TextEditingController();
   final FocusNode _pinPutFocusNode = FocusNode();
