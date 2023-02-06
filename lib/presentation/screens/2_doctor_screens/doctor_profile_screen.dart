@@ -17,6 +17,7 @@ import '../../../data/models/medical/2_medical_check_glucose.dart';
 import '../../../data/models/medical/3_medical_take_insulin.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/doctor_navigator_bar.dart';
+import '../3_setting_screens/remember_login_cubit.dart';
 import 'cubit/counter_cubit.dart';
 import 'cubit/counter_state.dart';
 
@@ -27,6 +28,10 @@ class DoctorProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     dynamic trial;
     Regimen myReg = initialRegimen();
+
+    final CurrentDoctorCubit currentDoctorCubit = CurrentDoctorCubit(
+      rememberLoginCubit: context.read<RememberLoginCubit>(),
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -41,24 +46,42 @@ class DoctorProfileScreen extends StatelessWidget {
             create: (context) => CounterCubit(),
             child: CounterWidget(),
           ),
-          BlocBuilder<CurrentDoctor, Doctor>(
-            builder: (context, st) {
-              final doctor = st as Doctor;
-              return Column(
-                //tên, email bác sĩ
-                children: [
-                  Text(doctor.fullName),
-                  Text(doctor.email),
-                ],
-              );
-            },
-          )
+          DoctorInformation(currentDoctorCubit: currentDoctorCubit),
         ],
       )
           //  if(state.length == 0) return Text('Chua co du lieu');
 
           ),
       bottomNavigationBar: BottomNavigatorBar(),
+    );
+  }
+}
+
+class DoctorInformation extends StatelessWidget {
+  final CurrentDoctorCubit currentDoctorCubit;
+  const DoctorInformation({
+    super.key,
+    required this.currentDoctorCubit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Thông tin bác sĩ'),
+        BlocBuilder(
+          bloc: currentDoctorCubit,
+          builder: (context, st) {
+            final state = st as Doctor;
+            return Column(
+              children: [
+                Text(state.fullName),
+                Text(state.email),
+              ],
+            );
+          },
+        ),
+      ],
     );
   }
 }

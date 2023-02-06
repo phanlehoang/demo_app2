@@ -25,7 +25,6 @@ class LoginForm extends StatelessWidget {
       onSuccess: (context, state) {
         LoadingDialog.hide(context);
         showToast('Đăng nhập thành công');
-        context.read<CurrentDoctor>().updateEmail(loginFormBloc.email.value);
       },
       onFailure: (context, state) {
         //show toast

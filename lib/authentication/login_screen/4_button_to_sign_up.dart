@@ -1,8 +1,6 @@
 import 'package:demo_app2/authentication/sign_up_screen/1_sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../login/signup.dart';
-
 class ButtonToSignUp extends StatelessWidget {
   const ButtonToSignUp({
     super.key,

@@ -3,6 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:demo_app2/logic/global/current_export.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/router/app_router.dart';
+import 'package:demo_app2/presentation/screens/3_setting_screens/remember_login_cubit.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -67,8 +68,9 @@ class MyApp extends StatelessWidget {
             ticker: secondStream(),
           ),
         ),
-        BlocProvider<CurrentDoctor>(
-          create: (currentDoctorContext) => CurrentDoctor(),
+        //remember login cubit
+        BlocProvider<RememberLoginCubit>(
+          create: (rememberLoginCubitContext) => RememberLoginCubit(),
         ),
       ],
       child: MaterialApp(

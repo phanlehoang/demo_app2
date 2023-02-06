@@ -29,6 +29,7 @@ class SignUpFormBloc extends FormBloc<String, String> {
   final password = TextFieldBloc(
     validators: [
       VietnameseFieldBlocValidators.required,
+      VietnameseFieldBlocValidators.checkLength6,
     ],
   );
   final confirmPassword = TextFieldBloc(

@@ -49,6 +49,14 @@ class VietnameseFieldBlocValidators {
     }
     return null;
   }
+
+  //6 chữ
+  static String? checkLength6(String value) {
+    if (value.length < 6) {
+      return 'Mật khẩu phải có ít nhất 6 kí tự';
+    }
+    return null;
+  }
 }
 
 class Hospital {

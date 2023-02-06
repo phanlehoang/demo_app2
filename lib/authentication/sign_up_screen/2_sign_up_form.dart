@@ -30,6 +30,8 @@ class SignUpForm extends StatelessWidget {
           LoadingDialog.hide(context);
           showToast('Đăng kí thất bại');
         },
+        //phải hợp lệ thì mới bấm nút được
+
         child: Builder(builder: (context) {
           return Column(
             children: <Widget>[
@@ -70,7 +72,7 @@ class SignUpForm extends StatelessWidget {
               //button to submit
               NiceButton(
                 text: 'Đăng ký',
-                onTap: () {
+                onTap: () async {
                   signUpFormBloc.submit();
                 },
               )
