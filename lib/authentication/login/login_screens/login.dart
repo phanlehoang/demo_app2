@@ -1,5 +1,5 @@
-import 'package:demo_app2/authentication/login/diagonal_streak_decoration_screen.dart';
-import 'package:demo_app2/authentication/login/welcome_back_widget.dart';
+import 'package:demo_app2/authentication/login/login_screens/diagonal_streak_decoration_screen.dart';
+import 'package:demo_app2/authentication/login/login_screens/welcome_back_widget.dart';
 import 'package:demo_app2/authentication/verify/forget_password.dart';
 import 'package:demo_app2/data/models/doctor/current_doctor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,13 +11,13 @@ import 'package:fluttertoast/fluttertoast.dart';
 //import flutter bloc
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:glucose_control/verify/phone_home.dart';
-import '../../data/models/doctor/doctor.dart';
-import '../manage_patient/manager.dart';
+import '../../../data/models/doctor/doctor.dart';
+import '../../manage_patient/manager.dart';
 import 'doctor_image_login.dart';
 import 'enter_email.dart';
-import 'home_screen_main_login.dart';
+import '../home_screen_main_login.dart';
 import 'loading_screen.dart';
-import 'signup.dart';
+import '../signup.dart';
 
 import 'dart:io';
 
@@ -66,7 +66,7 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (passwordCubit.state.userCurrent != '') _email.text = passwordCubit.state.userCurrent;
+   // if (passwordCubit.state.userCurrent != '') _email.text = passwordCubit.state.userCurrent;
     // _password.text = password_current;
     return 
         BlocBuilder(

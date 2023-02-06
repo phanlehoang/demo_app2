@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../manage_patient/manager.dart';
 import 'home_screen_main_login.dart';
-import 'login.dart';
+import 'login_screens/login.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
