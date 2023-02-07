@@ -1,4 +1,7 @@
 import 'package:demo_app2/data/models/doctor/current_doctor.dart';
+import 'package:demo_app2/logic/status_cubit/navigator_bar_cubit.dart';
+import 'package:demo_app2/presentation/screens/0_home_screens/0_home_screen.dart';
+import 'package:demo_app2/presentation/screens/3_setting_screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
@@ -25,6 +28,12 @@ class LoginForm extends StatelessWidget {
       onSuccess: (context, state) {
         LoadingDialog.hide(context);
         showToast('Đăng nhập thành công');
+        //navigate to home screen
+        context.read<BottomNavigatorBarCubit>().update(0);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+        );
       },
       onFailure: (context, state) {
         //show toast

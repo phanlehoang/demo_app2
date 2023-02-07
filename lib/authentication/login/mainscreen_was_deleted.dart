@@ -1,6 +1,7 @@
 import 'package:demo_app2/authentication/login_screen/1_login_screen.dart';
-import 'package:demo_app2/authentication/login/signup.dart';
 import 'package:flutter/material.dart';
+
+import '../sign_up_screen/1_sign_up_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignUp()));
+                            builder: (context) => const SignUpScreen()));
                   },
                   child: const Text(
                     'SIGN UP',

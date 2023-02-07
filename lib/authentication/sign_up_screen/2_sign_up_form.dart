@@ -1,4 +1,5 @@
 import 'package:demo_app2/authentication/sign_up_screen/sign_up_form_bloc.dart';
+import 'package:demo_app2/presentation/widgets/nice_widgets/0.1_nice_internet_screen.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';

@@ -7,6 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class RememberLoginCubit extends Cubit<String> {
   late StreamSubscription _streamSubscription;
+  //current user
 
   RememberLoginCubit() : super('Unknown') {
     _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
@@ -16,7 +17,7 @@ class RememberLoginCubit extends Cubit<String> {
         );
   }
   //sign out
-  void signOut() async {
+  Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 }

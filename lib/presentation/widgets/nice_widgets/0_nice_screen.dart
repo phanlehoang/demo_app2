@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '1_nice_container.dart';
 
-//nice screen 
+//nice screen
 class NiceScreen extends StatelessWidget {
   final Widget child;
   const NiceScreen({
@@ -16,24 +16,6 @@ class NiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return InternetCheck(
       child: SingleChildScrollView(
-        
-        child: child,
-      ),
-    );
-  }
-}
-
-class NiceInternetScreen extends StatelessWidget {
-  final Widget child;
-  const NiceInternetScreen({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InternetCheck(
-      child: NiceScreen(
         child: child,
       ),
     );

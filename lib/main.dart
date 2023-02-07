@@ -1,8 +1,10 @@
 //create a simple app
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:demo_app2/authentication/login_screen/1_login_screen.dart';
 import 'package:demo_app2/logic/global/current_export.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/router/app_router.dart';
+import 'package:demo_app2/presentation/screens/0_home_screens/0_home_screen.dart';
 import 'package:demo_app2/presentation/screens/3_setting_screens/remember_login_cubit.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
 import 'package:flutter/material.dart';
@@ -73,11 +75,36 @@ class MyApp extends StatelessWidget {
           create: (rememberLoginCubitContext) => RememberLoginCubit(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: winterTheme(Brightness.light),
-        onGenerateRoute: appRouter.onGeneratedRoute,
+      child: DemoApp2(appRouter: appRouter),
+    );
+  }
+}
+
+class DemoApp2 extends StatelessWidget {
+  const DemoApp2({
+    super.key,
+    required this.appRouter,
+  });
+
+  final AppRouter appRouter;
+
+  @override
+  Widget build(BuildContext context) {
+    final RememberLoginCubit rememberLoginCubit =
+        BlocProvider.of<RememberLoginCubit>(context);
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: winterTheme(Brightness.light),
+      onGenerateRoute: appRouter.onGeneratedRoute,
+      home: BlocBuilder<RememberLoginCubit, String>(
+        builder: (context, state) {
+          if (state == 'Unknown') {
+            return LoginScreen();
+          } else {
+            return HomeScreen();
+          }
+        },
       ),
     );
   }

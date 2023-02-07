@@ -47,6 +47,17 @@ class DoctorProfileScreen extends StatelessWidget {
             child: CounterWidget(),
           ),
           DoctorInformation(currentDoctorCubit: currentDoctorCubit),
+          BlocBuilder(
+            bloc: context.read<RememberLoginCubit>(),
+            builder: (context, st) {
+              final state = st as String;
+              return Column(
+                children: [
+                  Text(state.toString()),
+                ],
+              );
+            },
+          ),
         ],
       )
           //  if(state.length == 0) return Text('Chua co du lieu');
