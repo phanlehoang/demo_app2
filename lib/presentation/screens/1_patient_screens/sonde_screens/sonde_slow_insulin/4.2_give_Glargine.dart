@@ -1,5 +1,3 @@
-
-
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/glucose-insulin_controller/sonde_slow_insulin_solve.dart';
 import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
@@ -20,25 +18,24 @@ class GiveGlargine extends StatelessWidget {
     Key? key,
     required this.sondeProcedureOnlineCubit,
   }) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     int? range = GlargineRange().rangeContainToday(DateTime.now());
-    if(range != null){
-       switch (sondeProcedureOnlineCubit.state.slowStatus) {
-         case RegimenStatus.done:
-            return Text('Bạn đã tiêm cham xong');
-          case RegimenStatus.givingInsulin:
-            return GuideGlargine(
-              sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-            );
-         default:
-       }
+    if (range != null) {
+      switch (sondeProcedureOnlineCubit.state.slowStatus) {
+        case RegimenStatus.done:
+          return Text('Bạn đã tiêm cham xong');
+        case RegimenStatus.givingInsulin:
+          return GuideGlargine(
+            sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+          );
+        default:
+      }
     }
     return Text(GlargineRange().waitingMessage(DateTime.now()));
   }
-  
 }
 
 class GuideGlargine extends StatelessWidget {
@@ -50,27 +47,26 @@ class GuideGlargine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     ProcedureState sondeState = sondeProcedureOnlineCubit.state.state;
-    num insulinAmount = GlargineInsulinSolve().insulinAmount(sondeState: sondeState);
+    ProcedureState sondeState = sondeProcedureOnlineCubit.state.state;
+    num insulinAmount =
+        GlargineInsulinSolve().insulinAmount(sondeState: sondeState);
     String guide = GlargineInsulinSolve().guide(sondeState: sondeState);
 
-    final CheckedInsulinSubmit checkedInsulinSubmitBloc = 
-    CheckedInsulinSubmit(
-      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-      medicalTakeInsulin: MedicalTakeInsulin(
-        insulinType: InsulinType.Glargine,
-         time: DateTime.now(),
-          insulinUI: insulinAmount));
-   
-   
+    final CheckedInsulinSubmit checkedInsulinSubmitBloc = CheckedInsulinSubmit(
+        procedureOnlineCubit: sondeProcedureOnlineCubit,
+        medicalTakeInsulin: MedicalTakeInsulin(
+            insulinType: InsulinType.Glargine,
+            time: DateTime.now(),
+            insulinUI: insulinAmount));
+
     return FormBlocListener(
       formBloc: checkedInsulinSubmitBloc,
       onFailure: (ct, st) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ko cap nhat duoc database'))
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Ko cap nhat duoc database')));
       },
-      child: NiceScreen(child: Column(
+      child: NiceScreen(
+          child: Column(
         children: [
           Text('Hướng dẫn: $guide'),
           ElevatedButton(
@@ -80,11 +76,7 @@ class GuideGlargine extends StatelessWidget {
             child: Text('Tiêm xong'),
           ),
         ],
-
       )),
     );
   }
 }
-
-
-

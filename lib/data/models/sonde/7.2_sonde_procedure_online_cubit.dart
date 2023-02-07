@@ -8,21 +8,22 @@ import '../enum/enums.dart';
 import '../medical/4_regimen.dart';
 import '../2_profile.dart';
 import '../medical/6_procedure_state.dart';
-import '7.1_sonde_procedure_cubit.dart';
+import '../medical/7.1_medical_procedure_cubit.dart';
 import '7_sonde_procedure.dart';
 
-class SondeProcedureOnlineCubit extends SondeProcedureCubit{
-  late StreamSubscription ?regimensSubscription;
-  late StreamSubscription ?sondeStateSubscription;
+class SondeProcedureOnlineCubit extends MedicalProcedureCubit {
+  late StreamSubscription? regimensSubscription;
+  late StreamSubscription? procedureStateSubscription;
 
-  SondeProcedureOnlineCubit({ 
-      required Profile profile,
-      required String procedureId,
-    })  :  super(
+  SondeProcedureOnlineCubit({
+    required Profile profile,
+    required String procedureId,
+  }) : super(
           profile: profile,
           procedureId: procedureId,
-          ){
-    regimensSubscription = sondeRef().collection('regimens').snapshots().listen((event) {
+        ) {
+    regimensSubscription =
+        procedureRef.collection('regimens').snapshots().listen((event) {
       List<Regimen> regimens = [];
       List<dynamic> list = event.docs.map((e) => e.data()).toList();
       for (dynamic x in list) {
@@ -34,8 +35,8 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
         regimens: regimens,
       ));
     });
-    sondeStateSubscription = sondeRef().snapshots().listen((event) {
-      //event error 
+    procedureStateSubscription = procedureRef.snapshots().listen((event) {
+      //event error
       if (event.data() == null) {
         emit(SondeProcedure(
           beginTime: state.beginTime,
@@ -46,22 +47,20 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
         ));
         return;
       }
-      ProcedureState sondeState = ProcedureState.
-      fromMap(event.data() as Map<String, dynamic>);
+      ProcedureState sondeState =
+          ProcedureState.fromMap(event.data() as Map<String, dynamic>);
       emit(SondeProcedure(
         beginTime: state.beginTime,
         state: sondeState,
         regimens: state.regimens,
-
       ));
     });
-     
   }
   //emit
-  @override   
+  @override
   Future<void> close() {
     regimensSubscription?.cancel();
-    sondeStateSubscription?.cancel();
+    procedureStateSubscription?.cancel();
     return super.close();
   }
 }
@@ -69,7 +68,7 @@ class SondeProcedureOnlineCubit extends SondeProcedureCubit{
 //init
 SondeProcedure SondeProcedureOnlineInitial() {
   return SondeProcedure(
-    name: 'Đang tải',
+    status: 'Đang tải',
     beginTime: DateTime.now(),
     state: ProcedureState(
       status: ProcedureStatus.firstAsk,

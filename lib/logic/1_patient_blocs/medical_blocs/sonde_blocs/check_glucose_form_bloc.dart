@@ -17,15 +17,15 @@ class CheckGlucoseForm extends FormBloc<String, String> {
       }
     }
   }
-  final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
+
+  final procedureOnlineCubit;
   final glucose = TextFieldBloc(
     validators: [
       FieldBlocValidators.required,
     ],
   );
   CheckGlucoseForm({
-    required this.sondeProcedureOnlineCubit,
-    
+    required this.procedureOnlineCubit,
   }) {
     addFieldBlocs(
       fieldBlocs: [
@@ -40,8 +40,8 @@ class CheckGlucoseForm extends FormBloc<String, String> {
       glucoseUI: num.parse(glucose.value),
     );
 
-    try {  
-       await sondeProcedureOnlineCubit.addMedicalAction(medicalCheckGlucose);
+    try {
+      await procedureOnlineCubit.addMedicalAction(medicalCheckGlucose);
     } catch (e) {
       emitFailure(failureResponse: e.toString());
       return;

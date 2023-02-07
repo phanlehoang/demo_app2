@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/2.3_current_profile_cubit.dart';
+import '../../../../data/models/medical/7_medical_procedure.dart';
 import '../../../../data/models/models_export.dart';
 import '../../../../data/models/sonde/7_sonde_procedure.dart';
 import '../../../widgets/nice_widgets/0.1_nice_internet_screen.dart';
@@ -39,7 +40,7 @@ class SondeStatusWidget extends StatelessWidget {
             switch (sondeProcedure.state.status) {
               case ProcedureStatus.firstAsk:
                 return FirstAskWidget(
-                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
+                    procedureOnlineCubit: sondeProcedureOnlineCubit);
               case ProcedureStatus.noInsulin:
                 return FastInsulinWidget(
                   sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,

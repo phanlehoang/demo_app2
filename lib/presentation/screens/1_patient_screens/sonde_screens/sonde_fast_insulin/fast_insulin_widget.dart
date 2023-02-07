@@ -31,7 +31,6 @@ class FastInsulinWidget extends StatelessWidget {
     return SimpleContainer(
       child: Column(
         children: [
-           Text('FastInsulinWidget'),
           BlocBuilder(
             bloc: sondeProcedureOnlineCubit,
             builder: (context, state) {
@@ -39,46 +38,43 @@ class FastInsulinWidget extends StatelessWidget {
                 children: [
                   // Text(state.toString()),
                   // Text(sondeProcedureOnlineCubit.state.fastStatus.toString()),
-                  Builder(builder: (ct2){
+                  Builder(builder: (ct2) {
                     switch (sondeProcedureOnlineCubit.state.fastStatus) {
                       case RegimenStatus.checkingGlucose:
                         return CheckGlucoseWidget(
-                          sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                          procedureOnlineCubit: sondeProcedureOnlineCubit,
                         );
-                       case RegimenStatus.givingInsulin:
+                      case RegimenStatus.givingInsulin:
                         return GiveInsulinWidget(
                           sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
                         );
-                         
-                        case RegimenStatus.done:
+
+                      case RegimenStatus.done:
                         {
-                          if(sondeProcedureOnlineCubit.state.isFull50 &&
-                           sondeProcedureOnlineCubit.state.slowStatus == RegimenStatus.done){
+                          if (sondeProcedureOnlineCubit.state.isFull50 &&
+                              sondeProcedureOnlineCubit.state.slowStatus ==
+                                  RegimenStatus.done) {
                             sondeProcedureOnlineCubit.goToNextStatus();
                           }
                           return Column(
-                          children: [
-                            Text('Done'),
-                            Text(ActrapidRange().waitingMessage(DateTime.now()) ),
-                          ],
-                        );
+                            children: [
+                              Text('Đã xong.'),
+                              Text(ActrapidRange()
+                                  .waitingMessage(DateTime.now())),
+                            ],
+                          );
                         }
-                        
+
                       default:
-                        return Text('default'); 
-
+                        return Text('default');
                     }
-
                   })
                 ],
               );
             },
           ),
-         
         ],
       ),
     );
   }
 }
-
-

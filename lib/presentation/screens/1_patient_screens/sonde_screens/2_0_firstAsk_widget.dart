@@ -10,18 +10,19 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../../widgets/nice_widgets/1_nice_container.dart';
+import '../../../widgets/nice_widgets/2_nice_button.dart';
 
 class FirstAskWidget extends StatelessWidget {
-  final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
+  final procedureOnlineCubit;
   const FirstAskWidget({
     Key? key,
-    required this.sondeProcedureOnlineCubit,
+    required this.procedureOnlineCubit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [ 
+      children: [
         // BlocBuilder(
         //   bloc: sondeProcedureOnlineCubit,
         //   builder: (context, state) {
@@ -31,9 +32,7 @@ class FirstAskWidget extends StatelessWidget {
         //first ask form
         BlocProvider<FirstAskBloc>(
             create: (context) => FirstAskBloc(
-                 
-                sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                
+                  procedureOnlineCubit: procedureOnlineCubit,
                 ),
             child: Builder(
               builder: (context) {
@@ -71,9 +70,9 @@ class FirstAskWidget extends StatelessWidget {
                           textFieldBloc: formBloc.getCHO,
                           keyboardType: TextInputType.number,
                         ),
-                        ElevatedButton(
-                          onPressed: formBloc.submit,
-                          child: Text('Tiếp tục'),
+                        NiceButton(
+                          onTap: formBloc.submit,
+                          text: 'Tiếp tục',
                         ),
                       ],
                     ),
@@ -87,7 +86,7 @@ class FirstAskWidget extends StatelessWidget {
 }
 
 class FirstAskBloc extends FormBloc<String, String> {
-  final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
+  final procedureOnlineCubit;
   final yesOrNoInsulin = SelectFieldBloc(
     items: ['Yes', 'No'],
     validators: [VietnameseFieldBlocValidators.required],
@@ -97,7 +96,7 @@ class FirstAskBloc extends FormBloc<String, String> {
   );
 
   FirstAskBloc({
-    required this.sondeProcedureOnlineCubit,
+    required this.procedureOnlineCubit,
   }) {
     addFieldBlocs(
       fieldBlocs: [
@@ -114,18 +113,15 @@ class FirstAskBloc extends FormBloc<String, String> {
         ? ProcedureStatus.yesInsulin
         : ProcedureStatus.noInsulin;
     //update sonde status
-    try 
-    {
-      await sondeProcedureOnlineCubit.updateSondeStateStatus(
-        ProcedureState(status: sondeStatus,
+    try {
+      await procedureOnlineCubit.updateProcedureStateStatus(ProcedureState(
+        status: sondeStatus,
         cho: num.parse(getCHO.value),
-        weight: sondeProcedureOnlineCubit.profile.weight,
-        )
-      );
+        weight: procedureOnlineCubit.profile.weight,
+      ));
     } catch (e) {
       emitFailure(failureResponse: e.toString());
     }
     emitSuccess();
-   
   }
 }

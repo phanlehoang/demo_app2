@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
-import 'package:demo_app2/data/models/sonde/7.1_sonde_procedure_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -32,8 +31,7 @@ class GiveInsulinWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NiceContainer(
-        child: Column(
+    return Column(
       children: [
         BlocBuilder(
           bloc: sondeProcedureOnlineCubit,
@@ -50,7 +48,8 @@ class GiveInsulinWidget extends StatelessWidget {
                   String plusGuide = GlucoseSolve.plusInsulinGuide(glu);
                   num plus = GlucoseSolve.plusInsulinAmount(glu);
                   if (plus == 4 &&
-                      sondeProcedure.state.status == ProcedureStatus.highInsulin) {
+                      sondeProcedure.state.status ==
+                          ProcedureStatus.highInsulin) {
                     plus = 6;
                   }
                   num insulin = GlucoseSolve.insulinGuide(
@@ -64,7 +63,7 @@ class GiveInsulinWidget extends StatelessWidget {
                       Text(guide),
                       BlocProvider<CheckedInsulinSubmit>(
                           create: (context) => CheckedInsulinSubmit(
-                              sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                                procedureOnlineCubit: sondeProcedureOnlineCubit,
                                 medicalTakeInsulin: MedicalTakeInsulin(
                                   time: DateTime.now(),
                                   insulinType: InsulinType.Actrapid,
@@ -73,8 +72,8 @@ class GiveInsulinWidget extends StatelessWidget {
                                 plus: plus,
                               ),
                           child: Builder(builder: (_) {
-                            return FormBlocListener<CheckedInsulinSubmit, String,
-                                String>(
+                            return FormBlocListener<CheckedInsulinSubmit,
+                                String, String>(
                               onSuccess: (cc, state) {
                                 ScaffoldMessenger.of(cc).showSnackBar(
                                   SnackBar(
@@ -109,7 +108,6 @@ class GiveInsulinWidget extends StatelessWidget {
           },
         )
       ],
-    ));
+    );
   }
 }
-

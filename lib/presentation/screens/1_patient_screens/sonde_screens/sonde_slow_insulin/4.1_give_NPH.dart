@@ -1,5 +1,3 @@
-
-
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/glucose-insulin_controller/sonde_slow_insulin_solve.dart';
 import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
@@ -20,25 +18,24 @@ class GiveNPH extends StatelessWidget {
     Key? key,
     required this.sondeProcedureOnlineCubit,
   }) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     int? range = NPHRange().rangeContainToday(DateTime.now());
-    if(range != null){
-       switch (sondeProcedureOnlineCubit.state.slowStatus) {
-         case RegimenStatus.done:
-            return Text('Bạn đã tiêm cham xong');
-          case RegimenStatus.givingInsulin:
-            return GuideNPH(
-              sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-            );
-         default:
-       }
+    if (range != null) {
+      switch (sondeProcedureOnlineCubit.state.slowStatus) {
+        case RegimenStatus.done:
+          return Text('Bạn đã tiêm cham xong');
+        case RegimenStatus.givingInsulin:
+          return GuideNPH(
+            sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+          );
+        default:
+      }
     }
     return Text(NPHRange().waitingMessage(DateTime.now()));
   }
-  
 }
 
 class GuideNPH extends StatelessWidget {
@@ -50,27 +47,25 @@ class GuideNPH extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     ProcedureState sondeState = sondeProcedureOnlineCubit.state.state;
+    ProcedureState sondeState = sondeProcedureOnlineCubit.state.state;
     num insulinAmount = NPHInsulinSolve().insulinAmount(sondeState: sondeState);
     String guide = NPHInsulinSolve().guide(sondeState: sondeState);
 
-    final CheckedInsulinSubmit checkedInsulinSubmitBloc = 
-    CheckedInsulinSubmit(
-      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-      medicalTakeInsulin: MedicalTakeInsulin(
-        insulinType: InsulinType.NPH,
-         time: DateTime.now(),
-          insulinUI: insulinAmount));
-   
-   
+    final CheckedInsulinSubmit checkedInsulinSubmitBloc = CheckedInsulinSubmit(
+        procedureOnlineCubit: sondeProcedureOnlineCubit,
+        medicalTakeInsulin: MedicalTakeInsulin(
+            insulinType: InsulinType.NPH,
+            time: DateTime.now(),
+            insulinUI: insulinAmount));
+
     return FormBlocListener(
       formBloc: checkedInsulinSubmitBloc,
       onFailure: (ct, st) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Ko cap nhat duoc database'))
-        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Ko cap nhat duoc database')));
       },
-      child: NiceScreen(child: Column(
+      child: NiceScreen(
+          child: Column(
         children: [
           Text('Hướng dẫn: $guide'),
           ElevatedButton(
@@ -80,11 +75,7 @@ class GuideNPH extends StatelessWidget {
             child: Text('Tiêm xong'),
           ),
         ],
-
       )),
     );
   }
 }
-
-
-

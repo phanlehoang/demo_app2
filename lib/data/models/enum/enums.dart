@@ -1,4 +1,3 @@
-
 export '1_enum_to_string.dart';
 export '3_enum_to_name.dart';
 export '2_string_to_enum.dart';
@@ -9,17 +8,18 @@ enum Gender {
   Female,
 }
 
-enum ProcedureType{
+enum ProcedureType {
   TPN,
   Sonde,
   Unknown,
 }
+
 enum ProcedureStatus {
   firstAsk,
   noInsulin,
   yesInsulin,
   highInsulin,
-  finish, 
+  finish,
 }
 
 enum RegimenStatus {
@@ -33,5 +33,6 @@ enum InsulinType {
   Glargine,
   Actrapid,
   NPH,
+  Lantus,
   Unknown,
 }

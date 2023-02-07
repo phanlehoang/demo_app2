@@ -25,11 +25,11 @@ class LoginForm extends StatelessWidget {
       onSubmitting: (context, state) {
         LoadingDialog.show(context);
       },
-      onSuccess: (context, state) {
+      onSuccess: (context, state) async {
         LoadingDialog.hide(context);
         showToast('Đăng nhập thành công');
         //navigate to home screen
-        context.read<BottomNavigatorBarCubit>().update(0);
+        await context.read<BottomNavigatorBarCubit>().update(0);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen()),

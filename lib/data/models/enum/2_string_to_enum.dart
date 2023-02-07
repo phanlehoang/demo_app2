@@ -30,10 +30,10 @@ class StringToEnum {
         return ProcedureStatus.firstAsk;
       case 'noInsulin':
         return ProcedureStatus.noInsulin;
-     
+
       case 'yesInsulin':
         return ProcedureStatus.yesInsulin;
-    
+
       case 'highInsulin':
         return ProcedureStatus.highInsulin;
       case 'finish':
@@ -53,6 +53,8 @@ class StringToEnum {
         return InsulinType.Actrapid;
       case 'NPH':
         return InsulinType.NPH;
+      case 'Lantus':
+        return InsulinType.Lantus;
       case 'Unknown':
         return InsulinType.Unknown;
       default:

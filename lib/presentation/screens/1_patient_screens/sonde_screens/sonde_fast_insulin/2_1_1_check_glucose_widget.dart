@@ -16,12 +16,12 @@ import '../../../../../logic/1_patient_blocs/medical_blocs/sonde_blocs/check_glu
 class CheckGlucoseWidget extends StatelessWidget {
   const CheckGlucoseWidget({
     super.key,
-    required this.sondeProcedureOnlineCubit,
+    required this.procedureOnlineCubit,
   });
   //query reference for state
   // doc Sonde -> col RegimenFastInsulin -> doc RegimenState
 
-  final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
+  final procedureOnlineCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,7 @@ class CheckGlucoseWidget extends StatelessWidget {
         Text('Nhập glucose:'),
         BlocProvider<CheckGlucoseForm>(
           create: (_) => CheckGlucoseForm(
-            sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-            
+            procedureOnlineCubit: procedureOnlineCubit,
           ),
           child: Builder(
             builder: (context) {
