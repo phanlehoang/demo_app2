@@ -44,6 +44,12 @@ ThemeData winterTheme(Brightness brightness) {
         ),
       ),
     ),
+    //muốn con trỏ chuột cùng màu với text
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: brightness == Brightness.light ? Colors.black : Colors.white,
+      selectionColor: Colors.blueAccent,
+      selectionHandleColor: Colors.blueAccent,
+    ),
     //how to make drop down field seperate by lines
 
     inputDecorationTheme: InputDecorationTheme(
@@ -51,6 +57,7 @@ ThemeData winterTheme(Brightness brightness) {
       border: UnderlineInputBorder(
         borderRadius: BorderRadius.circular(10),
       ),
+
       //set the color of the input text
       filled: true,
       fillColor: //cardthem color

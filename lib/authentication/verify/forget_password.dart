@@ -14,14 +14,14 @@ enum AuthStatus {
   unknown,
 }
 
-class ForgetPassScreen extends StatefulWidget {
-  const ForgetPassScreen({Key? key}) : super(key: key);
+class ForgetPasswordScreen extends StatefulWidget {
+  const ForgetPasswordScreen({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPassScreen> createState() => _ForgetPassScreenState();
+  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
 }
 
-class _ForgetPassScreenState extends State<ForgetPassScreen> {
+class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   String _passwordReceiveFromFireStore = "";
   String _receiveEmailInput = "";
   final TextEditingController _emailController = TextEditingController();

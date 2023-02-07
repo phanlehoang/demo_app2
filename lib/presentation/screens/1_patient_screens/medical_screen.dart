@@ -12,10 +12,9 @@ import '../../../data/models/2_profile.dart';
 import '../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../widgets/bars/patient_navigator_bar.dart';
+import '../../widgets/nice_widgets/0.1_nice_internet_screen.dart';
 import '../../widgets/status/loading_dialog.dart';
 import 'sonde_screens/0_sonde_screen.dart';
-
-
 
 class PatientMedicalScreen extends StatelessWidget {
   const PatientMedicalScreen({super.key});
@@ -29,33 +28,26 @@ class PatientMedicalScreen extends StatelessWidget {
       body: NiceInternetScreen(
         child: Column(
           children: [
-            BlocBuilder<CurrentProfileCubit, Profile>
-            (builder: (ct, st){
-                //sonde procedure bloc
-                String sondeProcedureId = st.currentProcedureId;
-               switch(st.procedureType){
-                  case ProcedureType.Sonde:
-                    return SondeScreen(
-                      sondeProcedureOnlineCubit: 
-                      SondeProcedureOnlineCubit(
-                       profile: context.read<CurrentProfileCubit>().state,
-                        procedureId: sondeProcedureId,
-                        ),
-                      );
-                  case ProcedureType.TPN:
-                    return Text('TPN');
-                  case ProcedureType.Unknown:
-                    return Text('Unknown');
-                    
-                  default:
-                    return Container();
-               }
-            }
-            ),
+            BlocBuilder<CurrentProfileCubit, Profile>(builder: (ct, st) {
+              //sonde procedure bloc
+              String sondeProcedureId = st.currentProcedureId;
+              switch (st.procedureType) {
+                case ProcedureType.Sonde:
+                  return SondeScreen(
+                    sondeProcedureOnlineCubit: SondeProcedureOnlineCubit(
+                      profile: context.read<CurrentProfileCubit>().state,
+                      procedureId: sondeProcedureId,
+                    ),
+                  );
+                case ProcedureType.TPN:
+                  return Text('TPN');
+                case ProcedureType.Unknown:
+                  return Text('Unknown');
 
-          
-          
-
+                default:
+                  return Container();
+              }
+            }),
           ],
         ),
       ),

@@ -17,64 +17,63 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/2.3_current_profile_cubit.dart';
 import '../../../../data/models/models_export.dart';
 import '../../../../data/models/sonde/7_sonde_procedure.dart';
+import '../../../widgets/nice_widgets/0.1_nice_internet_screen.dart';
 
 class SondeStatusWidget extends StatelessWidget {
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
-   SondeStatusWidget({super.key,
-    required this.sondeProcedureOnlineCubit,});
+  SondeStatusWidget({
+    super.key,
+    required this.sondeProcedureOnlineCubit,
+  });
 
   @override
   Widget build(BuildContext context) {
     final Profile profile = context.read<CurrentProfileCubit>().state;
 
     return NiceInternetScreen(
-      child: Column(
-        children: [
-          BlocBuilder(
-            bloc: sondeProcedureOnlineCubit,
-            builder: (ct,st){
-              final SondeProcedure sondeProcedure = st as SondeProcedure;
-              switch (sondeProcedure.state.status) {
-                case ProcedureStatus.firstAsk:
-                  return FirstAskWidget(sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
-                case ProcedureStatus.noInsulin:
-                  return FastInsulinWidget(
-                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                   );
-                case ProcedureStatus.yesInsulin:
-                  return Column(
-                    children: [
-                      SlowInsulinWidget(
-                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                      ),
-                      FastInsulinWidget(
-                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                       ),
-                    ],
-                  );
-                case ProcedureStatus.highInsulin:
-                  return Column(
-                    children: [
-                      SlowInsulinWidget(
-                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                      ),
-                      FastInsulinWidget(
-                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                       ),
-                    ],
-                  );
-                case ProcedureStatus.finish:
-                  return Text('Chuyển sang phác đồ bơm điện');
-                default:
-                  return Container();
-              }
-            },
-            
-            ),
-        ]
-                     
-      ),
+      child: Column(children: [
+        BlocBuilder(
+          bloc: sondeProcedureOnlineCubit,
+          builder: (ct, st) {
+            final SondeProcedure sondeProcedure = st as SondeProcedure;
+            switch (sondeProcedure.state.status) {
+              case ProcedureStatus.firstAsk:
+                return FirstAskWidget(
+                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
+              case ProcedureStatus.noInsulin:
+                return FastInsulinWidget(
+                  sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                );
+              case ProcedureStatus.yesInsulin:
+                return Column(
+                  children: [
+                    SlowInsulinWidget(
+                      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                    ),
+                    FastInsulinWidget(
+                      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                    ),
+                  ],
+                );
+              case ProcedureStatus.highInsulin:
+                return Column(
+                  children: [
+                    SlowInsulinWidget(
+                      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                    ),
+                    FastInsulinWidget(
+                      sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                    ),
+                  ],
+                );
+              case ProcedureStatus.finish:
+                return Text('Chuyển sang phác đồ bơm điện');
+              default:
+                return Container();
+            }
+          },
+        ),
+      ]),
     );
   }
 }
-
