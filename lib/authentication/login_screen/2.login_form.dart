@@ -71,7 +71,7 @@ class LoginForm extends StatelessWidget {
                 children: [
                   ButtonToSignUp(),
                   //cách
-                  SizedBox(width: 10),
+                  SizedBox(width: 50),
                   ButtonToForgetPassword(),
                 ],
               ),

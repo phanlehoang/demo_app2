@@ -40,6 +40,7 @@ class TPNGlucoseSolve {
       regimen: regimen,
       procedureState: procedureState,
     );
+    if (insulin == 0) return 'Không cần tiêm thêm insulin.';
     return 'Tiêm ${insulin} UI Insulin Actrapid';
   }
 }

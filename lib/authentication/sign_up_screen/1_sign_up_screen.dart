@@ -21,9 +21,6 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Đăng kí'),
-      ),
       body: Center(
         child: DiagonalStreakDecorationScreen(
           child: Column(
