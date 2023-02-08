@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'enum/enums.dart';
 
 class Profile {
-  String id = '';
+  String id = 'Unknown';
   String name = 'Unknown';
   num weight = 0;
   //height
@@ -28,7 +28,7 @@ class Profile {
     required this.address,
     required this.phone,
     required this.gender,
-     this.procedureType = ProcedureType.Unknown,
+    this.procedureType = ProcedureType.Unknown,
     required this.room,
   });
   //toMap
@@ -58,8 +58,9 @@ class Profile {
         name: map['name'],
         weight: map['weight'],
         height: map['height'],
-        currentProcedureId: map['currentProcedureId']!=null ?
-         map['currentProcedureId'] : 'Unknown',
+        currentProcedureId: map['currentProcedureId'] != null
+            ? map['currentProcedureId']
+            : 'Unknown',
         birthday: map['birthday'].toDate(),
         address: map['address'],
         phone: map['phone'],
@@ -82,16 +83,23 @@ class Profile {
       currentProcedureId: currentProcedureId,
     );
   }
-  DocumentReference ref(){
-    return FirebaseFirestore.instance.collection('groups').doc(room)
-    .collection('patients').doc(id);
-  }
 
+  DocumentReference ref() {
+    return FirebaseFirestore.instance
+        .collection('groups')
+        .doc(room)
+        .collection('patients')
+        .doc(id);
+  }
 
   DocumentReference regimenStateStream() {
-    return ref().collection('procedureTypes').doc('Sonde')
-    .collection('regimen').doc('state');
+    return ref()
+        .collection('procedureTypes')
+        .doc('Sonde')
+        .collection('regimen')
+        .doc('state');
   }
+
   //toString
   @override
   String toString() {

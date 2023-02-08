@@ -1,5 +1,6 @@
 import 'package:demo_app2/logic/global/current_group/current_group_id_cubit.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/nice_export.dart';
+import 'package:demo_app2/presentation/widgets/status/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,8 +39,7 @@ class WizardFormScreen extends StatelessWidget {
                 //   LoadingDialog.hide(context),
                 onSuccess: (context, state) {
                   if (state.stepCompleted == 3) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Tạo hồ sơ thành công')));
+                    showToast('Tạo hồ sơ thành công');
                     Navigator.of(context).pop();
                     Navigator.of(context).pushReplacementNamed('/');
                   }
@@ -69,7 +69,7 @@ class WizardFormScreen extends StatelessWidget {
                             weightHeightStep(thisFormBloc),
                             contactAddressStep(thisFormBloc),
                             genderAndBirthday(thisFormBloc),
-                           // procedureType(thisFormBloc)
+                            // procedureType(thisFormBloc)
                           ],
                         ),
                       ),

@@ -9,6 +9,7 @@ import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/2
 import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_fast_insulin/fast_insulin_widget.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_slow_insulin/4_sonde_slow_insulin.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_fast_insulin/tpn_fast_insulin_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_mixing/1_tpn_mixing_widget.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_slow_insulin/tpn_slow_insulin.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,10 +27,10 @@ import '../../../widgets/nice_widgets/0.1_nice_internet_screen.dart';
 import '2_tpn_first_ask_widget.dart';
 
 class TPNStatusWidget extends StatelessWidget {
-  final TPNProcedureOnlineCubit tPNProcedureOnlineCubit;
+  final TPNProcedureOnlineCubit tpnProcedureOnlineCubit;
   TPNStatusWidget({
     super.key,
-    required this.tPNProcedureOnlineCubit,
+    required this.tpnProcedureOnlineCubit,
   });
 
   @override
@@ -39,18 +40,18 @@ class TPNStatusWidget extends StatelessWidget {
     return NiceInternetScreen(
       child: Column(children: [
         BlocBuilder(
-          bloc: tPNProcedureOnlineCubit,
+          bloc: tpnProcedureOnlineCubit,
           builder: (ct, st) {
             final tpnProcedure = st as MedicalProcedure;
             switch (tpnProcedure.state.status) {
               case ProcedureStatus.firstAsk:
                 return TPNFirstAskWidget(
-                    procedureOnlineCubit: tPNProcedureOnlineCubit);
+                    procedureOnlineCubit: tpnProcedureOnlineCubit);
               case ProcedureStatus.noInsulin:
                 return Column(
                   children: [
                     TPNFastInsulinWidget(
-                        procedureOnlineCubit: tPNProcedureOnlineCubit)
+                        procedureOnlineCubit: tpnProcedureOnlineCubit)
                   ],
                 );
               //yesInsulin
@@ -58,9 +59,9 @@ class TPNStatusWidget extends StatelessWidget {
                 return Column(
                   children: [
                     TPNSlowInsulinWidget(
-                        procedureOnlineCubit: tPNProcedureOnlineCubit),
+                        procedureOnlineCubit: tpnProcedureOnlineCubit),
                     TPNFastInsulinWidget(
-                        procedureOnlineCubit: tPNProcedureOnlineCubit)
+                        procedureOnlineCubit: tpnProcedureOnlineCubit)
                   ],
                 );
               //highInsulin
@@ -68,9 +69,9 @@ class TPNStatusWidget extends StatelessWidget {
                 return Column(
                   children: [
                     TPNSlowInsulinWidget(
-                        procedureOnlineCubit: tPNProcedureOnlineCubit),
+                        procedureOnlineCubit: tpnProcedureOnlineCubit),
                     TPNFastInsulinWidget(
-                        procedureOnlineCubit: tPNProcedureOnlineCubit)
+                        procedureOnlineCubit: tpnProcedureOnlineCubit)
                   ],
                 );
               case ProcedureStatus.finish:

@@ -1,5 +1,6 @@
 import 'package:demo_app2/logic/global/current_group/current_group_id_cubit.dart';
 import 'package:demo_app2/presentation/widgets/status/loading_dialog.dart';
+import 'package:demo_app2/presentation/widgets/status/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -37,11 +38,7 @@ class FindGroup extends StatelessWidget {
             },
             onSuccess: (context, state) {
               LoadingDialog.hide(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Đã tìm thấy nhóm.'),
-                ),
-              );
+              showToast('Đã tìm thấy nhóm');
             },
             onFailure: (context, state) {
               LoadingDialog.hide(context);

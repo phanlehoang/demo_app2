@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_app2/data/models/2_profile.dart';
 import 'package:demo_app2/data/models/TPN/1_TPN_procedure.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
@@ -29,30 +30,44 @@ class PatientProceduresScreen extends StatelessWidget {
         flexibleSpace: PatientNavigatorBar(),
       ),
       body: NiceInternetScreen(
-        child: Column(
-          children: [
-            //TODO: add a button to add a procedure
-            NiceButtons(
-              stretch: false,
-              width: 50,
-              onTap: (_) {
-                //navigator to create procedure screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (createProcedureContext) => CreateProcedure(),
-                  ),
-                );
-              },
-              child: //icon to add a procedure
-                  Icon(Icons.add_box),
-            ),
-
-            ListProcedures(),
-          ],
+        child: BlocBuilder<CurrentProfileCubit, Profile>(
+          builder: (context, state) {
+            if (state.id == '') return Text('Chưa chọn bệnh nhân');
+            return Column(
+              children: [
+                ButtonToCreateProcedure(),
+                ListProcedures(),
+              ],
+            );
+          },
         ),
       ),
       bottomNavigationBar: BottomNavigatorBar(),
+    );
+  }
+}
+
+class ButtonToCreateProcedure extends StatelessWidget {
+  const ButtonToCreateProcedure({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return NiceButtons(
+      stretch: false,
+      width: 50,
+      onTap: (_) {
+        //navigator to create procedure screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (createProcedureContext) => CreateProcedure(),
+          ),
+        );
+      },
+      child: //icon to add a procedure
+          Icon(Icons.add_box),
     );
   }
 }

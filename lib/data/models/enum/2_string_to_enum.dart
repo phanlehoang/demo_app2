@@ -61,16 +61,4 @@ class StringToEnum {
         return InsulinType.Actrapid;
     }
   }
-
-  //regimenStatus
-  static RegimenStatus stringToRegimenStatus(String? r) {
-    switch (r) {
-      case 'checkingGlucose':
-        return RegimenStatus.checkingGlucose;
-      case 'givingInsulin':
-        return RegimenStatus.givingInsulin;
-      default:
-        return RegimenStatus.checkingGlucose;
-    }
-  }
 }

@@ -1,6 +1,7 @@
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/TPN_screens/1_TPN_status_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_mixing/1_tpn_mixing_widget.dart';
 import 'package:demo_app2/presentation/widgets/images/doctor_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +66,7 @@ class TPNScreen extends StatelessWidget {
                     return Text('Phác đồ này đã xong');
                   }
                   return TPNDoing(
-                    tPNProcedureOnlineCubit: tPNProcedureOnlineCubit,
+                    tpnProcedureOnlineCubit: tPNProcedureOnlineCubit,
                   );
                 }),
           ],
@@ -78,10 +79,10 @@ class TPNScreen extends StatelessWidget {
 class TPNDoing extends StatelessWidget {
   const TPNDoing({
     super.key,
-    required this.tPNProcedureOnlineCubit,
+    required this.tpnProcedureOnlineCubit,
   });
 
-  final TPNProcedureOnlineCubit tPNProcedureOnlineCubit;
+  final TPNProcedureOnlineCubit tpnProcedureOnlineCubit;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +95,7 @@ class TPNDoing extends StatelessWidget {
             return Text(t.toString());
           },
         ),
+        TPNMixingWidget(tpnProcedureOnlineCubit: tpnProcedureOnlineCubit),
         BlocBuilder<InTPNRange, int?>(
           builder: (context, state) {
             if (state == null) {
@@ -101,9 +103,8 @@ class TPNDoing extends StatelessWidget {
             } else {
               return Column(
                 children: [
-                  // Text(tPNProcedureOnlineCubit.state.toString()),
                   TPNStatusWidget(
-                      tPNProcedureOnlineCubit: tPNProcedureOnlineCubit),
+                      tpnProcedureOnlineCubit: tpnProcedureOnlineCubit),
                 ],
               );
             }

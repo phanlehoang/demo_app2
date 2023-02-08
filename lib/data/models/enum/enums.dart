@@ -26,6 +26,7 @@ enum RegimenStatus {
   error,
   checkingGlucose,
   givingInsulin,
+  guideMixing,
   done,
 }
 

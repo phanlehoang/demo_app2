@@ -75,7 +75,7 @@ class LoadingDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: () async => true,
+        onWillPop: () async => false,
         child: NiceContainer(
           child: Container(
               width: MediaQuery.of(context).size.width * 0.3,

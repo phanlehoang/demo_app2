@@ -67,13 +67,7 @@ class TPNGiveFastInsulinWidget extends StatelessWidget {
                           child: Builder(builder: (_) {
                             return FormBlocListener<CheckedInsulinSubmit,
                                 String, String>(
-                              onSuccess: (cc, state) {
-                                ScaffoldMessenger.of(cc).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Success'),
-                                  ),
-                                );
-                              },
+                              onSuccess: (cc, state) {},
                               onFailure: (cc, state) {
                                 ScaffoldMessenger.of(cc).showSnackBar(
                                   SnackBar(
