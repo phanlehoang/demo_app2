@@ -14,7 +14,7 @@ class NiceButton extends StatelessWidget {
       // startColor: Colors.indigo,
       // endColor: Colors.indigo.shade700,
       // borderColor: Colors.indigo.shade800,
-      height: 50,
+      height: 45,
       width: getWidth(text),
       stretch: false,
       onTap: (finish) {

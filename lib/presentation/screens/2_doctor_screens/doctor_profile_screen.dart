@@ -42,10 +42,6 @@ class DoctorProfileScreen extends StatelessWidget {
           child: Column(
         //button
         children: [
-          BlocProvider(
-            create: (context) => CounterCubit(),
-            child: CounterWidget(),
-          ),
           DoctorInformation(currentDoctorCubit: currentDoctorCubit),
           BlocBuilder(
             bloc: context.read<RememberLoginCubit>(),
@@ -84,12 +80,7 @@ class DoctorInformation extends StatelessWidget {
           bloc: currentDoctorCubit,
           builder: (context, st) {
             final state = st as Doctor;
-            return Column(
-              children: [
-                Text(state.fullName),
-                Text(state.email),
-              ],
-            );
+            return Column();
           },
         ),
       ],
