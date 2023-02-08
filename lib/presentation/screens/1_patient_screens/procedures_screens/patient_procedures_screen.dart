@@ -32,7 +32,8 @@ class PatientProceduresScreen extends StatelessWidget {
       body: NiceInternetScreen(
         child: BlocBuilder<CurrentProfileCubit, Profile>(
           builder: (context, state) {
-            if (state.id == '') return Text('Chưa chọn bệnh nhân');
+            if (state.id == '' || state.id == 'Unknown')
+              return Text('Chưa chọn bệnh nhân');
             return Column(
               children: [
                 ButtonToCreateProcedure(),
