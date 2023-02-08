@@ -5,12 +5,13 @@ import '../medical/7_medical_procedure.dart';
 import '1_TPN_procedure.dart';
 
 class TPNProcedureInit {
-  static TPNProcedure noInsulin() {
+  static TPNProcedure noInsulin(num weight) {
     return TPNProcedure(
         beginTime: DateTime.now(),
         state: ProcedureState(
           status: ProcedureStatus.noInsulin,
           slowInsulinType: InsulinType.Lantus,
+          weight: weight,
         ),
         regimens: [
           Regimen(
@@ -21,22 +22,24 @@ class TPNProcedureInit {
         ]);
   }
 
-  static TPNProcedure firstAsk() {
+  static TPNProcedure firstAsk(num weight) {
     return TPNProcedure(
       beginTime: DateTime.now(),
       state: ProcedureState(
           status: ProcedureStatus.firstAsk,
-          slowInsulinType: InsulinType.Lantus),
+          slowInsulinType: InsulinType.Lantus,
+          weight: weight),
       regimens: [],
     );
   }
 
-  static TPNProcedure yesInsulin() {
+  static TPNProcedure yesInsulin(num weight) {
     return TPNProcedure(
         beginTime: DateTime.now(),
         state: ProcedureState(
           status: ProcedureStatus.yesInsulin,
           slowInsulinType: InsulinType.Lantus,
+          weight: weight,
         ),
         regimens: [
           Regimen(

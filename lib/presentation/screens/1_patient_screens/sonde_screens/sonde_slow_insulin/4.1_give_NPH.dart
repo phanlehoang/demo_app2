@@ -10,6 +10,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../../data/models/medical/6_procedure_state.dart';
 import '../../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
+import '../../../../widgets/nice_widgets/2_nice_button.dart';
 
 class GiveNPH extends StatelessWidget {
   //add sondeProcedureOnlineCubit
@@ -26,7 +27,13 @@ class GiveNPH extends StatelessWidget {
     if (range != null) {
       switch (sondeProcedureOnlineCubit.state.slowStatus) {
         case RegimenStatus.done:
-          return Text('Bạn đã tiêm cham xong');
+          return Column(
+            children: [
+              Text('Đã tiêm xong NPH.'),
+              //message next time
+              Text(NPHRange().waitingMessage(DateTime.now())),
+            ],
+          );
         case RegimenStatus.givingInsulin:
           return GuideNPH(
             sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
@@ -68,12 +75,11 @@ class GuideNPH extends StatelessWidget {
           child: Column(
         children: [
           Text('Hướng dẫn: $guide'),
-          ElevatedButton(
-            onPressed: () {
-              checkedInsulinSubmitBloc.submit();
-            },
-            child: Text('Tiêm xong'),
-          ),
+          NiceButton(
+              text: 'Tiêm xong',
+              onTap: () {
+                checkedInsulinSubmitBloc.submit();
+              }),
         ],
       )),
     );

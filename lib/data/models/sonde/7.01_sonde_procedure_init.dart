@@ -5,12 +5,11 @@ import '../medical/7_medical_procedure.dart';
 import '7_sonde_procedure.dart';
 
 class SondeProcedureInit {
-  static SondeProcedure noInsulin() {
+  static SondeProcedure noInsulin(num weight) {
     return SondeProcedure(
         beginTime: DateTime.now(),
-        state: ProcedureState(
-          status: ProcedureStatus.noInsulin,
-        ),
+        state:
+            ProcedureState(status: ProcedureStatus.noInsulin, weight: weight),
         regimens: [
           Regimen(
             beginTime: DateTime.now(),
@@ -20,21 +19,23 @@ class SondeProcedureInit {
         ]);
   }
 
-  static SondeProcedure firstAsk() {
+  static SondeProcedure firstAsk(num weight) {
     return SondeProcedure(
       beginTime: DateTime.now(),
       state: ProcedureState(
         status: ProcedureStatus.firstAsk,
+        weight: weight,
       ),
       regimens: [],
     );
   }
 
-  static SondeProcedure yesInsulin() {
+  static SondeProcedure yesInsulin(num weight) {
     return SondeProcedure(
         beginTime: DateTime.now(),
         state: ProcedureState(
           status: ProcedureStatus.yesInsulin,
+          weight: weight,
         ),
         regimens: [
           Regimen(

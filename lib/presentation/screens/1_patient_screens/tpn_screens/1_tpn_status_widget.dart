@@ -9,6 +9,7 @@ import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/2
 import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_fast_insulin/fast_insulin_widget.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/sonde_screens/sonde_slow_insulin/4_sonde_slow_insulin.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_fast_insulin/tpn_fast_insulin_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_slow_insulin/tpn_slow_insulin.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,6 +57,8 @@ class TPNStatusWidget extends StatelessWidget {
               case ProcedureStatus.yesInsulin:
                 return Column(
                   children: [
+                    TPNSlowInsulinWidget(
+                        procedureOnlineCubit: tPNProcedureOnlineCubit),
                     TPNFastInsulinWidget(
                         procedureOnlineCubit: tPNProcedureOnlineCubit)
                   ],
@@ -64,6 +67,8 @@ class TPNStatusWidget extends StatelessWidget {
               case ProcedureStatus.highInsulin:
                 return Column(
                   children: [
+                    TPNSlowInsulinWidget(
+                        procedureOnlineCubit: tPNProcedureOnlineCubit),
                     TPNFastInsulinWidget(
                         procedureOnlineCubit: tPNProcedureOnlineCubit)
                   ],

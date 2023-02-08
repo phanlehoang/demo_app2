@@ -36,3 +36,19 @@ class GlargineInsulinSolve extends SondeSlowInsulinSolve {
     return 'Tiem Glargine ${insulinAmount(sondeState: sondeState)} UI';
   }
 }
+
+//Lantus Insulin Solve
+class LantusInsulinSolve extends SondeSlowInsulinSolve {
+  LantusInsulinSolve() : super(insulinType: InsulinType.Lantus);
+  num insulinAmount({required ProcedureState sondeState}) {
+    num init = sondeState.weight * 0.2;
+    if (sondeState.status == ProcedureStatus.highInsulin) {
+      return (init * 1.1).round();
+    }
+    return init.round();
+  }
+
+  String guide({required ProcedureState sondeState}) {
+    return 'Tiem Lantus ${insulinAmount(sondeState: sondeState)} UI';
+  }
+}

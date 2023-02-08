@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/data_provider/sonde_provider/sonde_state_provider.dart';
+import 'package:demo_app2/data/models/TPN/2_TPN_procedure_init.dart';
+import 'package:demo_app2/data/models/TPN/3_TPN_procedure_online_cubit.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
@@ -81,7 +83,7 @@ class TPNFirstAskWidget extends StatelessWidget {
 }
 
 class TPNFirstAskBloc extends FormBloc<String, String> {
-  final procedureOnlineCubit;
+  final TPNProcedureOnlineCubit procedureOnlineCubit;
   final yesOrNoInsulin = SelectFieldBloc(
     items: ['Yes', 'No'],
     validators: [VietnameseFieldBlocValidators.required],
@@ -100,15 +102,19 @@ class TPNFirstAskBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     print('onSubmitting');
-    ProcedureStatus sondeStatus = yesOrNoInsulin.value == 'Yes'
-        ? ProcedureStatus.yesInsulin
-        : ProcedureStatus.noInsulin;
+    num weight = procedureOnlineCubit.profile.weight;
+    ProcedureState procedureState = ProcedureState(
+      status: yesOrNoInsulin.value == 'Yes'
+          ? ProcedureStatus.yesInsulin
+          : ProcedureStatus.noInsulin,
+      slowInsulinType: InsulinType.Lantus,
+      weight: weight,
+    );
     //update sonde status
     try {
-      await procedureOnlineCubit.updateProcedureStateStatus(ProcedureState(
-        status: sondeStatus,
-        weight: procedureOnlineCubit.profile.weight,
-      ));
+      await procedureOnlineCubit.updateProcedureStateStatus(
+        procedureState,
+      );
     } catch (e) {
       emitFailure(failureResponse: e.toString());
     }

@@ -37,7 +37,8 @@ class CreateProcedureFormBloc extends FormBloc<String, String> {
   Future<void> _createProcedure() async {
     if (method.value == 'Sonde') {
       //sonde init procedure
-      final SondeProcedure sondeProcedure = SondeProcedureInit.firstAsk();
+      final SondeProcedure sondeProcedure =
+          SondeProcedureInit.firstAsk(profile.weight);
       var addProcedure = await PatientRef.getPatientRef(profile)
           .collection('procedures')
           .doc(sondeProcedure.beginTime.toString())
@@ -45,7 +46,8 @@ class CreateProcedureFormBloc extends FormBloc<String, String> {
     }
     if (method.value == 'TPN') {
       //tpn init procedure
-      final TPNProcedure tpnProcedure = TPNProcedureInit.firstAsk();
+      final TPNProcedure tpnProcedure =
+          TPNProcedureInit.firstAsk(profile.weight);
       var addProcedure = await PatientRef.getPatientRef(profile)
           .collection('procedures')
           .doc(tpnProcedure.beginTime.toString())

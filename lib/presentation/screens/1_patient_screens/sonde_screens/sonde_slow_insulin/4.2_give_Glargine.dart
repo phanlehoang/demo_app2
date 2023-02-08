@@ -4,6 +4,7 @@ import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
 import 'package:demo_app2/data/models/time_controller/2_sonde_range.dart';
 import 'package:demo_app2/logic/1_patient_blocs/medical_blocs/sonde_blocs/check_insulin_submit_bloc.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
+import 'package:demo_app2/presentation/widgets/nice_widgets/2_nice_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -26,7 +27,13 @@ class GiveGlargine extends StatelessWidget {
     if (range != null) {
       switch (sondeProcedureOnlineCubit.state.slowStatus) {
         case RegimenStatus.done:
-          return Text('Bạn đã tiêm cham xong');
+          return Column(
+            children: [
+              Text('Bạn đã tiêm xong Glargine.'),
+              //message
+              Text(GlargineRange().waitingMessage(DateTime.now())),
+            ],
+          );
         case RegimenStatus.givingInsulin:
           return GuideGlargine(
             sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
@@ -69,12 +76,11 @@ class GuideGlargine extends StatelessWidget {
           child: Column(
         children: [
           Text('Hướng dẫn: $guide'),
-          ElevatedButton(
-            onPressed: () {
-              checkedInsulinSubmitBloc.submit();
-            },
-            child: Text('Tiêm xong'),
-          ),
+          NiceButton(
+              text: 'Tiêm xong',
+              onTap: () {
+                checkedInsulinSubmitBloc.submit();
+              }),
         ],
       )),
     );

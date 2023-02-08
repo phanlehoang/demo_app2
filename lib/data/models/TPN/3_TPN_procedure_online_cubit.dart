@@ -41,8 +41,8 @@ class TPNProcedureOnlineCubit extends MedicalProcedureCubit {
         emit(TPNProcedure(
           beginTime: state.beginTime,
           state: ProcedureState(
-            status: ProcedureStatus.firstAsk,
-          ),
+              status: ProcedureStatus.firstAsk,
+              slowInsulinType: InsulinType.Lantus),
           regimens: state.regimens,
         ));
         return;

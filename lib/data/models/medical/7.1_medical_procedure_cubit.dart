@@ -36,6 +36,8 @@ class MedicalProcedureCubit extends Cubit<MedicalProcedure> {
   //update SondeState
   Future<void> updateProcedureStateStatus(ProcedureState procedureState) async {
     //add regimens
+    //slow insulin type
+    InsulinType slowInsulinType = procedureState.slowInsulinType;
     switch (procedureState.status) {
       case ProcedureStatus.noInsulin:
         await addRegimen(Regimen(
