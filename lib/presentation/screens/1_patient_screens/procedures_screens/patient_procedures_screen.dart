@@ -36,7 +36,8 @@ class PatientProceduresScreen extends StatelessWidget {
               return Text('Chưa chọn bệnh nhân');
             return Column(
               children: [
-                ButtonToCreateProcedure(),
+                //   ButtonToCreateProcedure(),
+                CreateProcedure(),
                 ListProcedures(),
               ],
             );
