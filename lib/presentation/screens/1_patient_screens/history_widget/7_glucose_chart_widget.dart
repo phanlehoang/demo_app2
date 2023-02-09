@@ -60,7 +60,19 @@ class TrialChart extends StatelessWidget {
                 // Label text for the reference plot line
                 textStyle: TextStyle(color: Colors.green),
                 // provided dash array to render the line in dashed format.
-                dashArray: <double>[10, 10])
+                dashArray: <double>[10, 10]),
+            PlotBand(
+                isVisible: true,
+                // provided the same y-value to start and end property in order to render the plotline for that y-value.
+                start: 8.3,
+                end: 11.1,
+                borderWidth: 1,
+                color: Color.fromARGB(255, 255, 255, 0),
+                borderColor: Color.fromARGB(255, 255, 255, 0),
+                // Label text for the reference plot line
+                textStyle: TextStyle(color: Colors.green),
+                // provided dash array to render the line in dashed format.
+                dashArray: <double>[10, 10]),
           ],
           majorGridLines: MajorGridLines(
             width: 0,
