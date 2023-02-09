@@ -16,7 +16,7 @@ class GlucoseChartWidget extends StatelessWidget {
     return Column(
       children: [
         //đồ thị với syncfusion chart
-        //  DongChart(medicalCheckGlucoses: medicalCheckGlucoses),
+        // DongChart(medicalCheckGlucoses: medicalCheckGlucoses),
         TrialChart(medicalCheckGlucoses: medicalCheckGlucoses)
       ],
     );
