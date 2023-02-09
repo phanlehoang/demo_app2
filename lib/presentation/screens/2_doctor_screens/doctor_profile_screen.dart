@@ -11,6 +11,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import '../../../authentication/login_screen/1_login_screen.dart';
 import '../../../data/data_provider/regimen_provider.dart';
 import '../../../data/models/doctor/doctor.dart';
 import '../../../data/models/medical/2_medical_check_glucose.dart';
@@ -47,9 +48,24 @@ class DoctorProfileScreen extends StatelessWidget {
             bloc: context.read<RememberLoginCubit>(),
             builder: (context, st) {
               final state = st as String;
+              final RememberLoginCubit rememberLoginCubit =
+                  context.read<RememberLoginCubit>();
+              final oldContext = context;
               return Column(
                 children: [
-                  Text(state.toString()),
+                  Text('email:   ' + state.toString()),
+                  ElevatedButton(
+                    onPressed: () {
+                      rememberLoginCubit.signOut();
+                      Navigator.push(
+                        oldContext,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    },
+                    child: Text('Đăng xuất'),
+                  ),
                 ],
               );
             },

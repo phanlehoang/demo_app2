@@ -27,21 +27,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Cài đặt'),
       ),
-      body: Column(
-        children: [
-          //nút đăng xuất
-          ElevatedButton(
-            onPressed: () async {
-              await rememberLoginCubit.signOut();
-              await Navigator.pushReplacement(
-                oldContext,
-                MaterialPageRoute(builder: (context) => LoginScreen()),
-              );
-            },
-            child: Text('Đăng xuất'),
-          ),
-        ],
-      ),
+      body: Column(),
       bottomNavigationBar: BottomNavigatorBar(),
     );
   }
