@@ -6,7 +6,7 @@ import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../../data/models/enum/enums.dart';
 import '../../../../logic/status_cubit/navigator_bar_cubit.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
-import 'nice_date_time.dart';
+import '../history_widget/nice_date_time.dart';
 
 class TPNProcedureItem extends StatelessWidget {
   const TPNProcedureItem({

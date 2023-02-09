@@ -716,6 +716,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "syncfusion_flutter_charts",
+      "rootUri": "file:///C:/Users/ThinkPad/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_charts-20.4.49",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/Users/ThinkPad/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-20.4.49",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "synchronized",
       "rootUri": "file:///C:/Users/ThinkPad/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.0.1",
       "packageUri": "lib/",
@@ -818,7 +830,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-02-09T03:26:53.483778Z",
+  "generated": "2023-02-09T03:55:16.796129Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-122.0.dev"
 }

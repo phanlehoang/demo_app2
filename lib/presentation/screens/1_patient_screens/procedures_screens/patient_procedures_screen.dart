@@ -18,7 +18,7 @@ import '../../../../logic/global/current_group/current_group_id_cubit.dart';
 import '../../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../../widgets/bars/patient_navigator_bar.dart';
 import '../../../widgets/nice_widgets/0_nice_screen.dart';
-import 'nice_date_time.dart';
+import '../history_widget/nice_date_time.dart';
 
 class PatientProceduresScreen extends StatelessWidget {
   const PatientProceduresScreen({super.key});

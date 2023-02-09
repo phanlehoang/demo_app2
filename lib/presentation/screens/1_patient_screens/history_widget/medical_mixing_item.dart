@@ -1,5 +1,5 @@
 import 'package:demo_app2/data/models/medical/2_medical_check_glucose.dart';
-import 'package:demo_app2/presentation/screens/1_patient_screens/procedures_screens/nice_date_time.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/nice_date_time.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/models/enum/1_enum_to_string.dart';
