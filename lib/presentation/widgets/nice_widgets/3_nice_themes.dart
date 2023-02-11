@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 //import google fonts
-import 'package:google_fonts/google_fonts.dart';
 
 //winter theme
 const MaterialColor winterColor = MaterialColor(

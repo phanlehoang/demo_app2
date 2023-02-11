@@ -20,7 +20,7 @@ class SondeStatusUpdate {
     await sonde.update({
       'status': EnumToString.enumToString(sondeStatus),
     }).catchError((error) {
-      return error.toString();
+      return error;
     });
     //nếu error thì return String error
     return null;
@@ -45,7 +45,7 @@ class SondeStateCreate {
       'weight': sondeState.weight,
       'bonusInsulin': 0,
     }).catchError((error) {
-      return error.toString();
+      return error;
     });
     //nếu error thì return String error
     return null;

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/2.3_current_profile_cubit.dart';
 import 'package:demo_app2/logic/status_cubit/navigator_bar_cubit.dart';
-import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nice_buttons/nice_buttons.dart';
@@ -98,7 +97,6 @@ class ListPatients extends StatelessWidget {
                           Text(
                             patients[i]['profile']['procedureType'],
                             style: TextStyle(fontSize: 15),
-                          
                           ),
                         ],
                       ),
@@ -107,7 +105,7 @@ class ListPatients extends StatelessWidget {
                         context.read<CurrentProfileCubit>().choose(
                               Profile.fromMap(patients[i]['profile']),
                             );
-                       Navigator.of(context).pushReplacementNamed('/patient');
+                        Navigator.of(context).pushReplacementNamed('/patient');
                         context.read<PatientNavigatorBarCubit>().update(0);
                         context.read<BottomNavigatorBarCubit>().update(1);
                       },
