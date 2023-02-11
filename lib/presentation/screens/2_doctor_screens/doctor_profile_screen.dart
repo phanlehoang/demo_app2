@@ -53,7 +53,27 @@ class DoctorProfileScreen extends StatelessWidget {
               final oldContext = context;
               return Column(
                 children: [
-                  Text('email:   ' + state.toString()),
+                  Center(
+                      child: Text(
+                    'email:   ' + state.toString(),
+                    style: TextStyle(fontSize: 15),
+                  )),
+                  // edit profile button
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        oldContext,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    },
+                    child: Text('Chỉnh sửa hồ sơ'),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  // sign out button
                   ElevatedButton(
                     onPressed: () {
                       rememberLoginCubit.signOut();
@@ -64,7 +84,20 @@ class DoctorProfileScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text('Đăng xuất'),
+                    // edit button style
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
+                    ),
+                    // thêm icon logout
+                    child: Stack(
+                      children: [
+                        Icon(Icons.logout),
+                      ],
+                    ),
                   ),
                 ],
               );
@@ -91,7 +124,12 @@ class DoctorInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Thông tin bác sĩ'),
+        Center(
+          child: Text(
+            'Thông tin bác sĩ',
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          ),
+        ),
         BlocBuilder(
           bloc: currentDoctorCubit,
           builder: (context, st) {
