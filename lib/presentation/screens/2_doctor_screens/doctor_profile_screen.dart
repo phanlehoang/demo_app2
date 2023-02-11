@@ -57,7 +57,7 @@ class DoctorProfileScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       rememberLoginCubit.signOut();
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         oldContext,
                         MaterialPageRoute(
                           builder: (context) => LoginScreen(),
@@ -102,61 +102,4 @@ class DoctorInformation extends StatelessWidget {
       ],
     );
   }
-}
-
-class CounterWidget extends StatelessWidget {
-  const CounterWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder(
-      bloc: BlocProvider.of<CounterCubit>(context),
-      builder: (context, _state) {
-        final state = _state as CounterState;
-        return Column(
-          children: [
-            Text(state.counterValue.toString()),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<CounterCubit>().increment();
-                  },
-                  child: Text('Increment'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<CounterCubit>().decrement();
-                  },
-                  child: Text('Decrement'),
-                ),
-              ],
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-Regimen testReg() {
-  MedicalTakeInsulin m = MedicalTakeInsulin(
-    time: DateTime(1999),
-    insulinType: InsulinType.Actrapid,
-    insulinUI: 100,
-  );
-  //Medical check glu
-  MedicalCheckGlucose m2 = MedicalCheckGlucose(
-    time: DateTime(1999),
-    glucoseUI: 100,
-  );
-  Regimen r = Regimen(
-    medicalActions: [m, m2],
-    name: 'Regimen 1',
-    beginTime: DateTime.now(),
-  );
-  return r;
 }
