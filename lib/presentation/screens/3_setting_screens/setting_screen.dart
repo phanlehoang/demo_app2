@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:responsive_notebook_background/responsive_notebook_background.dart';
 
 import '../../../data/models/doctor/current_doctor.dart';
 import '../../widgets/bars/bottom_navitgator_bar.dart';
