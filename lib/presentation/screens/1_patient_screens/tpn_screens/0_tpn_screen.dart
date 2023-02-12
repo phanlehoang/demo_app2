@@ -32,7 +32,7 @@ class TPNScreen extends StatelessWidget {
       child: NiceScreen(
         child: Column(
           children: [
-            Text('Phac do TPN'),
+            Text('Phác đồ TPN'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -59,17 +59,7 @@ class DoctorProfileScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 15),
                   )),
                   // edit profile button
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        oldContext,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ),
-                      );
-                    },
-                    child: Text('Chỉnh sửa hồ sơ'),
-                  ),
+
                   SizedBox(
                     height: 50,
                   ),
@@ -93,10 +83,19 @@ class DoctorProfileScreen extends StatelessWidget {
                       ),
                     ),
                     // thêm icon logout
-                    child: Stack(
-                      children: [
-                        Icon(Icons.logout),
-                      ],
+                    child: Container(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.logout),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('Đăng xuất'),
+                        ],
+                      ),
                     ),
                   ),
                 ],
