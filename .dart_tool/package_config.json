@@ -3,11 +3,7 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/_fe_analyzer_shared-52.0.0",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/_fe_analyzer_shared-47.0.0",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -19,21 +15,19 @@
     },
     {
       "name": "analyzer",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/analyzer-5.4.0",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/analyzer-4.7.0",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/archive-3.3.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "args",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.4.0",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/args-2.3.2",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -64,6 +58,18 @@
     {
       "name": "characters",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/characters-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "checked_yaml",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/checked_yaml-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "cli_util",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/cli_util-0.3.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -158,15 +164,6 @@
       "languageVersion": "2.12"
     },
     {
-<<<<<<< Updated upstream
-=======
-      "name": "expand_tap_area",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/expand_tap_area-1.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.17"
-    },
-    {
->>>>>>> Stashed changes
       "name": "fake_async",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/fake_async-1.3.1",
       "packageUri": "lib/",
@@ -329,10 +326,10 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_lints",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_lints-2.0.1",
+      "name": "flutter_launcher_icons",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_launcher_icons-0.11.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_spinkit",
@@ -366,11 +363,7 @@
     },
     {
       "name": "frontend_server_client",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/frontend_server_client-3.2.0",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/frontend_server_client-2.1.3",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -381,15 +374,6 @@
       "languageVersion": "2.15"
     },
     {
-<<<<<<< Updated upstream
-=======
-      "name": "google_fonts",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/google_fonts-3.0.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
->>>>>>> Stashed changes
       "name": "hive",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/hive-2.2.3",
       "packageUri": "lib/",
@@ -420,6 +404,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "image",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/image-3.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.17.0",
       "packageUri": "lib/",
@@ -438,10 +428,10 @@
       "languageVersion": "2.16"
     },
     {
-      "name": "lints",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.0.1",
+      "name": "json_annotation",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/json_annotation-4.8.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "logging",
@@ -535,11 +525,7 @@
     },
     {
       "name": "path_provider_linux",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.1.8",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_linux-2.1.7",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -569,11 +555,7 @@
     },
     {
       "name": "pinput",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/pinput-2.2.23",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/pinput-2.2.21",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -586,6 +568,12 @@
     {
       "name": "plugin_platform_interface",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/plugin_platform_interface-2.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "pointycastle",
+      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/pointycastle-3.6.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -614,15 +602,6 @@
       "languageVersion": "2.17"
     },
     {
-<<<<<<< Updated upstream
-=======
-      "name": "responsive_notebook_background",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/responsive_notebook_background-0.1.5",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
->>>>>>> Stashed changes
       "name": "rxdart",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
@@ -631,51 +610,6 @@
     {
       "name": "salomon_bottom_bar",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/salomon_bottom_bar-3.3.1",
-<<<<<<< Updated upstream
-=======
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "shared_preferences",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.0.17",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "shared_preferences_android",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_android-2.0.15",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "shared_preferences_foundation",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "shared_preferences_linux",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_linux-2.1.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "shared_preferences_platform_interface",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_platform_interface-2.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "shared_preferences_web",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_web-2.0.4",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "shared_preferences_windows",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_windows-2.1.3",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -796,15 +730,12 @@
     {
       "name": "typed_data",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.3.1",
-<<<<<<< Updated upstream
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "universal_platform",
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/universal_platform-1.0.0+1",
-=======
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -852,17 +783,7 @@
     },
     {
       "name": "xdg_directories",
-<<<<<<< Updated upstream
       "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-1.0.0",
-=======
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/xdg_directories-0.2.0+3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "xml",
-      "rootUri": "file:///C:/Users/HoangPhanHoang/AppData/Local/Pub/Cache/hosted/pub.dev/xml-6.1.0",
->>>>>>> Stashed changes
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -885,11 +806,7 @@
       "languageVersion": "2.18"
     }
   ],
-<<<<<<< Updated upstream
-  "generated": "2023-02-11T04:37:42.558742Z",
-=======
-  "generated": "2023-02-11T04:02:49.222667Z",
->>>>>>> Stashed changes
+  "generated": "2023-02-13T05:36:46.827339Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

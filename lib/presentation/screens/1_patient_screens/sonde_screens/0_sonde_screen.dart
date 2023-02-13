@@ -32,7 +32,7 @@ class SondeScreen extends StatelessWidget {
       child: NiceScreen(
         child: Column(
           children: [
-            Text('Phac do Sonde'),
+            Text('Phác đồ Sonde'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
