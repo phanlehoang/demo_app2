@@ -53,10 +53,14 @@ class DoctorProfileScreen extends StatelessWidget {
               final oldContext = context;
               return Column(
                 children: [
-                  Text('email:   ' + state.toString()),
+                  Center(
+                      child: Text(
+                    'email:   ' + state.toString(),
+                    style: TextStyle(fontSize: 15),
+                  )),
+                  // edit profile button
                   ElevatedButton(
                     onPressed: () {
-                      rememberLoginCubit.signOut();
                       Navigator.push(
                         oldContext,
                         MaterialPageRoute(
@@ -64,7 +68,36 @@ class DoctorProfileScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Text('Đăng xuất'),
+                    child: Text('Chỉnh sửa hồ sơ'),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  // sign out button
+                  ElevatedButton(
+                    onPressed: () {
+                      rememberLoginCubit.signOut();
+                      Navigator.pushReplacement(
+                        oldContext,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        ),
+                      );
+                    },
+                    // edit button style
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
+                    ),
+                    // thêm icon logout
+                    child: Stack(
+                      children: [
+                        Icon(Icons.logout),
+                      ],
+                    ),
                   ),
                 ],
               );
@@ -91,7 +124,12 @@ class DoctorInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Thông tin bác sĩ'),
+        Center(
+          child: Text(
+            'Thông tin bác sĩ',
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          ),
+        ),
         BlocBuilder(
           bloc: currentDoctorCubit,
           builder: (context, st) {
@@ -102,61 +140,4 @@ class DoctorInformation extends StatelessWidget {
       ],
     );
   }
-}
-
-class CounterWidget extends StatelessWidget {
-  const CounterWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder(
-      bloc: BlocProvider.of<CounterCubit>(context),
-      builder: (context, _state) {
-        final state = _state as CounterState;
-        return Column(
-          children: [
-            Text(state.counterValue.toString()),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<CounterCubit>().increment();
-                  },
-                  child: Text('Increment'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    context.read<CounterCubit>().decrement();
-                  },
-                  child: Text('Decrement'),
-                ),
-              ],
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-Regimen testReg() {
-  MedicalTakeInsulin m = MedicalTakeInsulin(
-    time: DateTime(1999),
-    insulinType: InsulinType.Actrapid,
-    insulinUI: 100,
-  );
-  //Medical check glu
-  MedicalCheckGlucose m2 = MedicalCheckGlucose(
-    time: DateTime(1999),
-    glucoseUI: 100,
-  );
-  Regimen r = Regimen(
-    medicalActions: [m, m2],
-    name: 'Regimen 1',
-    beginTime: DateTime.now(),
-  );
-  return r;
 }

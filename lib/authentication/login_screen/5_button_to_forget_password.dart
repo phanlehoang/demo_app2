@@ -1,4 +1,4 @@
-import 'package:demo_app2/authentication/verify/forget_password.dart';
+import 'package:demo_app2/authentication/forget_password_screen/forget_password_screen.dart';
 import 'package:flutter/material.dart';
 
 class ButtonToForgetPassword extends StatelessWidget {
