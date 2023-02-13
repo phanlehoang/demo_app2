@@ -28,7 +28,7 @@ class MixingGuideWidget extends StatelessWidget {
             onFailure: (context, state) => showToast('Lỗi'),
             child: Column(
               children: [
-                Text('MedicalMixing'),
+                //  Text('MedicalMixing'),
                 Text(MedicalMixing.guideline),
                 NiceButton(
                   onTap: formBloc.submit,

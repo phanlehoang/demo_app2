@@ -20,7 +20,7 @@ class LoadingDialogScreen extends StatelessWidget {
                 onPressed: () {
                   LoadingDialog.show(context);
                 },
-                child: const Text('Show Loading Dialog'),
+                child: const Text('Showc Loading Dialog'),
               ),
               ElevatedButton(
                 onPressed: () {

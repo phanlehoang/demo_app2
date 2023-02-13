@@ -1,6 +1,7 @@
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/TPN_screens/1_TPN_status_widget.dart';
+import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/nice_date_time.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_mixing/1_tpn_mixing_widget.dart';
 import 'package:demo_app2/presentation/widgets/images/doctor_image.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,9 @@ import '../history_widget/6_tpn_history_screen.dart';
 
 class InTPNRange extends Cubit<int?> {
   InTPNRange(int? state) : super(state);
+  void update(int? state) {
+    emit(state);
+  }
 }
 
 class TPNScreen extends StatelessWidget {
@@ -91,11 +95,24 @@ class TPNDoing extends StatelessWidget {
         BlocBuilder<TimeCheckCubit, int>(
           builder: (context, state) {
             DateTime t = DateTime.now();
-            context.read<InTPNRange>().emit(ActrapidRange().rangeContain(t));
-            return Text(t.toString());
+            context.read<InTPNRange>().update(ActrapidRange().rangeContain(t));
+            return Text(NiceDateTime.yearMonthDayHourMinuteSecond(t));
           },
         ),
-        TPNMixingWidget(tpnProcedureOnlineCubit: tpnProcedureOnlineCubit),
+        BlocBuilder<InTPNRange, int?>(
+          builder: (context, state) {
+            return BlocBuilder(
+                bloc: tpnProcedureOnlineCubit,
+                builder: (ct, st) {
+                  if (tpnProcedureOnlineCubit.state.state.status ==
+                      ProcedureStatus.firstAsk)
+                    return Text('');
+                  else
+                    return TPNMixingWidget(
+                        tpnProcedureOnlineCubit: tpnProcedureOnlineCubit);
+                });
+          },
+        ),
         BlocBuilder<InTPNRange, int?>(
           builder: (context, state) {
             if (state == null) {
