@@ -43,21 +43,21 @@ class MedicalProcedureCubit extends Cubit<MedicalProcedure> {
         await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [],
-          name: 'ko tiem',
+          name: 'Phác đồ dành cho BN không có tiền sử tiêm insulin',
         ));
         break;
       case ProcedureStatus.yesInsulin:
         await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [],
-          name: 'co tiem',
+          name: 'Phác đồ dành cho BN có tiền sử tiêm insulin',
         ));
         break;
       case ProcedureStatus.highInsulin:
         await addRegimen(Regimen(
           beginTime: DateTime.now(),
           medicalActions: [],
-          name: 'co tiem cao',
+          name: 'Phác đồ tiêm insulin ở liều cao',
         ));
         break;
       default:

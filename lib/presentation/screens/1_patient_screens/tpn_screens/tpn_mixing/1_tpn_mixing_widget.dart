@@ -43,7 +43,6 @@ class TPNMixingWidget extends StatelessWidget {
                   else
                     return Column(
                       children: [
-                        Text('Đã truyền xong.'),
                         Text(MixingRange().waitingMessage(DateTime.now())),
                       ],
                     );

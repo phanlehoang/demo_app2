@@ -117,7 +117,7 @@ class ListProcedures extends StatelessWidget {
 
           return Column(
             children: [
-              Text('Procedures'),
+              Text('Các phác đồ đã thực hiện'),
               ...procedureItems,
             ],
           );

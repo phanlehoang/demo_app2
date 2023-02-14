@@ -8,6 +8,7 @@ import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/models/TPN/1_TPN_procedure.dart';
 import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../widgets/nice_widgets/6_nice_item.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
@@ -42,8 +43,7 @@ class TPNHistoryScreen extends StatelessWidget {
                     NiceContainer(
                         child: Column(
                       children: [
-                        Text('TPN Procedure'),
-
+                        TPNProcedure.officialName,
                         Text(' $first - $last'),
                         Text('Cân nặng bệnh nhân: ${st.state.weight} kg'),
                         //Text('debug TPNs: ${st.toString()}'),

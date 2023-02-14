@@ -59,13 +59,13 @@ class FirstAskWidget extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Text('Bạn có tiêm insulin không?'),
+                        Text('BN có tiền sử tiêm insulin không?'),
                         RadioButtonGroupFieldBlocBuilder(
                           selectFieldBloc: formBloc.yesOrNoInsulin,
                           itemBuilder: (context, value) =>
                               FieldItem(child: Text(value)),
                         ),
-                        Text('Nhập số lượng CHO'),
+                        Text('Nhập lượng CHO (g)'),
                         TextFieldBlocBuilder(
                           textFieldBloc: formBloc.getCHO,
                           keyboardType: TextInputType.number,
@@ -88,7 +88,7 @@ class FirstAskWidget extends StatelessWidget {
 class FirstAskBloc extends FormBloc<String, String> {
   final procedureOnlineCubit;
   final yesOrNoInsulin = SelectFieldBloc(
-    items: ['Yes', 'No'],
+    items: ['Có', 'Không'],
     validators: [VietnameseFieldBlocValidators.required],
   );
   final getCHO = TextFieldBloc(

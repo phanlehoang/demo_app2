@@ -12,7 +12,7 @@ class TPNMixingStatusLogic {
 
   RegimenStatus regimenStatus(Regimen regimen) {
     //b1: tìm last time mixing
-    DateTime t = DateTime(1999);
+    DateTime t = DateTime(1999, 1, 1, 5, 31);
     for (dynamic medicalAction in regimen.medicalActions) {
       if (medicalAction is MedicalMixing) {
         if (medicalAction.time.isAfter(t)) t = medicalAction.time;

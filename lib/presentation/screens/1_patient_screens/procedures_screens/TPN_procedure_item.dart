@@ -55,9 +55,7 @@ class TPNProcedureItem extends StatelessWidget {
                         // Text(procedureState.toString()),
 
                         ListTile(
-                          title: Text(
-                            procedureState.name,
-                          ),
+                          title: Text('TPN'),
                           subtitle: Text(EnumToString.enumToString(
                               procedureState.state.status)),
                           trailing: Text(time),
@@ -67,10 +65,7 @@ class TPNProcedureItem extends StatelessWidget {
                               {
                                 'currentProcedureId':
                                     procedureState.beginTime.toString(),
-                                'procedureType':
-                                    procedureState.name == 'TPNProcedure'
-                                        ? 'TPN'
-                                        : 'TPN',
+                                'procedureType': 'TPN'
                               },
                             );
                             context.read<PatientNavigatorBarCubit>().update(0);

@@ -1,4 +1,3 @@
-
 import '../medical/4_regimen.dart';
 import '../sonde/sonde_lib.dart';
 
@@ -22,7 +21,8 @@ class GlucoseSolve {
     }
     return GlucoseEvaluation.superHigh;
   }
-   static num plusInsulinAmount(num glucose) {
+
+  static num plusInsulinAmount(num glucose) {
     final GlucoseEvaluation evaluation = eval(glucose);
     switch (evaluation) {
       case GlucoseEvaluation.high:
@@ -45,8 +45,6 @@ class GlucoseSolve {
         return 'Duy trì lượng insulin như cũ';
     }
   }
-
- 
 
   static String insulinGuideString({
     required Regimen regimen,
@@ -81,6 +79,6 @@ class GlucoseSolve {
     required num bonus,
     required num plus,
   }) {
-    return bonus + plus + (cho / 15).round();
+    return plus + (cho / 15).round();
   }
 }

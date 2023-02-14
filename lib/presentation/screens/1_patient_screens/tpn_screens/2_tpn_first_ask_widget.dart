@@ -61,7 +61,7 @@ class TPNFirstAskWidget extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Text('Bạn có tiêm insulin không?'),
+                        Text('BN có tiền sử tiêm insulin không?'),
                         RadioButtonGroupFieldBlocBuilder(
                           selectFieldBloc: formBloc.yesOrNoInsulin,
                           itemBuilder: (context, value) =>
@@ -85,7 +85,7 @@ class TPNFirstAskWidget extends StatelessWidget {
 class TPNFirstAskBloc extends FormBloc<String, String> {
   final TPNProcedureOnlineCubit procedureOnlineCubit;
   final yesOrNoInsulin = SelectFieldBloc(
-    items: ['Yes', 'No'],
+    items: ['Có', 'Khôngc'],
     validators: [VietnameseFieldBlocValidators.required],
   );
 

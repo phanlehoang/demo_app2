@@ -89,7 +89,7 @@ class TrialChart extends StatelessWidget {
         LineSeries<MedicalCheckGlucose, String>(
           // Bind data source
           dataSource: medicalCheckGlucoses,
-          name: 'Glucose(mol/l)',
+          name: 'Glucose(mmol/dL)',
           //ko hiển thị điểm
           markerSettings: MarkerSettings(
               isVisible: true,
