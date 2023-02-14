@@ -27,7 +27,7 @@ class CheckGlucoseWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Nhập glucose:'),
+        Text('Nhập glucose (UI):'),
         BlocProvider<CheckGlucoseForm>(
           create: (_) => CheckGlucoseForm(
             procedureOnlineCubit: procedureOnlineCubit,
