@@ -30,7 +30,6 @@ class GiveLantus extends StatelessWidget {
         case RegimenStatus.done:
           return Column(
             children: [
-              Text('Đã tiêm xong Lantus.'),
               //message to next time range
               Text(LantusRange().waitingMessage(DateTime.now())),
             ],

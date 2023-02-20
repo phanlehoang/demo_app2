@@ -1,4 +1,5 @@
 import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/nice_date_time.dart';
+import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/models/medical/4_regimen.dart';
@@ -17,7 +18,10 @@ class RegimenItem extends StatelessWidget {
     String last = NiceDateTime.dayMonthYear(regimen.lastTime);
     return Column(
       children: [
-        Text('Regimen: ${regimen.name}'),
+        Text(
+          ' ${regimen.name}',
+          textAlign: TextAlign.center,
+        ),
         Text(' $first - $last'),
         for (var medicalAction in regimen.medicalActions.reversed)
           MedicalActionItem(medicalAction: medicalAction),

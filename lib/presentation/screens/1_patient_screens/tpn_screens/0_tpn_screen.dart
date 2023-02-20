@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
+import '../../../../data/models/TPN/1_TPN_procedure.dart';
 import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
@@ -36,7 +37,7 @@ class TPNScreen extends StatelessWidget {
       child: NiceScreen(
         child: Column(
           children: [
-            Text('Phác đồ TPN'),
+            TPNProcedure.officialName,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -96,21 +97,21 @@ class TPNDoing extends StatelessWidget {
           builder: (context, state) {
             DateTime t = DateTime.now();
             context.read<InTPNRange>().update(ActrapidRange().rangeContain(t));
-            return Text(NiceDateTime.yearMonthDayHourMinuteSecond(t));
-          },
-        ),
-        BlocBuilder<InTPNRange, int?>(
-          builder: (context, state) {
-            return BlocBuilder(
-                bloc: tpnProcedureOnlineCubit,
-                builder: (ct, st) {
-                  if (tpnProcedureOnlineCubit.state.state.status ==
-                      ProcedureStatus.firstAsk)
-                    return Text('');
-                  else
-                    return TPNMixingWidget(
-                        tpnProcedureOnlineCubit: tpnProcedureOnlineCubit);
-                });
+            return Column(
+              children: [
+                Text(NiceDateTime.yearMonthDayHourMinuteSecond(t)),
+                BlocBuilder(
+                    bloc: tpnProcedureOnlineCubit,
+                    builder: (ct, st) {
+                      if (tpnProcedureOnlineCubit.state.state.status ==
+                          ProcedureStatus.firstAsk)
+                        return Text('');
+                      else
+                        return TPNMixingWidget(
+                            tpnProcedureOnlineCubit: tpnProcedureOnlineCubit);
+                    })
+              ],
+            );
           },
         ),
         BlocBuilder<InTPNRange, int?>(

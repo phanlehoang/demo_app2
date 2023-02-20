@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:demo_app2/data/models/time_controller/2_sonde_range.dart';
@@ -27,5 +28,12 @@ class TPNProcedure extends MedicalProcedure {
     return '''TPNProcedure: 
       {beginTime: $beginTime,\n state: $state,\n regimens: $regimens}
        ''';
+  }
+
+  static Widget get officialName {
+    return Text('Phác đồ cho bệnh nhân ĐTĐ nuôi dưỡng bằng đường tĩnh mạch',
+        //bôi đậm
+        style: TextStyle(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center);
   }
 }

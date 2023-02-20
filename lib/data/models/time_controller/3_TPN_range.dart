@@ -13,9 +13,10 @@ class LantusRange extends MedicalRange {
   @override
   String waitingMessage(DateTime t) {
     int indexNextRange = nextRange(t);
-    int h = ranges[indexNextRange].start.hour;
-    int m = ranges[indexNextRange].start.minute;
-    return 'Bạn phải đợi đến $h: $m cho lần tiêm Lantus tiếp theo.';
+    int h = ranges[indexNextRange % ranges.length].start.hour;
+    int m = ranges[indexNextRange % ranges.length].start.minute;
+    String date = indexNextRange == ranges.length ? 'ngày mai' : '';
+    return 'Bạn phải đợi đến $h: $m $date cho lần tiêm Lantus tiếp theo.';
   }
 }
 
@@ -35,8 +36,9 @@ class MixingRange extends MedicalRange {
   @override
   String waitingMessage(DateTime t) {
     int indexNextRange = nextRange(t);
-    int h = ranges[indexNextRange].start.hour;
-    int m = ranges[indexNextRange].start.minute;
-    return 'Bạn phải đợi đến $h: $m cho lần truyền tiếp theo.';
+    int h = ranges[indexNextRange % ranges.length].start.hour;
+    int m = ranges[indexNextRange % ranges.length].start.minute;
+    String date = indexNextRange == ranges.length ? ' ngày mai' : '';
+    return 'Bạn phải đợi đến $h: $m$date cho lần truyền tiếp theo.';
   }
 }

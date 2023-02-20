@@ -43,7 +43,7 @@ class LantusInsulinSolve extends SondeSlowInsulinSolve {
   num insulinAmount({required ProcedureState sondeState}) {
     num init = sondeState.weight * 0.2;
     if (sondeState.status == ProcedureStatus.highInsulin) {
-      return (init * 1.1).round();
+      return init = init + 2;
     }
     return init.round();
   }

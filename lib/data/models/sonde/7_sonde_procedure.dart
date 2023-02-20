@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../medical/7_medical_procedure.dart';
 
 class SondeProcedure extends MedicalProcedure {
@@ -10,5 +12,11 @@ class SondeProcedure extends MedicalProcedure {
       : super(
           name: 'SondeProcedure',
         );
+  static Widget get officialName {
+    return Text('Phác đồ cho bệnh nhân ĐTĐ nuôi dưỡng qua sonde',
+        //bôi đậm
+        style: TextStyle(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center);
+  }
   //1. attributes
 }
