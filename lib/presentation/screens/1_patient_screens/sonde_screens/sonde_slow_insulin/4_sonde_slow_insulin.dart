@@ -12,7 +12,6 @@ import '../../../../widgets/nice_widgets/1_nice_container.dart';
 import '4.0_ask_slow_insulin.dart';
 import '4.1_give_NPH.dart';
 
-
 class SlowInsulinWidget extends StatelessWidget {
   final SondeProcedureOnlineCubit sondeProcedureOnlineCubit;
   const SlowInsulinWidget({
@@ -25,35 +24,33 @@ class SlowInsulinWidget extends StatelessWidget {
     return SimpleContainer(
       child: Column(
         children: [
-          Text('Tiem cham'),
+          //  Text('Tiem cham'),
           BlocBuilder(
-            bloc: sondeProcedureOnlineCubit,
-            builder: (ct, st){
-              switch (sondeProcedureOnlineCubit.state.state.slowInsulinType) {
-                case InsulinType.Unknown:
-                  return Column(
-                    children: [
-                      Text('chon loai insulin'),
-                      AskSlowInsulin(
+              bloc: sondeProcedureOnlineCubit,
+              builder: (ct, st) {
+                switch (sondeProcedureOnlineCubit.state.state.slowInsulinType) {
+                  case InsulinType.Unknown:
+                    return Column(
+                      children: [
+                        Text('chọn loại insulin'),
+                        AskSlowInsulin(
+                          sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
+                        ),
+                      ],
+                    );
+                  case InsulinType.NPH:
+                    return GiveNPH(
                       sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                      ),
-                    ],
-                  );
-                case InsulinType.NPH:
-                  return GiveNPH(
-                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,
-                  );
-                case InsulinType.Glargine:
-                  return GiveGlargine(
-                    sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
-                default:
-                  return Text('Chua biet');
-              }
-            })
+                    );
+                  case InsulinType.Glargine:
+                    return GiveGlargine(
+                        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit);
+                  default:
+                    return Text('Chua biet');
+                }
+              })
         ],
       ),
     );
   }
 }
-
-

@@ -28,10 +28,10 @@ class TPNMixingWidget extends StatelessWidget {
             final MedicalProcedure procedure = tpnProcedureOnlineCubit.state;
             final logic = TPNMixingStatusLogic(procedure: procedure);
             final RegimenStatus status = logic.status;
-            if (status == RegimenStatus.done &&
-                MixingRange().rangeContainToday(DateTime.now()) == null) {
-              return Text(MixingRange().waitingMessage(DateTime.now()));
-            }
+            // if (status == RegimenStatus.done &&
+            //     MixingRange().rangeContainToday(DateTime.now()) == null) {
+            //   return Text(MixingRange().waitingMessage(DateTime.now()));
+            // }
             switch (status) {
               case RegimenStatus.guideMixing:
                 return MixingGuideWidget(

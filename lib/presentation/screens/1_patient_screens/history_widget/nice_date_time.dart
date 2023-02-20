@@ -29,4 +29,15 @@ class NiceDateTime {
 
     return '$d/$m/$y';
   }
+
+  static String yearMonthDayHourMinuteSecond(DateTime t) {
+    num d = t.day;
+    num m = t.month;
+    num y = t.year;
+    num h = t.hour;
+    num min = t.minute;
+    num s = t.second;
+
+    return '$y-$m-$d $h:$min:$s';
+  }
 }

@@ -15,24 +15,25 @@ class AskSlowInsulin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:(_)=>  ChooseSlowInsulinFormBloc(
-        sondeProcedureOnlineCubit: sondeProcedureOnlineCubit),
+      create: (_) => ChooseSlowInsulinFormBloc(
+          sondeProcedureOnlineCubit: sondeProcedureOnlineCubit),
       child: Builder(
-        builder: (ct){
-          final ChooseSlowInsulinFormBloc chooseSlowInsulinFormBloc = ct.read<ChooseSlowInsulinFormBloc>();
+        builder: (ct) {
+          final ChooseSlowInsulinFormBloc chooseSlowInsulinFormBloc =
+              ct.read<ChooseSlowInsulinFormBloc>();
           return BlocBuilder(
             bloc: chooseSlowInsulinFormBloc,
-            builder: (ct1, st1){
+            builder: (ct1, st1) {
               return Column(
                 children: [
-                  Text('Chon loai tiem cham'),
+                  //Text('Chon loai tiem cham'),
                   FormBlocListener(
                     formBloc: chooseSlowInsulinFormBloc,
                     onSubmitting: (ct, st) {
-                       //LoadingDialog.show(ct);
+                      //LoadingDialog.show(ct);
                     },
-                    onSuccess: (ct, st)  {
-                     // LoadingDialog.hide(ct);
+                    onSuccess: (ct, st) {
+                      // LoadingDialog.hide(ct);
                       ScaffoldMessenger.of(ct).showSnackBar(
                         SnackBar(
                           content: Text('Success'),
@@ -40,7 +41,7 @@ class AskSlowInsulin extends StatelessWidget {
                       );
                     },
                     onFailure: (ct, st) => {
-                     // LoadingDialog.hide(ct),
+                      // LoadingDialog.hide(ct),
                       ScaffoldMessenger.of(ct).showSnackBar(
                         SnackBar(
                           content: Text('Failure'),
@@ -50,15 +51,15 @@ class AskSlowInsulin extends StatelessWidget {
                     child: Column(children: [
                       RadioButtonGroupFieldBlocBuilder(
                         selectFieldBloc: chooseSlowInsulinFormBloc.slowInsulin,
-                        itemBuilder: (context, value) => FieldItem(child: Text(value)),
-            decoration: const InputDecoration(
-                labelText: 'Loai insulin', prefixIcon: SizedBox()),
-          ),
+                        itemBuilder: (context, value) =>
+                            FieldItem(child: Text(value)),
+                        decoration: const InputDecoration(
+                            labelText: 'Loai insulin', prefixIcon: SizedBox()),
+                      ),
                       NiceButton(
                         onTap: chooseSlowInsulinFormBloc.submit,
                         text: 'Xác nhận',
                       ),
-
                     ]),
                   ),
                 ],
@@ -70,5 +71,3 @@ class AskSlowInsulin extends StatelessWidget {
     );
   }
 }
-
-                  

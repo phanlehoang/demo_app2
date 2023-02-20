@@ -15,7 +15,7 @@ class LantusRange extends MedicalRange {
     int indexNextRange = nextRange(t);
     int h = ranges[indexNextRange].start.hour;
     int m = ranges[indexNextRange].start.minute;
-    return 'Bạn phải đợi đến $h: $m ngày mai cho lần tiêm Lantus tiếp theo.';
+    return 'Bạn phải đợi đến $h: $m cho lần tiêm Lantus tiếp theo.';
   }
 }
 
