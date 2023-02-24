@@ -67,7 +67,7 @@ class SondeScreen extends StatelessWidget {
                   final sondeProcedureState = sondeProcedureOnlineCubit.state;
                   if (sondeProcedureState.state.status ==
                       ProcedureStatus.finish) {
-                    return Text('Phác đồ này đã xong');
+                    return Text('Chuyển sang hội chẩn để xem kết quả');
                   }
                   return SondeDoing(
                     sondeProcedureOnlineCubit: sondeProcedureOnlineCubit,

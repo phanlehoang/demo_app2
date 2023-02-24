@@ -89,7 +89,7 @@ class GiveInsulinWidget extends StatelessWidget {
                                 );
                               },
                               child: NiceButton(
-                                text: 'Submit',
+                                text: 'Tiếp tục',
                                 onTap: () {
                                   _.read<CheckedInsulinSubmit>().submit();
                                 },
