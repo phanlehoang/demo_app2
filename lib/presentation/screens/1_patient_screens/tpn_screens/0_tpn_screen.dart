@@ -68,7 +68,7 @@ class TPNScreen extends StatelessWidget {
                   final tPNProcedureState = tPNProcedureOnlineCubit.state;
                   if (tPNProcedureState.state.status ==
                       ProcedureStatus.finish) {
-                    return Text('Phác đồ này đã xong');
+                    return Text('Chuyển sang hội chẩn để tiếp tục');
                   }
                   return TPNDoing(
                     tpnProcedureOnlineCubit: tPNProcedureOnlineCubit,
