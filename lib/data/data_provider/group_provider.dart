@@ -9,13 +9,13 @@ class GroupValidator {
     if (ans) {
       return null;
     }
-    return 'Group ID does not exist';
+    return 'Phòng này không tồn tại';
   }
 
   static Future<String?> idCreateValid(String id) async {
     var ans = await searchGroupId('groups', id);
     if (ans) {
-      return 'Group ID already exists';
+      return 'Phòng đã tồn tại';
     }
     return null;
   }
