@@ -1,4 +1,4 @@
-import 'package:demo_app2/data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import 'package:demo_app2/data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/2.1_medical_mixing.dart';
 import 'package:demo_app2/data/models/time_controller/3_TPN_range.dart';
@@ -8,7 +8,7 @@ import 'package:demo_app2/presentation/widgets/status/show_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-import '../../../../../data/models/TPN/1_TPN_procedure.dart';
+import '../../../../../data/models/2.TPN/1_TPN_procedure.dart';
 import '../../../../../data/models/medical/7_medical_procedure.dart';
 import '../../../../widgets/nice_widgets/nice_export.dart';
 import '../../../../widgets/status/loading_dialog.dart';

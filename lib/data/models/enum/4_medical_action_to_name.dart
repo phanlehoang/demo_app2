@@ -1,6 +1,6 @@
 import '../medical/2_medical_check_glucose.dart';
 import '../medical/3_medical_take_insulin.dart';
-import '../sonde/sonde_lib.dart';
+import '../1.sonde/sonde_lib.dart';
 
 class MedicalActionToName {
   static String name(dynamic action) {

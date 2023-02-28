@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/models/2.3_current_profile_cubit.dart';
-import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import '../../../../data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../../data/models/enum/enums.dart';
 import '../../../../logic/status_cubit/navigator_bar_cubit.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';

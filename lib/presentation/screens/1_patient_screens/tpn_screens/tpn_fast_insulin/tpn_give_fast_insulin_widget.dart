@@ -2,13 +2,12 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo_app2/data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import 'package:demo_app2/data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/2_nice_button.dart';
 
@@ -17,7 +16,6 @@ import '../../../../../data/models/enum/enums.dart';
 import '../../../../../data/models/glucose-insulin_controller/glucose_solve.dart';
 import '../../../../../data/models/glucose-insulin_controller/tpn_glucose_solve.dart';
 import '../../../../../data/models/models_export.dart';
-import '../../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../../../../logic/1_patient_blocs/medical_blocs/sonde_blocs/check_insulin_submit_bloc.dart';
 
 import '../../../../widgets/nice_widgets/1_nice_container.dart';

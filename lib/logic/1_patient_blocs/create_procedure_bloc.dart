@@ -1,14 +1,16 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo_app2/data/models/sonde/7.01_sonde_procedure_init.dart';
-import 'package:demo_app2/data/models/sonde/7_sonde_procedure.dart';
+import 'package:demo_app2/data/models/1.sonde/7.01_sonde_procedure_init.dart';
+import 'package:demo_app2/data/models/1.sonde/7_sonde_procedure.dart';
+import 'package:demo_app2/data/models/3.mouth/2.mouth_procedure.dart';
+import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../data/data_provider/patient_provider.dart';
 import '../../data/models/2_profile.dart';
-import '../../data/models/TPN/1_TPN_procedure.dart';
-import '../../data/models/TPN/2_TPN_procedure_init.dart';
+import '../../data/models/2.TPN/1_TPN_procedure.dart';
+import '../../data/models/2.TPN/2_TPN_procedure_init.dart';
 import '../../presentation/widgets/vietnamese/vietnamese_field_bloc_validators.dart';
 
 class CreateProcedureFormBloc extends FormBloc<String, String> {
@@ -52,6 +54,19 @@ class CreateProcedureFormBloc extends FormBloc<String, String> {
           .collection('procedures')
           .doc(tpnProcedure.beginTime.toString())
           .set(tpnProcedure.toDataMap());
+    }
+    if (method.value == 'Miệng') {
+      //mouth init procedure
+      final MouthProcedure mouthProcedure = MouthProcedure(
+          beginTime: DateTime.now(),
+          name: 'MouthProcedure',
+          status: MouthProcedureStatus.firstAsk,
+          weight: profile.weight,
+          regimens: []);
+      var addProcedure = await PatientRef.getPatientRef(profile)
+          .collection('procedures')
+          .doc(mouthProcedure.beginTime.toString())
+          .set(mouthProcedure.toDataMap);
     }
   }
 }

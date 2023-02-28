@@ -2,7 +2,6 @@
 
 //import material
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
-import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/7.1_glucose_extract.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/7_glucose_chart_widget.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/history_widget/nice_date_time.dart';
@@ -10,7 +9,8 @@ import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../data/models/sonde/7_sonde_procedure.dart';
+import '../../../../data/models/1.sonde/7.2_sonde_procedure_online_cubit.dart';
+import '../../../../data/models/1.sonde/7_sonde_procedure.dart';
 import '../../../widgets/nice_widgets/6_nice_item.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
 import 'medical_action_item.dart';

@@ -8,8 +8,8 @@ import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../data/models/TPN/1_TPN_procedure.dart';
-import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import '../../../../data/models/2.TPN/1_TPN_procedure.dart';
+import '../../../../data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../widgets/nice_widgets/6_nice_item.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
 import '7.1_glucose_extract.dart';

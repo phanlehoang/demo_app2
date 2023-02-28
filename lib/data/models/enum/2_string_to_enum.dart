@@ -61,4 +61,28 @@ class StringToEnum {
         return InsulinType.Actrapid;
     }
   }
+
+  //mouthProcedureStatus
+  static MouthProcedureStatus stringToMouthProcedureStatus(String s) {
+    switch (s) {
+      case 'loading':
+        return MouthProcedureStatus.loading;
+      case 'firstAsk':
+        return MouthProcedureStatus.firstAsk;
+      case 'acuteHyperglycemia':
+        return MouthProcedureStatus.acuteHyperglycemia;
+      case 'secondAsk':
+        return MouthProcedureStatus.secondAsk;
+      case 'hypoglycemia':
+        return MouthProcedureStatus.hypoglycemia;
+      case 'baseBolus':
+        return MouthProcedureStatus.baseBolus;
+      case 'endocrineConference':
+        return MouthProcedureStatus.endocrineConference;
+      case 'finish':
+        return MouthProcedureStatus.finish;
+      default:
+        return MouthProcedureStatus.firstAsk;
+    }
+  }
 }

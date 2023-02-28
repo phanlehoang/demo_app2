@@ -5,8 +5,6 @@ import '../models/medical/2_medical_check_glucose.dart';
 import '../models/medical/3_medical_take_insulin.dart';
 import '../models/medical/4_regimen.dart';
 import '../models/2_profile.dart';
-import '../models/sonde/sonde_lib.dart';
-
 
 //viết hàm chèn thêm số 0 vào để có đúng 3 chữ số
 String addZero(int number) {
@@ -35,7 +33,6 @@ class SondeNoInsulinRegimenProvider {
   static Future<String?> addRegimen(Profile profile, Regimen regimen) async {
     var ref = regimenAddress(profile);
     try {
-      
       addMedicalActions(
         ref: ref,
         medicalActions: regimen.medicalActions,

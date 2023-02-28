@@ -1,5 +1,5 @@
 import '../medical/4_regimen.dart';
-import '../sonde/sonde_lib.dart';
+import '../medical/6_procedure_state.dart';
 
 enum GlucoseEvaluation {
   normal,

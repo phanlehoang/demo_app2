@@ -3,7 +3,7 @@ import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../models/2_profile.dart';
-import '../../models/sonde/sonde_lib.dart';
+import '../../models/medical/6_procedure_state.dart';
 
 class SondeStatusUpdate {
   static Future<String?> updateSondeStatus({
