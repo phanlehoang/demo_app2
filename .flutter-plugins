@@ -1,5 +1,4 @@
 # This is a generated file; do not edit or check into version control.
-<<<<<<< HEAD
 cloud_firestore=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\cloud_firestore-4.3.2\\
 cloud_firestore_web=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\cloud_firestore_web-3.2.2\\
 connectivity_plus=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\connectivity_plus-3.0.3\\
@@ -25,30 +24,3 @@ path_provider_foundation=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hoste
 path_provider_linux=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_linux-2.1.8\\
 path_provider_windows=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_windows-2.1.3\\
 smart_auth=C:\\Users\\HoangPhan\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\smart_auth-1.0.8\\
-=======
-cloud_firestore=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\cloud_firestore-4.3.2\\
-cloud_firestore_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\cloud_firestore_web-3.2.2\\
-connectivity_plus=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\connectivity_plus-3.0.3\\
-firebase_analytics=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_analytics-10.1.1\\
-firebase_analytics_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_analytics_web-0.5.1+9\\
-firebase_auth=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_auth-4.2.6\\
-firebase_auth_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_auth_web-5.2.5\\
-firebase_core=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_core-2.5.0\\
-firebase_core_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_core_web-2.1.1\\
-firebase_database=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_database-10.0.10\\
-firebase_database_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_database_web-0.2.1+20\\
-firebase_storage=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_storage-11.0.11\\
-firebase_storage_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\firebase_storage_web-3.3.20\\
-flutter_keyboard_visibility=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_keyboard_visibility-5.4.0\\
-flutter_keyboard_visibility_linux=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_keyboard_visibility_linux-1.0.0\\
-flutter_keyboard_visibility_macos=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_keyboard_visibility_macos-1.0.0\\
-flutter_keyboard_visibility_web=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_keyboard_visibility_web-2.0.0\\
-flutter_keyboard_visibility_windows=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_keyboard_visibility_windows-1.0.0\\
-fluttertoast=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\fluttertoast-8.1.3\\
-path_provider=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider-2.0.12\\
-path_provider_android=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_android-2.0.22\\
-path_provider_foundation=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_foundation-2.1.1\\
-path_provider_linux=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_linux-2.1.8\\
-path_provider_windows=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_windows-2.1.3\\
-smart_auth=C:\\Users\\HoangPhanHoang\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\smart_auth-1.0.8\\
->>>>>>> parent of 23de641 (mouth procedure)
