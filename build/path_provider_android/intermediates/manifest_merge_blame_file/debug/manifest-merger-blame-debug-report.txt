@@ -4,8 +4,14 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
+<<<<<<< HEAD
 6-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.22\android\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="16" />
 7-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.22\android\src\main\AndroidManifest.xml
+=======
+6-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.22\android\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="16" />
+7-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.0.22\android\src\main\AndroidManifest.xml
+>>>>>>> parent of 23de641 (mouth procedure)
 8
 9</manifest>

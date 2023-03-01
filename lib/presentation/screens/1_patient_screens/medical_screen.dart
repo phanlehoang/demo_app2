@@ -54,10 +54,30 @@ class PatientMedicalScreen extends StatelessWidget {
                   return Container();
               }
             }),
+<<<<<<< HEAD
           ],
+=======
+            SizedBox(height: 30,),
+      
+        //cuối màn hình in cảnh báo
+        BlocBuilder(
+          bloc: context.read<ReferenceWarningCubit>(),
+          builder: (context, state) {
+            if(state==true){
+              return ReferenceWarningWidget();
+            }
+            else{
+              return Container();
+            }
+          },
+>>>>>>> parent of 23de641 (mouth procedure)
         ),
+          ],
       ),
-      bottomNavigationBar: BottomNavigatorBar(),
+      ),
+      bottomNavigationBar:
+          BottomNavigatorBar(),
     );
-  }
+    
+      }
 }

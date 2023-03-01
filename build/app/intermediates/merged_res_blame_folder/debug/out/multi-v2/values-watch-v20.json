@@ -1,10 +1,17 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "C:\\Users\\HoangPhan\\Desktop\\test\\demo_app2\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\HoangPhan\\.gradle\\caches\\transforms-3\\13c11db9378fe5d4a5611e5dfad2a7a1\\transformed\\jetified-play-services-auth-20.4.0\\res\\values-watch-v20\\values.xml",
+=======
+            "outputFile": "C:\\Users\\HoangPhanHoang\\OneDrive\\Desktop\\test\\hoang_2\\demo_app2\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\HoangPhanHoang\\.gradle\\caches\\transforms-3\\13c11db9378fe5d4a5611e5dfad2a7a1\\transformed\\jetified-play-services-auth-20.4.0\\res\\values-watch-v20\\values.xml",
+>>>>>>> parent of 23de641 (mouth procedure)
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

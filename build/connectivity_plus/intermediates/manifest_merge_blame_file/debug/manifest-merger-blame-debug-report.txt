@@ -4,6 +4,7 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="16"
+<<<<<<< HEAD
 6-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="16" />
 7-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml
@@ -11,5 +12,14 @@
 9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 9-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml:3:3-76
 9-->C:\Users\HoangPhan\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml:3:20-74
+=======
+6-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="16" />
+7-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml:3:3-76
+9-->C:\Users\HoangPhanHoang\AppData\Local\Pub\Cache\hosted\pub.dev\connectivity_plus-3.0.3\android\src\main\AndroidManifest.xml:3:20-74
+>>>>>>> parent of 23de641 (mouth procedure)
 10
 11</manifest>
