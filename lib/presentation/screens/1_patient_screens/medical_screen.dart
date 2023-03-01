@@ -54,9 +54,6 @@ class PatientMedicalScreen extends StatelessWidget {
                   return Container();
               }
             }),
-<<<<<<< HEAD
-          ],
-=======
             SizedBox(height: 30,),
       
         //cuối màn hình in cảnh báo
@@ -70,7 +67,6 @@ class PatientMedicalScreen extends StatelessWidget {
               return Container();
             }
           },
->>>>>>> parent of 23de641 (mouth procedure)
         ),
           ],
       ),
