@@ -3,10 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/authentication/login_screen/1_login_screen.dart';
 import 'package:demo_app2/logic/status_cubit/navigator_bar_cubit.dart';
 import 'package:demo_app2/presentation/screens/3_setting_screens/remember_login_cubit.dart';
-import 'package:demo_app2/presentation/screens/3_setting_screens/warning_reference_form.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:demo_app2/presentation/widgets/status/loading_dialog.dart';
-import 'package:demo_app2/presentation/widgets/status/reference_warning_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -27,12 +25,7 @@ class SettingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Cài đặt'),
       ),
-      body: Column(
-        children: [
-         // ReferenceWarningWidget(),
-          WarningReferenceForm(),
-        ],
-      ),
+      body: Column(),
       bottomNavigationBar: BottomNavigatorBar(),
     );
   }

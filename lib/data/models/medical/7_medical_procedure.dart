@@ -59,7 +59,7 @@ abstract class MedicalProcedure {
         medicalRange = LantusRange();
         break;
       default:
-        return RegimenStatus.done;
+        return RegimenStatus.checkingGlucose;
     }
     if (medicalRange.rangeContain(DateTime.now()) == null) {
       return RegimenStatus.done;

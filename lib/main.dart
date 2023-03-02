@@ -17,7 +17,6 @@ import 'data/models/2.3_current_profile_cubit.dart';
 import 'data/models/doctor/current_doctor.dart';
 import 'logic/status_cubit/internet/internet_cubit.dart';
 import 'logic/status_cubit/navigator_bar_cubit.dart';
-import 'logic/status_cubit/reference_warning_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,10 +73,6 @@ class MyApp extends StatelessWidget {
         //remember login cubit
         BlocProvider<RememberLoginCubit>(
           create: (rememberLoginCubitContext) => RememberLoginCubit(),
-        ),
-        //reference warning cubit
-        BlocProvider<ReferenceWarningCubit>(
-          create: (referenceWarningCubitContext) => ReferenceWarningCubit(),
         ),
       ],
       child: DemoApp2(appRouter: appRouter),

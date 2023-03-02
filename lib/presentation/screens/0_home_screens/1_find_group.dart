@@ -54,7 +54,7 @@ class FindGroup extends StatelessWidget {
                 TextFieldBlocBuilder(
                   textFieldBloc: formBloc.groupId,
                   decoration: InputDecoration(
-                    labelText: 'Tên phòng khám',
+                    labelText: 'Group ID',
                     //hint text
                     hintText: currentGroupId.state,
                     prefixIcon: Icon(Icons.search),

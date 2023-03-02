@@ -14,7 +14,7 @@ import '../../presentation/widgets/vietnamese/vietnamese_field_bloc_validators.d
 class CreateProcedureFormBloc extends FormBloc<String, String> {
   final Profile profile;
   final method = SelectFieldBloc(
-    items: ['TPN', 'Sonde', 'Miệng'],
+    items: ['TPN', 'Sonde'],
     validators: [VietnameseFieldBlocValidators.required],
   );
   @override
