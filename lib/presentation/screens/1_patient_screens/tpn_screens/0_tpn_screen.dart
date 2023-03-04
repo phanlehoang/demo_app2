@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nice_buttons/nice_buttons.dart';
 
-import '../../../../data/models/TPN/1_TPN_procedure.dart';
-import '../../../../data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import '../../../../data/models/2.TPN/1_TPN_procedure.dart';
+import '../../../../data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import '../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../widgets/nice_widgets/nice_export.dart';
 import '../history_widget/6_tpn_history_screen.dart';

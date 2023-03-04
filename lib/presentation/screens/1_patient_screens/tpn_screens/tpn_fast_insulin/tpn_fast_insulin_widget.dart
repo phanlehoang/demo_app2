@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:demo_app2/data/models/TPN/3_TPN_procedure_online_cubit.dart';
-import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
+import 'package:demo_app2/data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import 'package:demo_app2/logic/status_cubit/time_check/time_check_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/tpn_screens/tpn_fast_insulin/tpn_give_fast_insulin_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -17,7 +16,7 @@ import '../../../../../data/models/enum/enums.dart';
 
 import '../../../../../data/models/time_controller/2_sonde_range.dart';
 import '../../../../widgets/nice_widgets/1_nice_container.dart';
-import '../../sonde_screens/sonde_fast_insulin/2_1_1_check_glucose_widget.dart';
+import '../../1.sonde_screens/sonde_fast_insulin/2_1_1_check_glucose_widget.dart';
 
 class TPNFastInsulinWidget extends StatelessWidget {
   final TPNProcedureOnlineCubit procedureOnlineCubit;

@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/2_profile.dart';
-import 'package:demo_app2/data/models/TPN/1_TPN_procedure.dart';
+import 'package:demo_app2/data/models/2.TPN/1_TPN_procedure.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
 import 'package:demo_app2/data/models/medical/4_regimen.dart';
-import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import 'package:demo_app2/logic/status_cubit/navigator_bar_cubit.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/procedures_screens/TPN_procedure_item.dart';
 import 'package:demo_app2/presentation/screens/1_patient_screens/procedures_screens/create_procedure.dart';
@@ -19,6 +18,7 @@ import '../../../widgets/bars/bottom_navitgator_bar.dart';
 import '../../../widgets/bars/patient_navigator_bar.dart';
 import '../../../widgets/nice_widgets/0_nice_screen.dart';
 import '../history_widget/nice_date_time.dart';
+import 'mouth_procedure_item.dart';
 
 class PatientProceduresScreen extends StatelessWidget {
   const PatientProceduresScreen({super.key});
@@ -111,6 +111,11 @@ class ListProcedures extends StatelessWidget {
               ));
             else if (procedureRef['name'] == 'TPNProcedure')
               procedureItems.add(TPNProcedureItem(
+                procedure: procedureRef.data(),
+                procedureId: procedureRef.id,
+              ));
+            else if (procedureRef['name'] == 'MouthProcedure')
+              procedureItems.add(MouthProcedureItem(
                 procedure: procedureRef.data(),
                 procedureId: procedureRef.id,
               ));

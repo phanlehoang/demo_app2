@@ -1,16 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/data_provider/sonde_provider/sonde_state_provider.dart';
-import 'package:demo_app2/data/models/TPN/2_TPN_procedure_init.dart';
-import 'package:demo_app2/data/models/TPN/3_TPN_procedure_online_cubit.dart';
+import 'package:demo_app2/data/models/2.TPN/2_TPN_procedure_init.dart';
+import 'package:demo_app2/data/models/2.TPN/3_TPN_procedure_online_cubit.dart';
 import 'package:demo_app2/data/models/enum/enums.dart';
-import 'package:demo_app2/data/models/sonde/sonde_lib.dart';
 import 'package:demo_app2/presentation/widgets/nice_widgets/0_nice_screen.dart';
 import 'package:demo_app2/presentation/widgets/vietnamese/vietnamese_field_bloc_validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
-import '../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
+import '../../../../data/models/medical/6_procedure_state.dart';
 import '../../../widgets/nice_widgets/1_nice_container.dart';
 import '../../../widgets/nice_widgets/2_nice_button.dart';
 

@@ -11,6 +11,7 @@ enum Gender {
 enum ProcedureType {
   TPN,
   Sonde,
+  Mouth,
   Unknown,
 }
 
@@ -19,6 +20,17 @@ enum ProcedureStatus {
   noInsulin,
   yesInsulin,
   highInsulin,
+  finish,
+}
+
+enum MouthProcedureStatus {
+  loading,
+  firstAsk,
+  acuteHyperglycemia, //tăng đường huyết cấp tính
+  secondAsk,
+  hypoglycemia, //bị hạ đường huyết
+  baseBolus,
+  endocrineConference, //hội chẩn nội tiết
   finish,
 }
 

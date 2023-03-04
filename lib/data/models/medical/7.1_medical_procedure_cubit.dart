@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/models_export.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../1.sonde/7_sonde_procedure.dart';
 import '../enum/enums.dart';
 import '4_regimen.dart';
 import '6_procedure_state.dart';
 import '7_medical_procedure.dart';
-import '../sonde/7_sonde_procedure.dart';
 
 class MedicalProcedureCubit extends Cubit<MedicalProcedure> {
   final Profile profile;

@@ -3,8 +3,6 @@ import 'package:demo_app2/data/models/medical/2_medical_check_glucose.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../data/models/models_export.dart';
-import '../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
-import '../../../../data/models/sonde/sonde_lib.dart';
 
 class CheckGlucoseForm extends FormBloc<String, String> {
   @override

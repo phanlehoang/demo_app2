@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:demo_app2/data/models/medical/3_medical_take_insulin.dart';
-import 'package:demo_app2/data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../data/models/enum/enums.dart';

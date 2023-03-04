@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import '../../../../../data/models/medical/6_procedure_state.dart';
-import '../../../../../data/models/sonde/7.2_sonde_procedure_online_cubit.dart';
 import '../../../../../data/models/time_controller/3_TPN_range.dart';
 import '../../../../widgets/nice_widgets/2_nice_button.dart';
 
